@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvmlhmbsnsgq"]
+[gd_scene load_steps=11 format=3 uid="uid://dvmlhmbsnsgq"]
 
 [ext_resource type="Material" uid="uid://bpu20u6xyn8ne" path="res://Scenes/celling_mat.tres" id="1_4g5cr"]
 [ext_resource type="PackedScene" uid="uid://c70r54khkrlxc" path="res://Models/table.glb" id="1_i04dx"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cho0k6sp4l1bc" path="res://Models/wall_support.glb" id="4_c3mwy"]
 [ext_resource type="PackedScene" uid="uid://bx6uwl67f06au" path="res://Models/bar.glb" id="6_ckhy6"]
 [ext_resource type="Material" uid="uid://cjmo3wfwyos3i" path="res://Scenes/bar_mat.tres" id="7_dun2r"]
+[ext_resource type="PackedScene" uid="uid://cg7iaga664ty8" path="res://Models/Fridge.glb" id="9_qtxxq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qtxxq"]
 albedo_texture = ExtResource("1_r3lo5")
@@ -51,10 +52,6 @@ size = Vector3(0.11499, 0.0758057, 0.195557)
 [node name="CSGBox3D17" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.821635, 0.0718766, -0.0578223)
 size = Vector3(0.0135498, 0.151398, 0.105499)
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, 0.255993, 0.0589061, -0.00780761)
-size = Vector3(0.11499, 0.0758057, 0.183411)
 
 [node name="CSGBox3D18" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, 0.384048, 0.0589061, 0.0367338)
@@ -101,7 +98,6 @@ size = Vector3(0.429819, 0.258011, 0.0435791)
 
 [node name="Celling" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.307341, 0.229297, 0.0286235)
-visible = false
 size = Vector3(1.20227, 0.001, 0.708984)
 material = ExtResource("1_4g5cr")
 
@@ -125,5 +121,8 @@ transform = Transform3D(-0.0409949, 0, 0, 0, -0.00978739, 0, 0, 0, -0.369639, -0
 surface_material_override/0 = ExtResource("7_dun2r")
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="."]
+
+[node name="Fridge2" parent="." instance=ExtResource("9_qtxxq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0240007, 0, -0.00441248)
 
 [editable path="Bar"]
