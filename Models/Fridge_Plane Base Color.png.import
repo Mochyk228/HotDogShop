@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3a62sonnufei"
-path.s3tc="res://.godot/imported/Fridge_Plane Base Color.png-75d3bd4c6ef0c85315857cbbdd9f318e.s3tc.ctex"
+uid="uid://cer3yd8pl7mx3"
+path.s3tc="res://.godot/imported/fridge_Plane Base Color.png-e8b0aac34f1d50340f153329f307eb51.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Models/Fridge_Plane Base Color.png"
-dest_files=["res://.godot/imported/Fridge_Plane Base Color.png-75d3bd4c6ef0c85315857cbbdd9f318e.s3tc.ctex"]
+source_file="res://Models/fridge_Plane Base Color.png"
+dest_files=["res://.godot/imported/fridge_Plane Base Color.png-e8b0aac34f1d50340f153329f307eb51.s3tc.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbo6xx57knjjf"
-path.s3tc="res://.godot/imported/Fridge_WallSupport Base Color.png-1de2abcf9a4361bf270753901c64f5f1.s3tc.ctex"
+uid="uid://ck0jsq77wrdac"
+path.s3tc="res://.godot/imported/fridge_WallSupport Base Color.png-2fe17cc4344e18193c8098626b1ce43f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Models/Fridge_WallSupport Base Color.png"
-dest_files=["res://.godot/imported/Fridge_WallSupport Base Color.png-1de2abcf9a4361bf270753901c64f5f1.s3tc.ctex"]
+source_file="res://Models/fridge_WallSupport Base Color.png"
+dest_files=["res://.godot/imported/fridge_WallSupport Base Color.png-2fe17cc4344e18193c8098626b1ce43f.s3tc.ctex"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d1ynl8uvssl5b"
-path="res://.godot/imported/shop.blend-614c61fc3acf0551c0dfad3a32613b9d.scn"
+uid="uid://bf7d5ut4gjl1e"
+path="res://.godot/imported/Fridge.blend-97ed273c7abb8eb0adb1d3f62bb4d15f.scn"
 
 [deps]
 
-source_file="res://Models/shop.blend"
-dest_files=["res://.godot/imported/shop.blend-614c61fc3acf0551c0dfad3a32613b9d.scn"]
+source_file="res://Models/Fridge.blend"
+dest_files=["res://.godot/imported/Fridge.blend-97ed273c7abb8eb0adb1d3f62bb4d15f.scn"]
 
 [params]
 

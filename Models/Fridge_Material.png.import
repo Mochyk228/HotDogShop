@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clv5gy1w0via0"
-path.s3tc="res://.godot/imported/Fridge_Material.png-912aabb0e99db897c6e6ae7a4d981c8e.s3tc.ctex"
+uid="uid://dt63k1ke8wai"
+path.s3tc="res://.godot/imported/fridge_Material.png-b6f6d8375c53030f21c0fcd74ea1a776.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Models/Fridge_Material.png"
-dest_files=["res://.godot/imported/Fridge_Material.png-912aabb0e99db897c6e6ae7a4d981c8e.s3tc.ctex"]
+source_file="res://Models/fridge_Material.png"
+dest_files=["res://.godot/imported/fridge_Material.png-b6f6d8375c53030f21c0fcd74ea1a776.s3tc.ctex"]
 
 [params]
 
