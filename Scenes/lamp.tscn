@@ -1,13 +1,110 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyqdv0qm7mrud"]
+[gd_scene load_steps=8 format=3 uid="uid://dyqdv0qm7mrud"]
 
 [ext_resource type="AudioStream" uid="uid://c3lxnwcm8ub2v" path="res://118340__julien_matthey__jm_noiz_buzz-01-neon-light.wav" id="1_3b5q5"]
 [ext_resource type="Script" uid="uid://com2td6aauj2c" path="res://Scenes/lamp.gd" id="1_5vngr"]
+[ext_resource type="AudioStream" uid="uid://cme46kqu4bp2x" path="res://flicking.wav" id="3_xtpkl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwnbm"]
 albedo_color = Color(0.91427, 0.658801, 0.457123, 1)
 emission_enabled = true
 emission = Color(0.63151, 0.615582, 0.297086, 1)
 emission_energy_multiplier = 9.68
+
+[sub_resource type="Animation" id="Animation_qpe6n"]
+resource_name = "flick"
+length = 3.65
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer3D2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D2:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:emission")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.133333, 0.366667, 0.4, 0.6, 0.633333, 0.766667, 1.46667, 1.5, 2.33333, 2.36667, 2.73333, 2.76667, 3.03333, 3.06667, 3.4, 3.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0.63151, 0.615582, 0.297086, 1), Color(0, 0, 0, 1), Color(0.63151, 0.615582, 0.297086, 1), Color(0, 0, 0, 1), Color(0.63151, 0.615582, 0.297086, 1), Color(0, 0, 0, 1), Color(0.63151, 0.615582, 0.297086, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.63151, 0.615582, 0.297086, 1), Color(0, 0, 0, 1), Color(0.63151, 0.615582, 0.297086, 1), Color(0, 0, 0, 1), Color(0.63151, 0.615582, 0.297086, 1), Color(0, 0, 0, 1), Color(0.63151, 0.615582, 0.297086, 1), Color(0, 0, 0, 1), Color(0.63151, 0.615582, 0.297086, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpotLight3D:light_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.133333, 0.366667, 0.4, 0.6, 0.633333, 0.766667, 1.46667, 1.5, 2.33333, 2.36667, 2.73333, 2.76667, 3.03333, 3.06667, 3.4, 3.43333, 3.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0.197, 0.176981, 0.0930726, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_53l72"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer3D2:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.63151, 0.615582, 0.297086, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpotLight3D:light_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.197, 0.176981, 0.0930726, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fisej"]
+_data = {
+&"RESET": SubResource("Animation_53l72"),
+&"flick": SubResource("Animation_qpe6n")
+}
 
 [node name="Lamp" type="CSGBox3D"]
 transform = Transform3D(0.0222801, 0, 0, 0, 0.0222801, 0, 0, 0, 0.0222801, 0, 0, 0)
@@ -21,6 +118,11 @@ volume_db = -63.297
 max_db = -13.319
 autoplay = true
 
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_xtpkl")
+volume_db = 7.15
+max_db = -1.455
+
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(43.335, 5.10821e-07, -11.6862, 11.6862, -1.89424e-06, 43.335, 0, -44.8831, -1.96191e-06, 0.00283305, -2.30896, -0.000340283)
 light_color = Color(0.197, 0.176981, 0.0930726, 1)
@@ -29,3 +131,8 @@ shadow_enabled = true
 spot_range = 9.887
 spot_attenuation = 4.93
 spot_angle = 84.92
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fisej")
+}

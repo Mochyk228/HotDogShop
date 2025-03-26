@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://dvmlhmbsnsgq"]
+[gd_scene load_steps=52 format=4 uid="uid://dvmlhmbsnsgq"]
 
 [ext_resource type="Material" uid="uid://bpu20u6xyn8ne" path="res://Scenes/celling_mat.tres" id="1_4g5cr"]
 [ext_resource type="AudioStream" uid="uid://cjpigllaf26jf" path="res://open_toilet.wav" id="1_hv1ua"]
@@ -19,6 +19,15 @@
 [ext_resource type="AudioStream" uid="uid://ddsgwnwyxblcw" path="res://ambient.wav" id="17_epnj5"]
 [ext_resource type="AudioStream" uid="uid://ceh1angbbb8ll" path="res://423644__yellowjacketstudios__city-at-night_ambience.wav" id="18_ogk07"]
 
+[sub_resource type="Gradient" id="Gradient_ogk07"]
+offsets = PackedFloat32Array(0, 0.287425, 0.640719, 0.928144)
+colors = PackedColorArray(0.0124808, 0.0575028, 0.134057, 1, 0.209029, 0.198596, 0.316432, 1, 0.568578, 0.587632, 0.4447, 1, 0.99725, 0.995043, 0.974245, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j8vvb"]
+gradient = SubResource("Gradient_ogk07")
+use_hdr = true
+fill_to = Vector2(0.917563, 0.0806452)
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a6f85"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 sky_energy_multiplier = 0.0
@@ -31,12 +40,63 @@ sky_material = SubResource("ProceduralSkyMaterial_a6f85")
 [sub_resource type="Environment" id="Environment_lwnbm"]
 background_mode = 2
 sky = SubResource("Sky_fu36u")
-tonemap_mode = 2
+tonemap_mode = 1
+tonemap_exposure = 0.77
+tonemap_white = 1.68
+ssr_enabled = true
+ssr_max_steps = 180
+ssr_fade_in = 1.04466
+ssao_radius = 16.0
+ssao_intensity = 19.1
+ssao_power = 22.3927
+ssao_detail = 5.0
+ssao_horizon = 1.0
+ssao_sharpness = 1.0
+ssao_light_affect = 1.0
+ssao_ao_channel_affect = 1.0
+ssil_radius = 0.24
+ssil_intensity = 2.76
+ssil_sharpness = 1.0
+sdfgi_bounce_feedback = 1.99
+sdfgi_cascades = 8
+sdfgi_min_cell_size = 2.34063
+sdfgi_cascade0_distance = 149.8
+sdfgi_max_distance = 38348.8
+sdfgi_y_scale = 2
+sdfgi_energy = 13.8
+sdfgi_normal_bias = 27.54
+sdfgi_probe_bias = 12.12
 glow_enabled = true
+glow_intensity = 0.38
+glow_strength = 1.81
+glow_bloom = 0.29
+glow_hdr_threshold = 4.0
+glow_hdr_scale = 0.0
+glow_hdr_luminance_cap = 256.0
+glow_map_strength = 0.5
 fog_enabled = true
-fog_light_color = Color(0.721582, 0.482588, 0.401742, 1)
-fog_light_energy = 3.44
+fog_light_color = Color(0.520491, 0.503005, 0.319972, 1)
+fog_light_energy = 0.9
+fog_sun_scatter = 0.14
+fog_density = 0.0465
+fog_aerial_perspective = 0.333
 fog_sky_affect = 0.0
+fog_height_density = 2.6668
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0348
+volumetric_fog_albedo = Color(0.423191, 0.386686, 0.199256, 1)
+volumetric_fog_emission = Color(0.196549, 0.122722, 0.298846, 1)
+volumetric_fog_emission_energy = 0.1
+volumetric_fog_gi_inject = 0.63
+volumetric_fog_anisotropy = 0.64
+volumetric_fog_length = 95.03
+volumetric_fog_detail_spread = 0.535887
+volumetric_fog_ambient_inject = 1.31
+volumetric_fog_sky_affect = 0.64
+adjustment_enabled = true
+adjustment_brightness = 1.06
+adjustment_saturation = 1.06
+adjustment_color_correction = SubResource("GradientTexture2D_j8vvb")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6f85"]
 albedo_color = Color(0.887637, 0.881134, 0.865138, 1)
@@ -473,25 +533,25 @@ shape = SubResource("ConcavePolygonShape3D_20eh2")
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="."]
 
 [node name="Fridge" parent="." instance=ExtResource("9_a6f85")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215552, 0, 0.0060537)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215552, -0.0229435, 0.0060537)
 
 [node name="Fridge2" parent="." instance=ExtResource("9_a6f85")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215552, 0, 0.209896)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215552, -0.0229435, 0.209896)
 
 [node name="Fridge3" parent="." instance=ExtResource("9_a6f85")]
-transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0.419221, 0, 0.0730583)
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0.419221, -0.0229435, 0.0730583)
 
 [node name="Fridge4" parent="." instance=ExtResource("9_a6f85")]
-transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0.419221, 0, 0.251719)
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0.419221, -0.0229435, 0.251719)
 
 [node name="Fridge5" parent="." instance=ExtResource("9_a6f85")]
-transform = Transform3D(1.33118e-07, 0, -1, 0, 1, 0, 1, 0, 1.33118e-07, 0.609496, 0, 0.347295)
+transform = Transform3D(1.33118e-07, 0, -1, 0, 1, 0, 1, 0, 1.33118e-07, 0.609496, -0.0229435, 0.347295)
 
 [node name="Fridge6" parent="." instance=ExtResource("9_a6f85")]
-transform = Transform3D(1.33118e-07, 0, -1, 0, 1, 0, 1, 0, 1.33118e-07, 0.786388, 0, 0.347295)
+transform = Transform3D(1.33118e-07, 0, -1, 0, 1, 0, 1, 0, 1.33118e-07, 0.786388, -0.0229435, 0.347295)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0715398, 0.0472361, 0.274082)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.670124, -0.0610465, 0.336197)
 script = ExtResource("9_qtxxq")
 sound = ExtResource("11_20eh2")
 
@@ -529,18 +589,19 @@ stream = ExtResource("13_hv1ua")
 volume_db = -4.875
 
 [node name="Toy" parent="." groups=["Interactable"] instance=ExtResource("10_8fnbn")]
-transform = Transform3D(0.0278611, 0, 0, 0, 0.0278611, 0, 0, 0, 0.0278611, 0.24051, 0.100677, 0.0468866)
+transform = Transform3D(0.0278611, 0, 0, 0, 0.0278611, 0, 0, 0, 0.0278611, 0.24051, 0.0758198, 0.0468866)
 
 [node name="Toy2" parent="." groups=["Interactable"] instance=ExtResource("10_8fnbn")]
-transform = Transform3D(0.0208796, 0, 0.0184468, 0, 0.0278611, 0, -0.0184468, 0, 0.0208796, 0.24051, 0.100677, -0.0142664)
+transform = Transform3D(0.0208796, 0, 0.0184468, 0, 0.0278611, 0, -0.0184468, 0, 0.0208796, 0.24051, 0.0758198, -0.0142664)
 
 [node name="Toy3" parent="." groups=["Interactable"] instance=ExtResource("10_8fnbn")]
-transform = Transform3D(0.0208796, 0, 0.0184468, 0, 0.0278611, 0, -0.0184468, 0, 0.0208796, 0.24051, 0.0367105, -0.0142664)
+transform = Transform3D(0.0208796, 0, 0.0184468, 0, 0.0278611, 0, -0.0184468, 0, 0.0208796, 0.24051, 0.0118533, -0.0142664)
 
 [node name="Toy4" parent="." groups=["Interactable"] instance=ExtResource("10_8fnbn")]
-transform = Transform3D(-0.0154517, 0, 0.0231837, 0, 0.0278611, 0, -0.0231837, 0, -0.0154517, 0.237697, 0.0367105, 0.0475661)
+transform = Transform3D(-0.0154517, 0, 0.0231837, 0, 0.0278611, 0, -0.0231837, 0, -0.0154517, 0.237697, 0.0118533, 0.0475661)
 
 [node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
 transparent_bg = true
 size = Vector2i(128, 128)
 render_target_update_mode = 4
@@ -596,6 +657,7 @@ texture = SubResource("ViewportTexture_8fnbn")
 stretch_mode = 4
 
 [node name="Black" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
