@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw1hb0jgm145u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8fnbn"]
+albedo_color = Color(0.823714, 0.146359, 0.422627, 1)
+
+[node name="Toy" type="CSGBox3D"]
+transform = Transform3D(0.0278611, 0, 0, 0, 0.0278611, 0, 0, 0, 0.0278611, 0, 0, 0)
+use_collision = true
+material = SubResource("StandardMaterial3D_8fnbn")
