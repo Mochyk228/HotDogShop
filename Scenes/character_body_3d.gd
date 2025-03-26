@@ -118,6 +118,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta):
+	if $PickUpSFX.is_playing():
+		$"../CanvasLayer/Black".visible = true
+	else:
+		$"../CanvasLayer/Black".visible = false
+	
 	if velocity.length() > 0.1:
 		$AnimationPlayer2.play("walk")
 		if not can_play:
@@ -130,7 +135,6 @@ func _process(delta):
 
 func play_sound():
 	$FootSound.stream = sound
-	$FootSound.max_db = 0 + randi_range(-5, -2)
+	$FootSound.max_db = 0 + randi_range(-7, -5)
 	$FootSound.pitch_scale = 1 + randf_range(-0.5, 0.5)
 	$FootSound.play()
-	

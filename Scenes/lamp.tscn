@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyqdv0qm7mrud"]
+
+[ext_resource type="AudioStream" uid="uid://c3lxnwcm8ub2v" path="res://118340__julien_matthey__jm_noiz_buzz-01-neon-light.wav" id="1_3b5q5"]
+[ext_resource type="Script" uid="uid://com2td6aauj2c" path="res://Scenes/lamp.gd" id="1_5vngr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwnbm"]
+albedo_color = Color(0.91427, 0.658801, 0.457123, 1)
+emission_enabled = true
+emission = Color(0.63151, 0.615582, 0.297086, 1)
+emission_energy_multiplier = 9.68
+
+[node name="Lamp" type="CSGBox3D"]
+transform = Transform3D(0.0222801, 0, 0, 0, 0.0222801, 0, 0, 0, 0.0222801, 0, 0, 0)
+size = Vector3(2.68945, 0.832031, 2.32422)
+material = SubResource("StandardMaterial3D_lwnbm")
+script = ExtResource("1_5vngr")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_3b5q5")
+volume_db = -63.297
+max_db = -13.319
+autoplay = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(43.335, 5.10821e-07, -11.6862, 11.6862, -1.89424e-06, 43.335, 0, -44.8831, -1.96191e-06, 0.00283305, -2.30896, -0.000340283)
+light_color = Color(0.197, 0.176981, 0.0930726, 1)
+light_energy = 0.168
+shadow_enabled = true
+spot_range = 9.887
+spot_attenuation = 4.93
+spot_angle = 84.92
