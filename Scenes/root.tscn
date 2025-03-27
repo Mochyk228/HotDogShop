@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://dvmlhmbsnsgq"]
+[gd_scene load_steps=67 format=4 uid="uid://dvmlhmbsnsgq"]
 
 [ext_resource type="Material" uid="uid://bpu20u6xyn8ne" path="res://Scenes/celling_mat.tres" id="1_4g5cr"]
 [ext_resource type="AudioStream" uid="uid://cjpigllaf26jf" path="res://open_toilet.wav" id="1_hv1ua"]
@@ -18,6 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://dyqdv0qm7mrud" path="res://Scenes/lamp.tscn" id="16_j8vvb"]
 [ext_resource type="AudioStream" uid="uid://ddsgwnwyxblcw" path="res://ambient.wav" id="17_epnj5"]
 [ext_resource type="AudioStream" uid="uid://ceh1angbbb8ll" path="res://423644__yellowjacketstudios__city-at-night_ambience.wav" id="18_ogk07"]
+[ext_resource type="AudioStream" uid="uid://c3lxnwcm8ub2v" path="res://118340__julien_matthey__jm_noiz_buzz-01-neon-light.wav" id="19_qoxdu"]
+[ext_resource type="AudioStream" uid="uid://cme46kqu4bp2x" path="res://flicking.wav" id="20_teq3f"]
+[ext_resource type="Script" uid="uid://btp87hglpwacc" path="res://Scenes/start.gd" id="21_capts"]
+[ext_resource type="AudioStream" uid="uid://cilrp0y3fpk6p" path="res://Woosh/169867__halgrimm__swoosh.wav" id="21_teq3f"]
+[ext_resource type="AudioStream" uid="uid://d3woj5u0n2h8j" path="res://Woosh/369698__crackles04__whoosh.wav" id="22_capts"]
 
 [sub_resource type="Gradient" id="Gradient_ogk07"]
 offsets = PackedFloat32Array(0, 0.287425, 0.640719, 0.928144)
@@ -429,6 +434,520 @@ colors = PackedColorArray(0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_epnj5"]
 gradient = SubResource("Gradient_hv1ua")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtpkl"]
+albedo_color = Color(0.91427, 0.658801, 0.457123, 1)
+emission_enabled = true
+emission = Color(0.63151, 0.615582, 0.297086, 1)
+emission_energy_multiplier = 9.68
+
+[sub_resource type="Animation" id="Animation_53l72"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer3D2:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpotLight3D:light_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.197, 0.176981, 0.0930726, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StandardMaterial3D_xtpkl")]
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qpe6n"]
+albedo_color = Color(0.91427, 0.658801, 0.457123, 1)
+emission_enabled = true
+emission = Color(0.63151, 0.615582, 0.297086, 1)
+emission_energy_multiplier = 9.68
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53l72"]
+albedo_color = Color(0.487647, 0.298757, 0.136169, 1)
+emission_enabled = true
+emission_energy_multiplier = 9.68
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fisej"]
+albedo_color = Color(0.91427, 0.658801, 0.457123, 1)
+emission_enabled = true
+emission = Color(0.63151, 0.615582, 0.297086, 1)
+emission_energy_multiplier = 9.68
+
+[sub_resource type="Animation" id="Animation_qpe6n"]
+resource_name = "flick"
+length = 3.65
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer3D2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D2:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpotLight3D:light_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.133333, 0.366667, 0.4, 0.6, 0.633333, 0.766667, 1.46667, 1.5, 2.33333, 2.36667, 2.73333, 2.76667, 3.03333, 3.06667, 3.4, 3.43333, 3.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0, 0, 0, 1), Color(0.197, 0.176981, 0.0930726, 1), Color(0.197, 0.176981, 0.0930726, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.133333, 0.366667, 0.4, 0.6, 0.633333, 0.766667, 1.46667, 1.5, 2.33333, 2.36667, 2.73333, 2.76667, 3.03333, 3.06667, 3.4, 3.43333, 3.63333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("StandardMaterial3D_qpe6n"), SubResource("StandardMaterial3D_53l72"), SubResource("StandardMaterial3D_fisej"), SubResource("StandardMaterial3D_53l72"), SubResource("StandardMaterial3D_fisej"), SubResource("StandardMaterial3D_53l72"), SubResource("StandardMaterial3D_fisej"), SubResource("StandardMaterial3D_53l72"), SubResource("StandardMaterial3D_53l72"), SubResource("StandardMaterial3D_fisej"), SubResource("StandardMaterial3D_53l72"), SubResource("StandardMaterial3D_fisej"), SubResource("StandardMaterial3D_53l72"), SubResource("StandardMaterial3D_fisej"), SubResource("StandardMaterial3D_53l72"), SubResource("StandardMaterial3D_fisej"), SubResource("StandardMaterial3D_53l72"), SubResource("StandardMaterial3D_fisej"), SubResource("StandardMaterial3D_fisej")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fisej"]
+_data = {
+&"RESET": SubResource("Animation_53l72"),
+&"flick": SubResource("Animation_qpe6n")
+}
+
+[sub_resource type="Animation" id="Animation_2mc6k"]
+resource_name = "fist_goal"
+length = 10.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:is_translate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4.26667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.43333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.173, 0.085, 0.038), Vector3(0.163, 0.085, -0.022)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.44927),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.47306, 0), Vector3(0, -1.69995, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:current")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.13333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera2:current")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2.14833),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera2:fov")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.16667, 4.23333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [50.1, 99.9]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AudioStreamPlayer2:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.166667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Camera2:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(2.13576, 2.16763, 4.2237),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.00174533, -0.106465, 0), Vector3(-0.113446, 0.45204, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Camera2:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(2.16763, 4.2237),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.008, -0.01, 0.062), Vector3(0.078, 0.01, 0.082)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Fridge/Fridge/Door:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(4, 4.2237),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.48648, 0), Vector3(0, 0, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../Fridge/CloseDoorSFX:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(4.2237),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../Fridge/CloseDoorSFX:max_db")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(4.08025, 5.75379),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.533, -5.737]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../Fridge/Noise:max_db")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 5.41908, 5.8016),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-9.88, -9.88, 2.72]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../Ambient:volume_db")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 5.43333, 6.36667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-80.0, -80.0, 3.25]
+}
+
+[sub_resource type="Animation" id="Animation_s4qac"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:is_translate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.163478, 0.0846201, 0.0376802)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.47306, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:current")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera2:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera2:fov")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [50.1]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AudioStreamPlayer2:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera2:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Camera2:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.078, 0.01, 0.082)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Fridge/Fridge/Door:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.48648, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Fridge/CloseDoorSFX:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Fridge/CloseDoorSFX:max_db")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-5.737]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../Fridge/Noise:max_db")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.72]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../Ambient:volume_db")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qoxdu"]
+_data = {
+&"RESET": SubResource("Animation_s4qac"),
+&"fist_goal": SubResource("Animation_2mc6k")
+}
+
 [node name="Root" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -478,7 +997,7 @@ size = Vector3(1.20227, 0.001, 0.708984)
 material = ExtResource("1_4g5cr")
 
 [node name="Table" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0230418, 0, 0.100342)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0151946, 0, 0.148316)
 
 [node name="Table" type="MeshInstance3D" parent="Table"]
 transform = Transform3D(0.0968361, 0, 0, 0, 0.00503202, 0, 0, 0, 0.0609048, 0, 0.0444382, 0)
@@ -535,14 +1054,11 @@ shape = SubResource("ConcavePolygonShape3D_20eh2")
 [node name="Fridge" parent="." instance=ExtResource("9_a6f85")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215552, -0.0229435, 0.0060537)
 
+[node name="Door" parent="Fridge/Fridge" index="1"]
+transform = Transform3D(-0.792981, 0, 0.609246, 0, 1, 0, -0.609246, 0, -0.792981, -0.0436649, 0.0888943, 0.0834064)
+
 [node name="Fridge2" parent="." instance=ExtResource("9_a6f85")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215552, -0.0229435, 0.209896)
-
-[node name="Fridge3" parent="." instance=ExtResource("9_a6f85")]
-transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0.419221, -0.0229435, 0.0730583)
-
-[node name="Fridge4" parent="." instance=ExtResource("9_a6f85")]
-transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0.419221, -0.0229435, 0.251719)
 
 [node name="Fridge5" parent="." instance=ExtResource("9_a6f85")]
 transform = Transform3D(1.33118e-07, 0, -1, 0, 1, 0, 1, 0, 1.33118e-07, 0.609496, -0.0229435, 0.347295)
@@ -551,7 +1067,7 @@ transform = Transform3D(1.33118e-07, 0, -1, 0, 1, 0, 1, 0, 1.33118e-07, 0.609496
 transform = Transform3D(1.33118e-07, 0, -1, 0, 1, 0, 1, 0, 1.33118e-07, 0.786388, -0.0229435, 0.347295)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.670124, -0.0610465, 0.336197)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.825193, 0.0567095, -0.165395)
 script = ExtResource("9_qtxxq")
 sound = ExtResource("11_20eh2")
 
@@ -568,7 +1084,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0708188, 0.00150286)
 
 [node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0543679, -0.0319981)
-target_position = Vector3(0, 0, -0.3)
+target_position = Vector3(0, 0, -0.18)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody3D"]
 libraries = {
@@ -603,7 +1119,7 @@ transform = Transform3D(-0.0154517, 0, 0.0231837, 0, 0.0278611, 0, -0.0231837, 0
 [node name="SubViewport" type="SubViewport" parent="."]
 own_world_3d = true
 transparent_bg = true
-size = Vector2i(128, 128)
+size = Vector2i(42, 42)
 render_target_update_mode = 4
 
 [node name="SpotLight3D" type="SpotLight3D" parent="SubViewport"]
@@ -677,15 +1193,6 @@ operation = 2
 size = Vector3(1.9826, 1.38245, 1.96463)
 material = ExtResource("13_lwnbm")
 
-[node name="Lamp" parent="." instance=ExtResource("16_j8vvb")]
-transform = Transform3D(0.0222801, 0, 0, 0, 0.0222801, 0, 0, 0, 0.0222801, 0, 0.232369, -0.00111905)
-
-[node name="Lamp4" parent="." instance=ExtResource("16_j8vvb")]
-transform = Transform3D(0.0222801, 0, 0, 0, 0.0222801, 0, 0, 0, 0.0222801, 0.482713, 0.232369, -0.215062)
-
-[node name="Lamp5" parent="." instance=ExtResource("16_j8vvb")]
-transform = Transform3D(0.0222801, 0, 0, 0, 0.0222801, 0, 0, 0, 0.0222801, 0.692632, 0.232369, 0.131758)
-
 [node name="Ambient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_epnj5")
 volume_db = 3.25
@@ -698,7 +1205,71 @@ attenuation_model = 2
 max_db = -1.45
 autoplay = true
 
+[node name="Lamp" parent="." instance=ExtResource("16_j8vvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.228928, 0)
+
+[node name="Lamp2" parent="." instance=ExtResource("16_j8vvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.482121, 0.231496, -0.216255)
+
+[node name="Lamp3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.630216, 0.229896, 0.138733)
+
+[node name="Lamp" type="CSGBox3D" parent="Lamp3"]
+transform = Transform3D(0.0222801, 0, 0, 0, 0.0222801, 0, 0, 0, 0.0222801, 0, 0, 0)
+size = Vector3(2.68945, 0.832031, 2.32422)
+material = SubResource("StandardMaterial3D_xtpkl")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lamp3/Lamp"]
+stream = ExtResource("19_qoxdu")
+volume_db = -63.297
+max_db = -13.319
+autoplay = true
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Lamp3/Lamp"]
+stream = ExtResource("20_teq3f")
+volume_db = 7.15
+max_db = -1.455
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lamp3/Lamp"]
+transform = Transform3D(43.335, 5.10821e-07, -11.6862, 11.6862, -1.89424e-06, 43.335, 0, -44.8831, -1.96191e-06, 0.00283305, -2.30896, -0.000340283)
+light_color = Color(0.197, 0.176981, 0.0930726, 1)
+light_energy = 0.168
+shadow_enabled = true
+spot_range = 9.887
+spot_attenuation = 4.93
+spot_angle = 84.92
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lamp3/Lamp"]
+libraries = {
+&"": SubResource("AnimationLibrary_fisej")
+}
+
+[node name="Node3D" type="Node3D" parent="Lamp3/Lamp"]
+
+[node name="Start" type="Camera3D" parent="."]
+transform = Transform3D(0.0975829, 0, -0.995227, 0, 1, 0, 0.995227, 0, 0.0975829, 0.163478, 0.0846201, 0.0376802)
+current = true
+fov = 45.3
+script = ExtResource("21_capts")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Start"]
+libraries = {
+&"": SubResource("AnimationLibrary_qoxdu")
+}
+autoplay = "fist_goal"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Start"]
+stream = ExtResource("21_teq3f")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Start"]
+stream = ExtResource("22_capts")
+
+[node name="Camera2" type="Camera3D" parent="Start"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.078, 0.01, 0.082)
+fov = 50.1
+
 [editable path="Floor"]
 [editable path="Walls"]
 [editable path="WallSupport"]
 [editable path="Bar"]
+[editable path="Fridge"]

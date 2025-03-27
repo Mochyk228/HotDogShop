@@ -126,7 +126,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 2.48648, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -249,7 +249,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_4jc6q")
 
 [node name="Door" type="Node3D" parent="Fridge"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0436649, 0.0888943, 0.0834064)
+transform = Transform3D(-0.792981, 0, 0.609246, 0, 1, 0, -0.609246, 0, -0.792981, -0.0436649, 0.0888943, 0.0834064)
 
 [node name="FridgeDoor" type="MeshInstance3D" parent="Fridge/Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0436649, -0.0888943, -0.0834064)
