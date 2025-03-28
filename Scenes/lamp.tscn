@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://dyqdv0qm7mrud"]
 
-[ext_resource type="AudioStream" uid="uid://c3lxnwcm8ub2v" path="res://118340__julien_matthey__jm_noiz_buzz-01-neon-light.wav" id="1_3b5q5"]
-[ext_resource type="Script" uid="uid://com2td6aauj2c" path="res://Scenes/lamp.gd" id="1_5vngr"]
-[ext_resource type="AudioStream" uid="uid://cme46kqu4bp2x" path="res://flicking.wav" id="3_xtpkl"]
+[ext_resource type="AudioStream" uid="uid://c3lxnwcm8ub2v" path="res://Sounds/118340__julien_matthey__jm_noiz_buzz-01-neon-light.wav" id="1_3b5q5"]
+[ext_resource type="Script" uid="uid://com2td6aauj2c" path="res://Scripts/lamp.gd" id="1_5vngr"]
+[ext_resource type="AudioStream" uid="uid://cme46kqu4bp2x" path="res://Sounds/flicking.wav" id="3_xtpkl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtpkl"]
 albedo_color = Color(0.91427, 0.658801, 0.457123, 1)

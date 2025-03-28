@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpn1a1on2owo1"
-path.s3tc="res://.godot/imported/WallSupport Base Color.png-c5c56d038b03dac79994c917c25e7c4e.s3tc.ctex"
+uid="uid://di8x36bny7ru8"
+path.s3tc="res://.godot/imported/_albedo000.png-1973f620eac7f15365e6f74810ab0175.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/textures/WallSupport Base Color.png"
-dest_files=["res://.godot/imported/WallSupport Base Color.png-c5c56d038b03dac79994c917c25e7c4e.s3tc.ctex"]
+source_file="res://Models/textures (2)/_albedo000.png"
+dest_files=["res://.godot/imported/_albedo000.png-1973f620eac7f15365e6f74810ab0175.s3tc.ctex"]
 
 [params]
 

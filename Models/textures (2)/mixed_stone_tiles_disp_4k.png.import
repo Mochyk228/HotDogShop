@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpn1a1on2owo1"
-path.s3tc="res://.godot/imported/WallSupport Base Color.png-c5c56d038b03dac79994c917c25e7c4e.s3tc.ctex"
+uid="uid://bmwgj2mlpyrol"
+path.s3tc="res://.godot/imported/mixed_stone_tiles_disp_4k.png-e2907787bda7c2faa1d534e5a11f7954.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/textures/WallSupport Base Color.png"
-dest_files=["res://.godot/imported/WallSupport Base Color.png-c5c56d038b03dac79994c917c25e7c4e.s3tc.ctex"]
+source_file="res://Models/textures (2)/mixed_stone_tiles_disp_4k.png"
+dest_files=["res://.godot/imported/mixed_stone_tiles_disp_4k.png-e2907787bda7c2faa1d534e5a11f7954.s3tc.ctex"]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

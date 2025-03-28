@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpn1a1on2owo1"
-path.s3tc="res://.godot/imported/WallSupport Base Color.png-c5c56d038b03dac79994c917c25e7c4e.s3tc.ctex"
+uid="uid://hxolpiehjsa2"
+path.s3tc="res://.godot/imported/wall_support_Plane Base Color.png-48c272bea3c923e9f3726e53ee397c5e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "91fd46cca9a2397a434bf35533d411af"
+}
 
 [deps]
 
-source_file="res://Models/textures/WallSupport Base Color.png"
-dest_files=["res://.godot/imported/WallSupport Base Color.png-c5c56d038b03dac79994c917c25e7c4e.s3tc.ctex"]
+source_file="res://Models/textures (2)/wall_support_Plane Base Color.png"
+dest_files=["res://.godot/imported/wall_support_Plane Base Color.png-48c272bea3c923e9f3726e53ee397c5e.s3tc.ctex"]
 
 [params]
 

@@ -13,7 +13,15 @@ config_version=5
 config/name="HotDogShop"
 run/main_scene="uid://dvmlhmbsnsgq"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Others/icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://Sounds/default_bus_layout.tres"
+
+[autoload]
+
+Inventory="*res://Scripts/inventory.gd"
 
 [display]
 

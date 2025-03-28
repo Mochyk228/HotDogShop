@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dw1hb0jgm145u"]
+[gd_scene load_steps=3 format=3 uid="uid://dw1hb0jgm145u"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8fnbn"]
-albedo_color = Color(0.823714, 0.146359, 0.422627, 1)
+[ext_resource type="Material" uid="uid://csrhxel0yqgoh" path="res://Models/Materials/toy.tres" id="1_58p4q"]
+[ext_resource type="Script" uid="uid://ccotsnj7krw28" path="res://Scripts/toy.gd" id="2_iblrf"]
 
 [node name="Toy" type="CSGBox3D"]
 transform = Transform3D(0.0278611, 0, 0, 0, 0.0278611, 0, 0, 0, 0.0278611, 0, 0, 0)
 use_collision = true
-material = SubResource("StandardMaterial3D_8fnbn")
+material = ExtResource("1_58p4q")
+script = ExtResource("2_iblrf")
+inv_name = "Red Toy"

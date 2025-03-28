@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ff10mq7hoa3m"
+path="res://.godot/imported/32642__carrigsound__step-5 (2).wav-5821956c601ad2f382476559450fac0e.sample"
+
+[deps]
+
+source_file="res://Sounds/32642__carrigsound__step-5 (2).wav"
+dest_files=["res://.godot/imported/32642__carrigsound__step-5 (2).wav-5821956c601ad2f382476559450fac0e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
