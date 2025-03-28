@@ -14,7 +14,6 @@ func start_flicker():
 			is_started = true
 			var rand_end = randi_range(20, 40)
 			var rand_time = randi_range(10, rand_end)
-			print(rand_time * 3)
 			await get_tree().create_timer(rand_time * 3).timeout
 			$AnimationPlayer.play("flick")
 			is_started = false

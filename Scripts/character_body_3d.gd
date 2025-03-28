@@ -115,6 +115,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta):
+	# change to when crafting
 	#if $PickUpSFX.is_playing():
 		#$"../CanvasLayer/Black".visible = true
 	#else:

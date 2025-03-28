@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=4 uid="uid://dvmlhmbsnsgq"]
+[gd_scene load_steps=89 format=4 uid="uid://dvmlhmbsnsgq"]
 
 [ext_resource type="Material" uid="uid://bpu20u6xyn8ne" path="res://Models/Materials/celling_mat.tres" id="1_4g5cr"]
 [ext_resource type="AudioStream" uid="uid://cjpigllaf26jf" path="res://Sounds/open_toilet.wav" id="1_hv1ua"]
@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://cilrp0y3fpk6p" path="res://Sounds/Woosh/169867__halgrimm__swoosh.wav" id="21_teq3f"]
 [ext_resource type="AudioStream" uid="uid://d3woj5u0n2h8j" path="res://Sounds/Woosh/369698__crackles04__whoosh.wav" id="22_capts"]
 [ext_resource type="Script" uid="uid://bslmopv0qhuhf" path="res://Scripts/craft_slot.gd" id="25_dw4fd"]
+[ext_resource type="Script" uid="uid://bbknbqgy68sj3" path="res://Scripts/craft_area.gd" id="27_18fmr"]
 
 [sub_resource type="Gradient" id="Gradient_ogk07"]
 offsets = PackedFloat32Array(0, 0.287425, 0.640719, 0.928144)
@@ -388,6 +389,10 @@ _data = {
 &"turn_right": SubResource("Animation_lwnbm"),
 &"walk": SubResource("Animation_j8vvb")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8rbf"]
+transparency = 1
+albedo_color = Color(0.717647, 0.34902, 0.152941, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18fmr"]
 transparency = 1
@@ -1025,7 +1030,7 @@ viewport_path = NodePath("SubViewport4")
 viewport_path = NodePath("SubViewport4")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_vdqvo"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("SubViewport3")
 
 [sub_resource type="Gradient" id="Gradient_hv1ua"]
 offsets = PackedFloat32Array(0)
@@ -1033,6 +1038,8 @@ colors = PackedColorArray(0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_epnj5"]
 gradient = SubResource("Gradient_hv1ua")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_642p6"]
 
 [node name="Root" type="Node3D"]
 script = ExtResource("1_s4qac")
@@ -1200,9 +1207,14 @@ volume_db = -4.875
 
 [node name="Toy" parent="." groups=["Interactable"] instance=ExtResource("10_8fnbn")]
 transform = Transform3D(0.0278611, 0, 0, 0, 0.0278611, 0, 0, 0, 0.0278611, -0.0578817, 0.0758198, 0.0468866)
+material = SubResource("StandardMaterial3D_k8rbf")
+inv_name = "Brown Toy"
 
 [node name="Toy2" parent="." groups=["Interactable"] instance=ExtResource("10_8fnbn")]
 transform = Transform3D(0.0208796, 0, 0.0184468, 0, 0.0278611, 0, -0.0184468, 0, 0.0208796, 0.24051, 0.0758198, -0.0142664)
+
+[node name="Toy6" parent="." groups=["Interactable"] instance=ExtResource("10_8fnbn")]
+transform = Transform3D(0.0208796, 0, 0.0184468, 0, 0.0278611, 0, -0.0184468, 0, 0.0208796, 0.24051, 0.0758198, 0.0448585)
 
 [node name="Toy3" parent="." groups=["Interactable"] instance=ExtResource("10_8fnbn")]
 transform = Transform3D(0.0208796, 0, 0.0184468, 0, 0.0278611, 0, -0.0184468, 0, 0.0208796, 0.24051, 0.0118533, -0.0142664)
@@ -1214,6 +1226,11 @@ inv_name = "Brown Toy"
 
 [node name="Toy5" parent="." groups=["Interactable"] instance=ExtResource("10_8fnbn")]
 transform = Transform3D(-0.0154517, 0, 0.0231837, 0, 0.0278611, 0, -0.0231837, 0, -0.0154517, -0.00707731, 0.07617, 0.0587599)
+material = SubResource("StandardMaterial3D_lb85r")
+inv_name = "Brown Toy"
+
+[node name="Toy7" parent="." groups=["Interactable"] instance=ExtResource("10_8fnbn")]
+transform = Transform3D(-0.0154517, 0, 0.0231837, 0, 0.0278611, 0, -0.0231837, 0, -0.0154517, -0.00707731, 0.07617, -0.0226402)
 material = SubResource("StandardMaterial3D_lb85r")
 inv_name = "Brown Toy"
 
@@ -1455,13 +1472,16 @@ offset_right = 102.0
 offset_bottom = 179.0
 size_flags_horizontal = 0
 
-[node name="CraftSlot1" type="Control" parent="CanvasLayer/CraftSystem" node_paths=PackedStringArray("craft_item")]
+[node name="CraftSlot1" type="Control" parent="CanvasLayer/CraftSystem" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive", "recepie_container")]
 custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
 craft_item = NodePath("../../../SubViewport")
 arr = ["Red Toy", "Red Toy"]
+arr_active = [NodePath("../../../SubViewport"), NodePath("../../../SubViewport")]
+arr_inactive = [NodePath("../../../SubViewport2"), NodePath("../../../SubViewport2")]
+recepie_container = NodePath("Background/HBoxContainer")
 
 [node name="Background" type="Panel" parent="CanvasLayer/CraftSystem/CraftSlot1"]
 layout_mode = 2
@@ -1538,14 +1558,16 @@ layout_mode = 2
 texture = SubResource("ViewportTexture_642p6")
 stretch_mode = 4
 
-[node name="CraftSlot2" type="Control" parent="CanvasLayer/CraftSystem" node_paths=PackedStringArray("craft_item")]
-visible = false
+[node name="CraftSlot2" type="Control" parent="CanvasLayer/CraftSystem" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive", "recepie_container")]
 custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../SubViewport")
+craft_item = NodePath("../../../SubViewport3")
 arr = ["Red Toy", "Brown Toy", "Brown Toy"]
+arr_active = [NodePath("../../../SubViewport"), NodePath("../../../SubViewport3"), NodePath("../../../SubViewport3")]
+arr_inactive = [NodePath("../../../SubViewport2"), NodePath("../../../SubViewport4"), NodePath("../../../SubViewport4")]
+recepie_container = NodePath("Background/HBoxContainer")
 
 [node name="Background" type="Panel" parent="CanvasLayer/CraftSystem/CraftSlot2"]
 layout_mode = 2
@@ -1661,6 +1683,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_epnj5")
+
+[node name="CraftArea" type="Area3D" parent="."]
+script = ExtResource("27_18fmr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CraftArea"]
+transform = Transform3D(0.229321, 0, 0, 0, 0.229321, 0, 0, 0, 0.229321, 0, 0, 0)
+shape = SubResource("BoxShape3D_642p6")
+
+[connection signal="mouse_entered" from="CanvasLayer/CraftSystem/CraftSlot1/Background" to="CanvasLayer/CraftSystem/CraftSlot1" method="_on_background_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/CraftSystem/CraftSlot1/Background" to="CanvasLayer/CraftSystem/CraftSlot1" method="_on_background_mouse_exited"]
+[connection signal="body_entered" from="CraftArea" to="CraftArea" method="_on_body_entered"]
+[connection signal="body_exited" from="CraftArea" to="CraftArea" method="_on_body_exited"]
 
 [editable path="Floor"]
 [editable path="Walls"]
