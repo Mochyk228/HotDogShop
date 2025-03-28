@@ -1,7 +1,7 @@
 extends Control
 
 @export var arr : Array
-@export var dir : Dictionary[NodePath, NodePath]
+@export var dir : Dictionary[SubViewport, SubViewport]
 
 var slot : Array[Node]
 var slot_num : int = 0
@@ -11,28 +11,34 @@ var slot_num : int = 0
 # HOW TO FIX that when i make sub view port a scene constantly path is brakes
 func _ready() -> void:
 	slot = $Background/HBoxContainer.get_children()
+	#$Background/HBoxContainer/PreviewTexture.texture = dir.values()[0].get_texture()
 	Inventory.inventory_signal.connect(inventory_craft)
 	
 func get_dictornary(type : String, slot_n : int):
 	if type == "active":
+		print(1)
 		if dir.size() - 1 >= slot_n:
-			dir.values()[slot_n]
+			return dir.values()[slot_n].get_texture()
 		else:
-			dir.values()[slot_n - 1]
+			print(2)
+			return dir.values()[slot_n - 1].get_texture()
 	elif type == "inactive":
 		if dir.size() - 1 >= slot_n:
-			dir.keys()[slot_n]
+			return dir.keys()[slot_n].get_texture()
 		else:
-			dir.keys()[slot_n - 1]
+			return dir.keys()[slot_n -2].get_texture()
 
 func inventory_craft():
 	var list = Inventory.inventory
 	for i in list:
 		if slot_num == arr.size()-1:
 			print("Here your item")
+			while slot_num > 0:
+				slot[slot_num -1].texture = get_dictornary("inactive", slot_num)
+				slot_num -= 1
 		elif i == arr[slot_num]:
 			# make to insert inside of dictionary active state and inactive state - make a dictionary that connect by numbers
-			slot[slot_num].texture.viewport_path = get_dictornary("active", slot_num)
+			slot[slot_num].texture = get_dictornary("active", slot_num)
 			slot_num += 1
 		else:
 			slot_num = 0
