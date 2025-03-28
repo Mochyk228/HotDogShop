@@ -12,7 +12,6 @@ var is_rot_left : bool
 var is_jump_1 : bool
 var is_jump_2 : bool
 
-var item_count : int = 0
 var pitch : float = 0.5
 var can_play : bool
 
@@ -32,9 +31,6 @@ func ray_cast():
 	
 	if ray_cast and ray_cast.collider.is_in_group("Interactable"):
 		var object = ray_cast.collider
-		var children = $"../CanvasLayer/HBoxContainer".get_children()
-		children[item_count].visible = true
-		item_count += 1
 		pitch += 0.4
 		Inventory.inventory += [object.inv_name]
 		object.queue_free()
@@ -119,10 +115,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta):
-	if $PickUpSFX.is_playing():
-		$"../CanvasLayer/Black".visible = true
-	else:
-		$"../CanvasLayer/Black".visible = false
+	#if $PickUpSFX.is_playing():
+		#$"../CanvasLayer/Black".visible = true
+	#else:
+		#$"../CanvasLayer/Black".visible = false
 	
 	if velocity.length() > 0.1:
 		$AnimationPlayer2.play("walk")
