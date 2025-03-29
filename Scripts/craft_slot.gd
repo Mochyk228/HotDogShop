@@ -1,10 +1,13 @@
 extends Control
 
+signal craft_signal(is_craft : bool)
+
 @export var craft_item : SubViewport
 @export var arr : Array[String]
 @export var arr_active : Array[SubViewport]
 @export var arr_inactive : Array[SubViewport]
 @export var recepie_container : HBoxContainer
+@onready var black: TextureRect = $"../../Black"
 
 var slot : Array[Node]
 var slot_num : int = 0
@@ -15,6 +18,7 @@ var index : int = -1
 var craft_recepie : Array
 var skip_numbers : Array
 
+
 @onready var old_item_count : int = index
 
 var is_mouse : bool
@@ -23,69 +27,32 @@ func _ready() -> void:
 	slot = recepie_container.get_children()
 	Inventory.inventory_signal.connect(inventory_craft)
 	Inventory.clean_inventory_signal.connect(clean_inventory)
+	craft_signal.connect(inventory_craft)
 
 
 func clean_inventory():
 	for i in range(slot.size()-1):
 		slot[i].texture = arr_inactive[i].get_texture()
+	inventory_craft(false)
 		
 func _process(delta: float) -> void:
 	if is_mouse:
-		print(name)
+		# I can click when I cannot craft
+		$Background.get_theme_stylebox("panel").border_color = Color.WHITE
 		if Input.is_action_just_pressed("left_mouse_click"):
-			print(1)
+			craft_signal.emit(true)
+			visual_effects()
 	else:
-		print("turn off outline")
+		$Background.get_theme_stylebox("panel").border_color = Color.BLACK
+		
 
-func inventory_craft():
-	#slot_num = 0
-	#var slot_pass : Array = []
-	#for i in list:
-		#print(slot_num)
-		#if slot_pass.size() == arr.size():
-			#print(arr.size()-1)
-			#var children = $"../../HBoxContainer".get_children()
-			#if children[item_count].visible != false:
-				#return
-			#children[item_count].visible = true
-			#children[item_count].texture = craft_item.get_texture()
-			#item_count += 1
-			#for x in arr: 
-				#Inventory.inventory.erase(x)
-			#while slot_num > 0:
-				#slot[slot_num].texture = arr_inactive[slot_num].get_texture() # -1 cause first obj is craft materail
-				#slot_num -= 1
-		#elif i == arr[slot_num]:
-			#if not slot_pass.has(slot_num):
-				#slot_pass.append(slot_num)
-			#slot[slot_num].texture = arr_active[slot_num].get_texture()
-			#slot_num += 1
-		#else:
-			#slot_num += 1
-	
-	# idealy i should safe or ingnore alreay getted file so mb save in the list?
-	#inc = 0
-	#for x in arr: # check all inpector list
-		##print("Inventory: ", Inventory.inventory)
-		##print(Inventory.inventory)
-		#
-		#for y in list: # collect point for each right combination
-			#if y == x:
-				#slot[inc].texture = arr_active[inc].get_texture()
-				#var index = list.find(y)
-				#list.remove_at(index)
-				#inc += 1
-		#print("inc: ", inc)
-		#if inc == arr.size():
-			#for c in arr:
-				#for y in Inventory.inventory:
-					#if y == c:
-						#Inventory.inventory.erase(y)
-			#print("pass")
-			#break
-	# the problem is that one turn
-	# could happened that not this stuff will cruft so it should be erased so it should work with live inventory
-		# Step 1: Reset all slots to inactive textures
+func visual_effects():
+	$SFX.play()
+	black.visible = true
+	await $SFX.finished
+	black.visible = false
+
+func inventory_craft(is_craft : bool):
 	for i in range(slot.size()-1):
 		slot[i].texture = arr_inactive[i].get_texture()
 	var list = Inventory.inventory.duplicate()
@@ -93,7 +60,6 @@ func inventory_craft():
 	skip_numbers = []
 	old_item_count = -1
 	index = -1
-	#reset skip number
 	var arr_copy = arr.duplicate()
 	for x in arr:
 		for y in list:
@@ -111,7 +77,7 @@ func inventory_craft():
 				old_item_count = index
 				list.erase(y)
 				break
-		if craft_recepie == arr:
+		if is_craft and craft_recepie == arr:
 			for y in craft_recepie:
 				if Inventory.inventory.has(y):
 					Inventory.inventory.erase(y)

@@ -16,6 +16,7 @@ var pitch : float = 0.5
 var can_play : bool
 
 @onready var camera: Camera3D = $Camera3D
+@export var black: TextureRect
 
 
 const SPEED = 0.5
@@ -31,12 +32,11 @@ func ray_cast():
 	
 	if ray_cast and ray_cast.collider.is_in_group("Interactable"):
 		var object = ray_cast.collider
-		pitch += 0.4
 		Inventory.inventory += [object.inv_name]
 		object.queue_free()
-		$PickUpSFX.pitch_scale = pitch
 		$PickUpSFX.play()
-
+		await get_tree().create_timer(0.1).timeout
+		$PickUpSFX2.play()
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("left_mouse_click"):
 		ray_cast()
@@ -115,11 +115,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta):
-	# change to when crafting
-	#if $PickUpSFX.is_playing():
-		#$"../CanvasLayer/Black".visible = true
-	#else:
-		#$"../CanvasLayer/Black".visible = false
 	
 	if velocity.length() > 0.1:
 		$AnimationPlayer2.play("walk")
