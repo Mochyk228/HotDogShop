@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=4 uid="uid://bx58jgpokgdta"]
+[gd_scene load_steps=96 format=4 uid="uid://bx58jgpokgdta"]
 
 [ext_resource type="Material" uid="uid://bpu20u6xyn8ne" path="res://Models/Materials/celling_mat.tres" id="1_4g5cr"]
 [ext_resource type="AudioStream" uid="uid://cjpigllaf26jf" path="res://Sounds/open_toilet.wav" id="1_hv1ua"]
@@ -31,7 +31,6 @@
 [ext_resource type="Script" uid="uid://bslmopv0qhuhf" path="res://Scripts/craft_slot.gd" id="25_dw4fd"]
 [ext_resource type="Script" uid="uid://bbknbqgy68sj3" path="res://Scripts/craft_area.gd" id="27_18fmr"]
 [ext_resource type="PackedScene" uid="uid://db0dypll5lwlc" path="res://Models/humanoid.glb" id="31_vdqvo"]
-[ext_resource type="Script" uid="uid://dcqx6att6r6pd" path="res://collision_shape_2d.gd" id="32_c7unf"]
 
 [sub_resource type="Gradient" id="Gradient_ogk07"]
 offsets = PackedFloat32Array(0, 0.287425, 0.640719, 0.928144)
@@ -1073,8 +1072,6 @@ gradient = SubResource("Gradient_hv1ua")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_642p6"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_64fwa"]
-
 [node name="Root" type="Node3D"]
 script = ExtResource("1_s4qac")
 
@@ -1775,13 +1772,6 @@ bones/19/rotation = Quaternion(0.489051, 0.22806, -0.134191, 0.83115)
 
 [node name="AnimationPlayer" parent="Client/humanoid2" index="1"]
 autoplay = "Talking"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(240, 56)
-scale = Vector2(nan, nan)
-shape = SubResource("CircleShape2D_64fwa")
-script = ExtResource("32_c7unf")
-vec = Vector2(1, 1)
 
 [connection signal="mouse_entered" from="CanvasLayer/CraftSystem/CraftSlot1/Background" to="CanvasLayer/CraftSystem/CraftSlot1" method="_on_background_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/CraftSystem/CraftSlot1/Background" to="CanvasLayer/CraftSystem/CraftSlot1" method="_on_background_mouse_exited"]
