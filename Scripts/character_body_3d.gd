@@ -40,29 +40,35 @@ func ray_cast():
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("left_mouse_click"):
 		ray_cast()
-	
+		
 	if is_rot_left:
 		rotation_degrees.y = clampf(rotation_add + old_rot, old_rot, old_rot + 90)
 	else:
 		rotation_degrees.y = clampf(rotation_add + old_rot, old_rot - 90, old_rot)
 	
 	
-	if ray.is_colliding() and ray.get_collider().is_in_group("Fridge"):
-		if ray.is_colliding() and ray.get_collider().is_in_group("Fridge") and not is_jump_1:
+	if ray.is_colliding() and ray.get_collider() and\
+	 ray.get_collider().is_in_group("Fridge"):
+		if ray.is_colliding() and ray.get_collider().is_in_group("Fridge")\
+		and not is_jump_1:
 			animation = ray.get_collider().get_child(2)
 			if not animation.is_playing():
 				animation.play("open_door")
 				is_jump_1 = true
-	elif ray.is_colliding() and ray.get_collider().is_in_group("Door"):
-		if ray.is_colliding() and ray.get_collider().is_in_group("Door") and not is_jump_2:
+	elif ray.is_colliding() and ray.get_collider() and\
+	ray.get_collider().is_in_group("Door"):
+		if ray.is_colliding() and ray.get_collider().is_in_group("Door")\
+		and not is_jump_2:
 			animation = ray.get_collider().get_child(2)
 			if not animation.is_playing():
 				animation.play("open_door")
 				is_jump_2 = true
-	elif not ray.is_colliding() and animation and not animation.is_playing() and is_jump_1: 
+	elif not ray.is_colliding() and animation and not animation.is_playing()\
+	and is_jump_1: 
 		animation.play("close_door")
 		is_jump_1 = false
-	elif ray.is_colliding() and animation and not animation.is_playing() and is_jump_2:
+	elif ray.is_colliding() and animation and not animation.is_playing()\
+	and is_jump_2:
 		animation.play("close_door")
 		is_jump_2 = false
 	
