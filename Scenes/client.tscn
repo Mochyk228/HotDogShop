@@ -1,0 +1,139 @@
+[gd_scene load_steps=11 format=3 uid="uid://ches2y4nrj488"]
+
+[ext_resource type="Script" uid="uid://ktguoabj2es8" path="res://Scripts/client.gd" id="1_o4a6k"]
+[ext_resource type="PackedScene" uid="uid://db0dypll5lwlc" path="res://Models/humanoid.glb" id="2_v1moc"]
+
+[sub_resource type="Gradient" id="Gradient_vdqvo"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c7unf"]
+gradient = SubResource("Gradient_vdqvo")
+fill = 1
+fill_from = Vector2(0.513228, 0.469577)
+fill_to = Vector2(0.76, 0.15)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vdqvo"]
+viewport_path = NodePath("RedActive")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vdqvo"]
+size = Vector3(0.0622559, 0.121094, 0.236572)
+
+[sub_resource type="Animation" id="Animation_51qfo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0340544, 0, -0.405753)]
+}
+
+[sub_resource type="Animation" id="Animation_64fwa"]
+resource_name = "walk_1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.329607, 0, -0.405753), Vector3(-0.0340544, 0, -0.405753)]
+}
+
+[sub_resource type="Animation" id="Animation_5k7ik"]
+resource_name = "walk_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.0340544, 0, -0.405753), Vector3(0.33, 0, -0.406)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_51qfo"]
+_data = {
+&"RESET": SubResource("Animation_51qfo"),
+&"walk_1": SubResource("Animation_64fwa"),
+&"walk_2": SubResource("Animation_5k7ik")
+}
+
+[node name="Client" type="Node3D" node_paths=PackedStringArray("needs")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0340544, 0, -0.405753)
+script = ExtResource("1_o4a6k")
+needs = [null]
+
+[node name="humanoid2" parent="." instance=ExtResource("2_v1moc")]
+transform = Transform3D(0.0155728, 0, 0, 0, 0.0155728, 0, 0, 0, 0.0155728, 0, 0, 0)
+
+[node name="Skeleton3D" parent="humanoid2/Armature" index="0"]
+bones/0/position = Vector3(0, -2.97937, 0)
+bones/0/rotation = Quaternion(-4.37047e-08, 0.494795, 9.41012e-09, 0.86901)
+bones/0/scale = Vector3(0.755516, 0.755516, 0.755516)
+bones/1/rotation = Quaternion(-9.68711e-09, -0.864235, 2.48817e-08, 0.503089)
+bones/2/rotation = Quaternion(-3.65203e-08, -0.26461, 1.6542e-08, 0.964355)
+bones/3/rotation = Quaternion(1.93387e-09, -0.26461, 1.94724e-08, 0.964355)
+bones/4/rotation = Quaternion(0.143209, -0.222508, -0.521917, 0.810916)
+bones/5/rotation = Quaternion(0.259331, -0.0525926, -0.216999, 0.939624)
+bones/6/rotation = Quaternion(0.264474, 0.00848262, -0.00500232, 0.964343)
+bones/7/rotation = Quaternion(0.264564, 0.00492821, 0.0179601, 0.964188)
+bones/8/rotation = Quaternion(-0.145121, -0.220065, 0.523623, 0.810142)
+bones/9/rotation = Quaternion(-0.274387, -0.0614071, 0.266692, 0.921855)
+bones/10/rotation = Quaternion(-0.264474, 0.00848262, 0.00500234, 0.964342)
+bones/11/rotation = Quaternion(-0.199775, -0.678299, 0.174376, 0.685269)
+bones/12/rotation = Quaternion(0.461082, -0.179513, 0.809801, -0.315281)
+bones/13/rotation = Quaternion(0.113868, 0.239558, -0.270083, 0.925582)
+bones/14/rotation = Quaternion(0.022682, 0.263629, -0.0815843, 0.9609)
+bones/15/rotation = Quaternion(0.48883, 0.229077, -0.132446, 0.83128)
+bones/16/rotation = Quaternion(0.458812, 0.181339, 0.810085, 0.316813)
+bones/17/rotation = Quaternion(-0.118204, 0.23495, 0.272608, 0.925479)
+bones/18/rotation = Quaternion(-0.0229381, 0.263614, 0.0835964, 0.960725)
+bones/19/rotation = Quaternion(0.489051, 0.22806, -0.134191, 0.83115)
+
+[node name="AnimationPlayer" parent="humanoid2" index="1"]
+autoplay = "Talking"
+
+[node name="Cloud" type="Node3D" parent="."]
+transform = Transform3D(0.00384564, -1.9673e-05, 0.000367755, -1.64158e-05, 0.00498183, 0.000556609, 0.000282817, 0.000556671, -0.00496829, 0.000737995, 0.113894, 0.0206295)
+
+[node name="Sprite3D4" type="Sprite3D" parent="Cloud"]
+transform = Transform3D(-2.98023e-07, -3.72529e-09, 5.64081, -6.51926e-08, 5.64081, 0, -5.64081, 6.75209e-09, -2.68221e-07, -0.0499115, 3.15766, 0.22807)
+texture = SubResource("GradientTexture2D_c7unf")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Cloud"]
+transform = Transform3D(-7.15256e-07, -7.45058e-09, 13.2755, -6.61239e-08, 13.2755, -7.45058e-09, -13.2755, 6.89179e-08, -5.96046e-07, 0, 6.8666, -3.1618)
+texture = SubResource("GradientTexture2D_c7unf")
+
+[node name="Recepies" type="Node3D" parent="."]
+
+[node name="Recepie" type="Sprite3D" parent="Recepies"]
+transform = Transform3D(-6.014e-09, 0, 0.137584, 0, 0.137584, 0, -0.137584, 0, -6.014e-09, 0.0036746, 0.145605, 0.0408401)
+sorting_offset = 1.0
+texture = SubResource("ViewportTexture_vdqvo")
+
+[node name="CustomerService" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CustomerService"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114919, -0.000533953, -0.00986079)
+shape = SubResource("BoxShape3D_vdqvo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_51qfo")
+}
+
+[connection signal="body_entered" from="CustomerService" to="." method="_on_customer_service_body_entered"]
+
+[editable path="humanoid2"]
