@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=4 uid="uid://bx58jgpokgdta"]
+[gd_scene load_steps=102 format=4 uid="uid://bx58jgpokgdta"]
 
 [ext_resource type="Material" uid="uid://bpu20u6xyn8ne" path="res://Models/Materials/celling_mat.tres" id="1_4g5cr"]
 [ext_resource type="AudioStream" uid="uid://cjpigllaf26jf" path="res://Sounds/open_toilet.wav" id="1_hv1ua"]
@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://d3woj5u0n2h8j" path="res://Sounds/Woosh/369698__crackles04__whoosh.wav" id="22_capts"]
 [ext_resource type="Script" uid="uid://bslmopv0qhuhf" path="res://Scripts/craft_slot.gd" id="25_dw4fd"]
 [ext_resource type="Script" uid="uid://bbknbqgy68sj3" path="res://Scripts/craft_area.gd" id="27_18fmr"]
+[ext_resource type="Script" uid="uid://2gghq54wt8o8" path="res://Scripts/serve_slots_container.gd" id="28_51qfo"]
 [ext_resource type="Script" uid="uid://osxdcpj22q38" path="res://Scripts/label.gd" id="28_64fwa"]
 [ext_resource type="Script" uid="uid://ktguoabj2es8" path="res://Scripts/client.gd" id="31_c7unf"]
 [ext_resource type="PackedScene" uid="uid://db0dypll5lwlc" path="res://Models/humanoid.glb" id="31_vdqvo"]
@@ -61,22 +62,14 @@ tonemap_white = 1.68
 ssr_enabled = true
 ssr_max_steps = 180
 ssr_fade_in = 1.04466
-ssao_radius = 16.0
-ssao_intensity = 19.1
-ssao_power = 22.3927
-ssao_detail = 5.0
-ssao_horizon = 1.0
-ssao_sharpness = 1.0
-ssao_light_affect = 1.0
-ssao_ao_channel_affect = 1.0
 ssil_radius = 0.24
 ssil_intensity = 2.76
 ssil_sharpness = 1.0
 sdfgi_bounce_feedback = 1.99
 sdfgi_cascades = 8
-sdfgi_min_cell_size = 2.34063
-sdfgi_cascade0_distance = 149.8
-sdfgi_max_distance = 38348.8
+sdfgi_min_cell_size = 56.74
+sdfgi_cascade0_distance = 3631.36
+sdfgi_max_distance = 929628.0
 sdfgi_y_scale = 2
 sdfgi_energy = 13.8
 sdfgi_normal_bias = 27.54
@@ -1030,7 +1023,7 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -1488,7 +1481,7 @@ size = 0.1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="ServeSlotsContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -1499,29 +1492,30 @@ offset_bottom = 257.0
 grow_horizontal = 0
 scale = Vector2(-0.697, 0.643)
 size_flags_horizontal = 8
+script = ExtResource("28_51qfo")
 
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/ServeSlotsContainer"]
 visible = false
 layout_mode = 2
 texture = SubResource("ViewportTexture_8fnbn")
 stretch_mode = 4
 script = ExtResource("28_64fwa")
 
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/ServeSlotsContainer"]
 visible = false
 layout_mode = 2
 texture = SubResource("ViewportTexture_8fnbn")
 stretch_mode = 4
 script = ExtResource("28_64fwa")
 
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/ServeSlotsContainer"]
 visible = false
 layout_mode = 2
 texture = SubResource("ViewportTexture_8fnbn")
 stretch_mode = 4
 script = ExtResource("28_64fwa")
 
-[node name="PreviewTexture4" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+[node name="PreviewTexture4" type="TextureRect" parent="CanvasLayer/ServeSlotsContainer"]
 visible = false
 layout_mode = 2
 texture = SubResource("ViewportTexture_8fnbn")
@@ -1629,7 +1623,7 @@ custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../RedActive")
+craft_item = NodePath("../../../BrownActive")
 arr = Array[String](["Red Toy", "Brown Toy", "Brown Toy"])
 arr_active = [NodePath("../../../RedActive"), NodePath("../../../BrownActive"), NodePath("../../../BrownActive")]
 arr_inactive = [NodePath("../../../RedInactive"), NodePath("../../../BrownInactive"), NodePath("../../../BrownInactive")]
@@ -1818,7 +1812,7 @@ shape = SubResource("BoxShape3D_vdqvo")
 
 [connection signal="body_entered" from="CraftArea" to="CraftArea" method="_on_body_entered"]
 [connection signal="body_exited" from="CraftArea" to="CraftArea" method="_on_body_exited"]
-[connection signal="body_exited" from="Client/CustomerService" to="Client" method="_on_customer_service_body_exited"]
+[connection signal="body_entered" from="Client/CustomerService" to="Client" method="_on_customer_service_body_entered"]
 
 [editable path="Floor"]
 [editable path="Walls"]
