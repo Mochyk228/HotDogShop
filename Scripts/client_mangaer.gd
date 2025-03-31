@@ -13,15 +13,18 @@ func _ready() -> void:
 	
 	# Connect the signal and call next_client
 	next.connect(next_client)
+	await get_tree().create_timer(3.2).timeout
 	next_client()
 
 func next_client():
 	if i < childrens.size():
 		var next_c = childrens[i].duplicate()  # Duplicate the stored node
-		next_c.visible = false
-		add_child(next_c)
+		next_c.hide()  # Completely hide it before adding
+		add_child(next_c)  # Now add it to the scene
 		await get_tree().create_timer(0.1).timeout
-		next_c.visible = true
+		next_c.show()  # Now make it visible
 		i += 1
 	else:
-		print("No more clients to duplicate")
+		$AudioStreamPlayer.play()
+		await get_tree().create_timer(5).timeout
+		$AudioStreamPlayer2.play()

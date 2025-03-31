@@ -327,6 +327,27 @@ texture = SubResource("ViewportTexture_pg7qd")
 [node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/HBoxContainer" index="3"]
 texture = SubResource("ViewportTexture_35q4o")
 
+[node name="Skeleton3D" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client/humanoid2/Armature" index="0"]
+bones/0/position = Vector3(0, -1.56213, 0)
+bones/0/rotation = Quaternion(3.1402e-15, 0.707107, 4.21468e-08, 0.707106)
+bones/1/rotation = Quaternion(1.68312e-20, -0.707107, -5.61041e-21, 0.707106)
+bones/2/rotation = Quaternion(-1.44005e-08, -1.19209e-07, -1.71668e-15, 1)
+bones/3/rotation = Quaternion(2.5475e-08, 1.19209e-07, 3.9492e-15, 1)
+bones/5/rotation = Quaternion(5.62941e-08, 7.41182e-08, -0.225019, 0.974354)
+bones/6/rotation = Quaternion(1.56238e-09, -2.50491e-08, -0.00518728, 0.999987)
+bones/7/rotation = Quaternion(-7.55981e-09, 1.29754e-07, 0.0186238, 0.999827)
+bones/8/rotation = Quaternion(-0.0013923, 0.00215087, 0.543359, 0.839497)
+bones/9/rotation = Quaternion(-0.00057015, -0.00249788, 0.222522, 0.974925)
+bones/10/rotation = Quaternion(-2.91626e-10, 2.14087e-08, 0.00518729, 0.999987)
+bones/11/rotation = Quaternion(-0.013169, -0.706984, -0.013169, 0.706984)
+bones/13/rotation = Quaternion(-4.09079e-08, 1.11242e-07, -0.280658, 0.959808)
+bones/14/rotation = Quaternion(7.76732e-08, 3.78892e-08, -0.0866863, 0.996236)
+bones/15/rotation = Quaternion(0.507128, 4.1221e-15, 1.20909e-07, 0.861871)
+bones/16/rotation = Quaternion(0.656815, 0.258707, 0.659803, 0.257536)
+bones/17/rotation = Quaternion(0.446835, 0.320166, 0.170448, 0.817789)
+bones/18/rotation = Quaternion(5.38413e-08, 5.09596e-08, 0.0866863, 0.996236)
+bones/19/rotation = Quaternion(0.507128, 2.94138e-09, 1.31036e-07, 0.861871)
+
 [node name="Recepie" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client/Recepies" index="0"]
 texture = SubResource("ViewportTexture_de6d7")
 

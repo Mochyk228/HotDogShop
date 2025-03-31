@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://t4r23s0u3gro"
+path="res://.godot/imported/66951__benboncan__boxing-bell.wav-94e587266d10206a87e8a171695c3be2.sample"
+
+[deps]
+
+source_file="res://Sounds/Last sounds/66951__benboncan__boxing-bell.wav"
+dest_files=["res://.godot/imported/66951__benboncan__boxing-bell.wav-94e587266d10206a87e8a171695c3be2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

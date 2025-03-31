@@ -7,10 +7,12 @@ var is_mouse_pyr : bool
 @export var craft_system_pyramides: ScrollContainer
 
 func _on_cilnders_mouse_entered() -> void:
+	Inventory.ui_sound.emit()
 	is_mouse_cil = true
 
 
 func _on_cilnders_mouse_exited() -> void:
+	Inventory.ui_sound.emit()
 	is_mouse_cil = false
 
 

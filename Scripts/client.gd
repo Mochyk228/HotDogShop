@@ -1,15 +1,20 @@
 extends Node3D
 
+const _201159__KIDDPARK__CASH_REGISTER = preload("res://Sounds/Last sounds/201159__kiddpark__cash-register.mp3")
 @export var needs : Array[SubViewport]
 @onready var recepie: Node3D = $Recepies
 
 func _ready() -> void:
+	$Ambient.stop()
 	$AnimationPlayer.play("walk_1")
 	$humanoid2/AnimationPlayer.play("Walking")
 	$humanoid2/AnimationPlayer.speed_scale = 1.5
 	recepie.visible = false
 	await $humanoid2/AnimationPlayer.animation_finished
 	recepie.visible = true
+	$Ambient.play()
+	await get_tree().create_timer(1).timeout
+	$Start.play()
 	$humanoid2/AnimationPlayer.speed_scale = 1
 	$humanoid2/AnimationPlayer.play("Talking")
 	
@@ -20,6 +25,8 @@ func _ready() -> void:
 
 func finish():
 	recepie.visible = false
+	$Start.stream = _201159__KIDDPARK__CASH_REGISTER
+	$Start.play()
 	await get_tree().create_timer(0.2).timeout
 	$Cloud.visible = false
 	await get_tree().create_timer(1.5).timeout

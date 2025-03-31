@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=4 uid="uid://bx58jgpokgdta"]
+[gd_scene load_steps=139 format=4 uid="uid://bx58jgpokgdta"]
 
 [ext_resource type="Material" uid="uid://bpu20u6xyn8ne" path="res://Models/Materials/celling_mat.tres" id="1_4g5cr"]
 [ext_resource type="AudioStream" uid="uid://cjpigllaf26jf" path="res://Sounds/open_toilet.wav" id="1_hv1ua"]
@@ -19,6 +19,8 @@
 [ext_resource type="AudioStream" uid="uid://baikpnims2r7" path="res://Sounds/Zippers/zip2.wav" id="15_c7unf"]
 [ext_resource type="PackedScene" uid="uid://dyqdv0qm7mrud" path="res://Scenes/lamp.tscn" id="16_j8vvb"]
 [ext_resource type="AudioStream" uid="uid://ddsgwnwyxblcw" path="res://Sounds/ambient.wav" id="17_epnj5"]
+[ext_resource type="AudioStream" uid="uid://b73ytyv35f1yu" path="res://Sounds/Last sounds/scremer.wav" id="17_rh52r"]
+[ext_resource type="Script" uid="uid://b3s7e630huwiv" path="res://Scripts/audio_stream_player.gd" id="18_4reuu"]
 [ext_resource type="AudioStream" uid="uid://cn4o86j3yvhyo" path="res://Sounds/Zippers/wood_block.wav" id="18_c7unf"]
 [ext_resource type="AudioStream" uid="uid://ceh1angbbb8ll" path="res://Sounds/423644__yellowjacketstudios__city-at-night_ambience.wav" id="18_ogk07"]
 [ext_resource type="AudioStream" uid="uid://c3lxnwcm8ub2v" path="res://Sounds/118340__julien_matthey__jm_noiz_buzz-01-neon-light.wav" id="19_qoxdu"]
@@ -43,6 +45,13 @@
 [ext_resource type="Material" uid="uid://o7tdjxmaegat" path="res://Models/Materials/prurple_alpha.tres" id="33_nmynh"]
 [ext_resource type="Material" uid="uid://cvb43ol8bvylc" path="res://Models/Materials/prurple.tres" id="35_b8i6p"]
 [ext_resource type="Script" uid="uid://ba05sh2b53vs5" path="res://Scripts/client_mangaer.gd" id="41_3lwf7"]
+[ext_resource type="AudioStream" uid="uid://ct8etyy01f2bk" path="res://Sounds/Last sounds/bell_1.wav" id="44_r321b"]
+[ext_resource type="AudioStream" uid="uid://dcfo8cp18onmx" path="res://Sounds/Last sounds/bell_2.wav" id="45_1x7dr"]
+[ext_resource type="AudioStream" uid="uid://b3ocw072ombg4" path="res://Sounds/Last sounds/ambient.wav" id="46_1x7dr"]
+[ext_resource type="AudioStream" uid="uid://t4r23s0u3gro" path="res://Sounds/Last sounds/66951__benboncan__boxing-bell.wav" id="47_ltirf"]
+[ext_resource type="AudioStream" uid="uid://b2gslh8dh0boo" path="res://Sounds/Last sounds/231312.wav" id="48_ku1o8"]
+[ext_resource type="Script" uid="uid://dm7ahiqwvvwf" path="res://Scripts/ui_sound.gd" id="49_ku1o8"]
+[ext_resource type="AudioStream" uid="uid://4lgdv2oq8c1y" path="res://Sounds/Last sounds/click.wav" id="49_vxp2n"]
 
 [sub_resource type="Gradient" id="Gradient_ogk07"]
 offsets = PackedFloat32Array(0, 0.287425, 0.640719, 0.928144)
@@ -1175,6 +1184,18 @@ _data = {
 &"walk_2": SubResource("Animation_5k7ik")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s0y6o"]
+streams_count = 2
+stream_0/stream = ExtResource("44_r321b")
+stream_0/weight = 2.299
+stream_1/stream = ExtResource("45_1x7dr")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rh52r"]
+random_pitch = 1.16
+random_volume_offset_db = 0.7
+streams_count = 1
+stream_0/stream = ExtResource("49_vxp2n")
+
 [node name="Root" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -1364,6 +1385,14 @@ pitch_scale = 1.17
 
 [node name="AudioListener3D" type="AudioListener3D" parent="CharacterBody3D"]
 current = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CharacterBody3D"]
+stream = ExtResource("17_rh52r")
+volume_db = -1.938
+pitch_scale = 0.57
+mix_target = 1
+script = ExtResource("18_4reuu")
+max_wait_time = 200.0
 
 [node name="Toy" parent="." groups=["Interactable"] instance=ExtResource("10_8fnbn")]
 transform = Transform3D(0.0278611, 0, 0, 0, 0.0278611, 0, 0, 0, 0.0278611, 0.247129, 0.21433, 0.0468866)
@@ -3563,28 +3592,25 @@ needs = [NodePath("../../Cylindres/RedCylinder")]
 transform = Transform3D(0.0155728, 0, 0, 0, 0.0155728, 0, 0, 0, 0.0155728, 0, 0, 0)
 
 [node name="Skeleton3D" parent="ClientMangaer/Client/humanoid2/Armature" index="0"]
-bones/0/position = Vector3(0, -2.97937, 0)
-bones/0/rotation = Quaternion(-4.37047e-08, 0.494795, 9.41012e-09, 0.86901)
-bones/0/scale = Vector3(0.755516, 0.755516, 0.755516)
-bones/1/rotation = Quaternion(-9.68711e-09, -0.864235, 2.48817e-08, 0.503089)
-bones/2/rotation = Quaternion(-3.65203e-08, -0.26461, 1.6542e-08, 0.964355)
-bones/3/rotation = Quaternion(1.93387e-09, -0.26461, 1.94724e-08, 0.964355)
-bones/4/rotation = Quaternion(0.143209, -0.222508, -0.521917, 0.810916)
-bones/5/rotation = Quaternion(0.259331, -0.0525926, -0.216999, 0.939624)
-bones/6/rotation = Quaternion(0.264474, 0.00848262, -0.00500232, 0.964343)
-bones/7/rotation = Quaternion(0.264564, 0.00492821, 0.0179601, 0.964188)
-bones/8/rotation = Quaternion(-0.145121, -0.220065, 0.523623, 0.810142)
-bones/9/rotation = Quaternion(-0.274387, -0.0614071, 0.266692, 0.921855)
-bones/10/rotation = Quaternion(-0.264474, 0.00848262, 0.00500234, 0.964342)
-bones/11/rotation = Quaternion(-0.199775, -0.678299, 0.174376, 0.685269)
-bones/12/rotation = Quaternion(0.461082, -0.179513, 0.809801, -0.315281)
-bones/13/rotation = Quaternion(0.113868, 0.239558, -0.270083, 0.925582)
-bones/14/rotation = Quaternion(0.022682, 0.263629, -0.0815843, 0.9609)
-bones/15/rotation = Quaternion(0.48883, 0.229077, -0.132446, 0.83128)
-bones/16/rotation = Quaternion(0.458812, 0.181339, 0.810085, 0.316813)
-bones/17/rotation = Quaternion(-0.118204, 0.23495, 0.272608, 0.925479)
-bones/18/rotation = Quaternion(-0.0229381, 0.263614, 0.0835964, 0.960725)
-bones/19/rotation = Quaternion(0.489051, 0.22806, -0.134191, 0.83115)
+bones/0/position = Vector3(0, -1.56213, 0)
+bones/0/rotation = Quaternion(3.1402e-15, 0.707107, 4.21468e-08, 0.707106)
+bones/1/rotation = Quaternion(1.68312e-20, -0.707107, -5.61041e-21, 0.707106)
+bones/2/rotation = Quaternion(-1.44005e-08, -1.19209e-07, -1.71668e-15, 1)
+bones/3/rotation = Quaternion(2.5475e-08, 1.19209e-07, 3.9492e-15, 1)
+bones/5/rotation = Quaternion(5.62941e-08, 7.41182e-08, -0.225019, 0.974354)
+bones/6/rotation = Quaternion(1.56238e-09, -2.50491e-08, -0.00518728, 0.999987)
+bones/7/rotation = Quaternion(-7.55981e-09, 1.29754e-07, 0.0186238, 0.999827)
+bones/8/rotation = Quaternion(-0.0013923, 0.00215087, 0.543359, 0.839497)
+bones/9/rotation = Quaternion(-0.00057015, -0.00249788, 0.222522, 0.974925)
+bones/10/rotation = Quaternion(-2.91626e-10, 2.14087e-08, 0.00518729, 0.999987)
+bones/11/rotation = Quaternion(-0.013169, -0.706984, -0.013169, 0.706984)
+bones/13/rotation = Quaternion(-4.09079e-08, 1.11242e-07, -0.280658, 0.959808)
+bones/14/rotation = Quaternion(7.76732e-08, 3.78892e-08, -0.0866863, 0.996236)
+bones/15/rotation = Quaternion(0.507128, 4.1221e-15, 1.20909e-07, 0.861871)
+bones/16/rotation = Quaternion(0.656815, 0.258707, 0.659803, 0.257536)
+bones/17/rotation = Quaternion(0.446835, 0.320166, 0.170448, 0.817789)
+bones/18/rotation = Quaternion(5.38413e-08, 5.09596e-08, 0.0866863, 0.996236)
+bones/19/rotation = Quaternion(0.507128, 2.94138e-09, 1.31036e-07, 0.861871)
 
 [node name="AnimationPlayer" parent="ClientMangaer/Client/humanoid2" index="1"]
 autoplay = "Talking"
@@ -3617,6 +3643,19 @@ shape = SubResource("BoxShape3D_vdqvo")
 libraries = {
 &"": SubResource("AnimationLibrary_51qfo")
 }
+
+[node name="Start" type="AudioStreamPlayer3D" parent="ClientMangaer/Client"]
+stream = SubResource("AudioStreamRandomizer_s0y6o")
+volume_db = -19.876
+max_db = -5.944
+
+[node name="Ambient" type="AudioStreamPlayer3D" parent="ClientMangaer/Client"]
+stream = ExtResource("46_1x7dr")
+volume_db = -42.733
+unit_size = 3.17
+max_db = -7.821
+pitch_scale = 0.88
+autoplay = true
 
 [node name="Client2" type="Node3D" parent="ClientMangaer" node_paths=PackedStringArray("needs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0340544, 0, -0.405753)
@@ -3683,6 +3722,19 @@ libraries = {
 &"": SubResource("AnimationLibrary_51qfo")
 }
 
+[node name="Start" type="AudioStreamPlayer3D" parent="ClientMangaer/Client2"]
+stream = SubResource("AudioStreamRandomizer_s0y6o")
+volume_db = -19.876
+max_db = -5.944
+
+[node name="Ambient" type="AudioStreamPlayer3D" parent="ClientMangaer/Client2"]
+stream = ExtResource("46_1x7dr")
+volume_db = -42.733
+unit_size = 3.17
+max_db = -7.821
+pitch_scale = 0.88
+autoplay = true
+
 [node name="Client3" type="Node3D" parent="ClientMangaer" node_paths=PackedStringArray("needs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0340544, 0, -0.405753)
 script = ExtResource("31_c7unf")
@@ -3746,6 +3798,19 @@ shape = SubResource("BoxShape3D_vdqvo")
 libraries = {
 &"": SubResource("AnimationLibrary_51qfo")
 }
+
+[node name="Start" type="AudioStreamPlayer3D" parent="ClientMangaer/Client3"]
+stream = SubResource("AudioStreamRandomizer_s0y6o")
+volume_db = -19.876
+max_db = -5.944
+
+[node name="Ambient" type="AudioStreamPlayer3D" parent="ClientMangaer/Client3"]
+stream = ExtResource("46_1x7dr")
+volume_db = -42.733
+unit_size = 3.17
+max_db = -7.821
+pitch_scale = 0.88
+autoplay = true
 
 [node name="Client4" type="Node3D" parent="ClientMangaer" node_paths=PackedStringArray("needs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0340544, 0, -0.405753)
@@ -3811,6 +3876,19 @@ libraries = {
 &"": SubResource("AnimationLibrary_51qfo")
 }
 
+[node name="Start" type="AudioStreamPlayer3D" parent="ClientMangaer/Client4"]
+stream = SubResource("AudioStreamRandomizer_s0y6o")
+volume_db = -19.876
+max_db = -5.944
+
+[node name="Ambient" type="AudioStreamPlayer3D" parent="ClientMangaer/Client4"]
+stream = ExtResource("46_1x7dr")
+volume_db = -42.733
+unit_size = 3.17
+max_db = -7.821
+pitch_scale = 0.88
+autoplay = true
+
 [node name="Client5" type="Node3D" parent="ClientMangaer" node_paths=PackedStringArray("needs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0340544, 0, -0.405753)
 script = ExtResource("31_c7unf")
@@ -3874,6 +3952,19 @@ shape = SubResource("BoxShape3D_vdqvo")
 libraries = {
 &"": SubResource("AnimationLibrary_51qfo")
 }
+
+[node name="Start" type="AudioStreamPlayer3D" parent="ClientMangaer/Client5"]
+stream = SubResource("AudioStreamRandomizer_s0y6o")
+volume_db = -19.876
+max_db = -5.944
+
+[node name="Ambient" type="AudioStreamPlayer3D" parent="ClientMangaer/Client5"]
+stream = ExtResource("46_1x7dr")
+volume_db = -42.733
+unit_size = 3.17
+max_db = -7.821
+pitch_scale = 0.88
+autoplay = true
 
 [node name="Client6" type="Node3D" parent="ClientMangaer" node_paths=PackedStringArray("needs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0340544, 0, -0.405753)
@@ -3939,6 +4030,19 @@ libraries = {
 &"": SubResource("AnimationLibrary_51qfo")
 }
 
+[node name="Start" type="AudioStreamPlayer3D" parent="ClientMangaer/Client6"]
+stream = SubResource("AudioStreamRandomizer_s0y6o")
+volume_db = -19.876
+max_db = -5.944
+
+[node name="Ambient" type="AudioStreamPlayer3D" parent="ClientMangaer/Client6"]
+stream = ExtResource("46_1x7dr")
+volume_db = -42.733
+unit_size = 3.17
+max_db = -7.821
+pitch_scale = 0.88
+autoplay = true
+
 [node name="Client7" type="Node3D" parent="ClientMangaer" node_paths=PackedStringArray("needs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0340544, 0, -0.405753)
 script = ExtResource("31_c7unf")
@@ -4002,6 +4106,33 @@ shape = SubResource("BoxShape3D_vdqvo")
 libraries = {
 &"": SubResource("AnimationLibrary_51qfo")
 }
+
+[node name="Start" type="AudioStreamPlayer3D" parent="ClientMangaer/Client7"]
+stream = SubResource("AudioStreamRandomizer_s0y6o")
+volume_db = -19.876
+max_db = -5.944
+
+[node name="Ambient" type="AudioStreamPlayer3D" parent="ClientMangaer/Client7"]
+stream = ExtResource("46_1x7dr")
+volume_db = -42.733
+unit_size = 3.17
+max_db = -7.821
+pitch_scale = 0.88
+autoplay = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ClientMangaer"]
+stream = ExtResource("47_ltirf")
+volume_db = -11.906
+pitch_scale = 0.56
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="ClientMangaer"]
+stream = ExtResource("48_ku1o8")
+volume_db = -10.981
+
+[node name="UI SOUND" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_rh52r")
+volume_db = -15.503
+script = ExtResource("49_ku1o8")
 
 [connection signal="body_entered" from="Table/CraftArea" to="Table/CraftArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Table/CraftArea" to="Table/CraftArea" method="_on_body_exited"]

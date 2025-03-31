@@ -43,6 +43,7 @@ func mouse_enter():
 	inventory_craft(false)
 	if not is_craft_able:
 		return
+	Inventory.ui_sound.emit()
 	background.get_theme_stylebox("panel")
 	border.border_color = Color.WHITE
 
