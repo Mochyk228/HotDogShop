@@ -1,8 +1,12 @@
-[gd_scene load_steps=34 format=3 uid="uid://bosf5nh2stp68"]
+[gd_scene load_steps=40 format=3 uid="uid://bosf5nh2stp68"]
 
 [ext_resource type="PackedScene" uid="uid://bx58jgpokgdta" path="res://Scenes/root.tscn" id="1_ol0b0"]
 [ext_resource type="Script" uid="uid://bjxedhiu3x3bn" path="res://Scripts/craft_titles.gd" id="2_5t57s"]
+[ext_resource type="PackedScene" uid="uid://dw1hb0jgm145u" path="res://Scenes/toy.tscn" id="2_gcke5"]
 [ext_resource type="Texture2D" uid="uid://dtjsetkgwnb5f" path="res://Art/pyramid_icon.png" id="3_mwiq1"]
+[ext_resource type="Material" uid="uid://8dscyfl8qkvw" path="res://Models/Materials/green.tres" id="3_vb83u"]
+[ext_resource type="Material" uid="uid://cbtue6pdsvrd5" path="res://Models/Materials/blue.tres" id="4_o8lj7"]
+[ext_resource type="Material" uid="uid://cvb43ol8bvylc" path="res://Models/Materials/prurple.tres" id="5_33afw"]
 [ext_resource type="Texture2D" uid="uid://bahg1yg61sta0" path="res://Art/cylinder_icon.png" id="6_8j1ge"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5t57s"]
@@ -86,6 +90,13 @@ viewport_path = NodePath("Cylindres/RedCylinder")
 [sub_resource type="ViewportTexture" id="ViewportTexture_de6d7"]
 viewport_path = NodePath("Cubes/RedActiveCube")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_5ann0"]
+viewport_path = NodePath("Cubes/RedActiveCube")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8rbf"]
+transparency = 1
+albedo_color = Color(0.717647, 0.34902, 0.152941, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcke5"]
 bg_color = Color(0, 0, 0, 1)
 border_width_top = 1
@@ -124,10 +135,22 @@ stretch_shrink = 6
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 handle_input_locally = false
+audio_listener_enable_3d = true
 size = Vector2i(320, 180)
 render_target_update_mode = 4
 
 [node name="Root" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_ol0b0")]
+
+[node name="CraftArea" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/Table" index="2" node_paths=PackedStringArray("cilnders", "pyramides")]
+cilnders = NodePath("../../../../../CraftTitles/Cilnders")
+pyramides = NodePath("../../../../../CraftTitles/Pyramides")
+
+[node name="Toy" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" index="16"]
+transform = Transform3D(0.0278611, 0, 0, 0, 0.0278611, 0, 0, 0, 0.0278611, 0.258372, 0.160317, 0.00381614)
+visible = true
+
+[node name="Toy2" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" index="17"]
+transform = Transform3D(0.0208796, 0, 0.0184468, 0, 0.0278611, 0, -0.0184468, 0, 0.0208796, 0.202633, 0.0758198, -0.0142664)
 
 [node name="Toy" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/Cubes/BrownInactiveCube" index="1"]
 transform = Transform3D(-0.0130597, -0.0212936, -0.0123396, 0.0115169, 0.00705752, -0.0243679, 0.0217496, -0.016523, 0.00549397, -3.85885e-09, -0.0253477, 1.28006)
@@ -304,12 +327,181 @@ texture = SubResource("ViewportTexture_pg7qd")
 [node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/HBoxContainer" index="3"]
 texture = SubResource("ViewportTexture_35q4o")
 
-[node name="CraftArea" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" index="34" node_paths=PackedStringArray("cilnders", "pyramides")]
-cilnders = NodePath("../../../../CraftTitles/Cilnders")
-pyramides = NodePath("../../../../CraftTitles/Pyramides")
-
-[node name="Recepie" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/Client/Recepies" index="0"]
+[node name="Recepie" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client/Recepies" index="0"]
 texture = SubResource("ViewportTexture_de6d7")
+
+[node name="Recepie" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client2/Recepies" index="0"]
+texture = SubResource("ViewportTexture_de6d7")
+
+[node name="Recepie" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client3/Recepies" index="0"]
+texture = SubResource("ViewportTexture_de6d7")
+
+[node name="Recepie" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client4/Recepies" index="0"]
+texture = SubResource("ViewportTexture_5ann0")
+
+[node name="Recepie" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client5/Recepies" index="0"]
+texture = SubResource("ViewportTexture_5ann0")
+
+[node name="Recepie" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client6/Recepies" index="0"]
+texture = SubResource("ViewportTexture_5ann0")
+
+[node name="Recepie" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client7/Recepies" index="0"]
+texture = SubResource("ViewportTexture_5ann0")
+
+[node name="Toy25" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.0278611, 0, 0, 0, 0.0278611, 0, 0, 0, 0.0278611, 0.275829, -0.0030899, -0.0612476)
+material = SubResource("StandardMaterial3D_k8rbf")
+inv_name = "Brown Toy"
+
+[node name="Toy15" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.0278611, 0, 0, 0, 0.0278611, 0, 0, 0, 0.0278611, -0.222579, -0.0114553, -0.307399)
+material = SubResource("StandardMaterial3D_k8rbf")
+inv_name = "Brown Toy"
+
+[node name="Toy45" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.0226261, 0, -0.0162573, 0, 0.0278611, 0, 0.0162573, 0, 0.0226261, -0.220881, 0.0741115, 0.167513)
+material = SubResource("StandardMaterial3D_k8rbf")
+inv_name = "Brown Toy"
+
+[node name="Toy52" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.0226261, 0, -0.0162573, 0, 0.0278611, 0, 0.0162573, 0, 0.0226261, -0.216361, -0.00602359, 0.167513)
+material = SubResource("StandardMaterial3D_k8rbf")
+inv_name = "Brown Toy"
+
+[node name="Toy53" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.0226261, 0, -0.0162573, 0, 0.0278611, 0, 0.0162573, 0, 0.0226261, -0.216361, -0.00602359, 0.167513)
+material = SubResource("StandardMaterial3D_k8rbf")
+inv_name = "Brown Toy"
+
+[node name="Toy54" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.0226261, 0, -0.0162573, 0, 0.0278611, 0, 0.0162573, 0, 0.0226261, 0.174051, -0.00602359, 0.147117)
+material = SubResource("StandardMaterial3D_k8rbf")
+inv_name = "Brown Toy"
+
+[node name="Toy55" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.0226261, 0, -0.0162573, 0, 0.0278611, 0, 0.0162573, 0, 0.0226261, 0.209928, -0.00602359, 0.198293)
+material = SubResource("StandardMaterial3D_k8rbf")
+inv_name = "Brown Toy"
+
+[node name="Toy16" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.0278611, 0, 0, 0, 0.0278611, 0, 0, 0, 0.0278611, -0.115005, -0.0114553, 0.377077)
+material = SubResource("StandardMaterial3D_k8rbf")
+inv_name = "Brown Toy"
+
+[node name="Toy29" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.225918, -0.0137989, 0.246444)
+
+[node name="Toy30" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.225918, -0.0137989, 0.283424)
+
+[node name="Toy31" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.172775, -0.0137989, 0.283424)
+
+[node name="Toy32" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.172775, -0.0137989, 0.238076)
+
+[node name="Toy33" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.172775, -0.0137989, 0.323408)
+
+[node name="Toy34" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.201391, 0.0189246, 0.276275)
+
+[node name="Toy35" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.201391, 0.0189246, 0.314169)
+
+[node name="Toy36" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.201391, 0.0457424, 0.314169)
+
+[node name="Toy37" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.201391, 0.0457424, 0.283165)
+
+[node name="Toy38" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.161073, 0.0195197, 0.283165)
+
+[node name="Toy39" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.123983, -0.0125727, 0.283165)
+
+[node name="Toy40" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.123983, -0.0125727, 0.322113)
+
+[node name="Toy41" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.123983, 0.0219952, 0.322113)
+
+[node name="Toy42" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.169021, 0.0219952, 0.322113)
+
+[node name="Toy43" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.169021, 0.0219952, 0.322113)
+
+[node name="Toy18" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.310326, 0.17734, 0.0957374)
+material = ExtResource("3_vb83u")
+inv_name = "Green Toy"
+
+[node name="Toy44" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.240317, -0.0112881, 0.33295)
+material = ExtResource("3_vb83u")
+inv_name = "Green Toy"
+
+[node name="Toy19" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.584391, 0.17734, -0.05774)
+material = ExtResource("3_vb83u")
+inv_name = "Green Toy"
+
+[node name="Toy20" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.746799, 0.0771664, 0.339585)
+material = ExtResource("3_vb83u")
+inv_name = "Green Toy"
+
+[node name="Toy21" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.836634, 0.0771664, 0.339585)
+material = ExtResource("3_vb83u")
+inv_name = "Green Toy"
+
+[node name="Toy22" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.576374, 0.0101193, 0.339585)
+material = ExtResource("3_vb83u")
+inv_name = "Green Toy"
+
+[node name="Toy23" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.647771, 0.0101193, 0.357105)
+material = ExtResource("3_vb83u")
+inv_name = "Green Toy"
+
+[node name="Toy24" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.39923, 0.0101193, 0.0967312)
+material = ExtResource("3_vb83u")
+inv_name = "Green Toy"
+
+[node name="Toy46" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.39923, 0.0101193, 0.0396947)
+material = ExtResource("4_o8lj7")
+inv_name = "Blue Toy"
+
+[node name="Toy47" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.364736, 0.0904201, 0.0396947)
+material = ExtResource("4_o8lj7")
+inv_name = "Blue Toy"
+
+[node name="Toy48" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.497064, -0.0121355, 0.29604)
+material = ExtResource("4_o8lj7")
+inv_name = "Blue Toy"
+
+[node name="Toy49" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.570754, 0.163444, 0.331467)
+material = ExtResource("4_o8lj7")
+inv_name = "Blue Toy"
+
+[node name="Toy50" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, 0.506502, -0.0110211, 0.331426)
+material = ExtResource("5_33afw")
+inv_name = "Purple Toy"
+
+[node name="Toy51" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" groups=["Interactable"] instance=ExtResource("2_gcke5")]
+transform = Transform3D(0.00891886, 0, -0.026395, 0, 0.0278611, 0, 0.026395, 0, 0.00891886, -0.16291, 0.0645838, -0.376919)
+material = ExtResource("5_33afw")
+inv_name = "Purple Toy"
 
 [node name="CraftTitles" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("craft_system_cylinders", "craft_system_pyramides")]
 offset_left = 1.0
@@ -322,6 +514,7 @@ craft_system_cylinders = NodePath("../SubViewportContainer/SubViewport/Root/Canv
 craft_system_pyramides = NodePath("../SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3")
 
 [node name="Cilnders" type="Panel" parent="CanvasLayer/CraftTitles"]
+visible = false
 custom_minimum_size = Vector2(0, 13.19)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gcke5")
@@ -336,6 +529,7 @@ scale = Vector2(0.232183, 0.243992)
 texture = ExtResource("6_8j1ge")
 
 [node name="Pyramides" type="Panel" parent="CanvasLayer/CraftTitles"]
+visible = false
 clip_contents = true
 custom_minimum_size = Vector2(0, 13.19)
 layout_mode = 2
@@ -360,4 +554,10 @@ texture = ExtResource("3_mwiq1")
 [editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/WallSupport"]
 [editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/Bar"]
 [editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/Fridge"]
-[editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/Client/humanoid2"]
+[editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client/humanoid2"]
+[editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client2/humanoid2"]
+[editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client3/humanoid2"]
+[editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client4/humanoid2"]
+[editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client5/humanoid2"]
+[editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client6/humanoid2"]
+[editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/ClientMangaer/Client7/humanoid2"]
