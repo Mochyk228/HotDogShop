@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://bosf5nh2stp68"]
+
+[ext_resource type="PackedScene" uid="uid://bx58jgpokgdta" path="res://Scenes/root.tscn" id="1_ol0b0"]
+[ext_resource type="Texture2D" uid="uid://bahg1yg61sta0" path="res://Art/cylinder_icon.png" id="6_8j1ge"]
+
+[node name="Root" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 6
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(320, 180)
+render_target_update_mode = 4
+
+[node name="Root" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_ol0b0")]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 4.0
+offset_top = 39.0
+offset_right = 20.0
+offset_bottom = 55.0
+scale = Vector2(6, 6)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 55.0
+offset_bottom = 43.0
+scale = Vector2(0.232183, 0.243992)
+texture = ExtResource("6_8j1ge")
