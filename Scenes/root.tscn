@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=4 uid="uid://bx58jgpokgdta"]
+[gd_scene load_steps=111 format=4 uid="uid://bx58jgpokgdta"]
 
 [ext_resource type="Material" uid="uid://bpu20u6xyn8ne" path="res://Models/Materials/celling_mat.tres" id="1_4g5cr"]
 [ext_resource type="AudioStream" uid="uid://cjpigllaf26jf" path="res://Sounds/open_toilet.wav" id="1_hv1ua"]
@@ -17,7 +17,6 @@
 [ext_resource type="Material" uid="uid://bgcribxt66a4h" path="res://Models/Materials/walls_mat.tres" id="13_lwnbm"]
 [ext_resource type="AudioStream" uid="uid://cm60lfvod4rxd" path="res://Sounds/Zippers/zip1.wav" id="14_vdqvo"]
 [ext_resource type="AudioStream" uid="uid://baikpnims2r7" path="res://Sounds/Zippers/zip2.wav" id="15_c7unf"]
-[ext_resource type="Material" uid="uid://2jjigs1bb7wh" path="res://Models/Materials/toy_brown.tres" id="16_642p6"]
 [ext_resource type="PackedScene" uid="uid://dyqdv0qm7mrud" path="res://Scenes/lamp.tscn" id="16_j8vvb"]
 [ext_resource type="AudioStream" uid="uid://ddsgwnwyxblcw" path="res://Sounds/ambient.wav" id="17_epnj5"]
 [ext_resource type="AudioStream" uid="uid://cn4o86j3yvhyo" path="res://Sounds/Zippers/wood_block.wav" id="18_c7unf"]
@@ -28,9 +27,14 @@
 [ext_resource type="AudioStream" uid="uid://cilrp0y3fpk6p" path="res://Sounds/Woosh/169867__halgrimm__swoosh.wav" id="21_teq3f"]
 [ext_resource type="AudioStream" uid="uid://d3woj5u0n2h8j" path="res://Sounds/Woosh/369698__crackles04__whoosh.wav" id="22_capts"]
 [ext_resource type="Script" uid="uid://bslmopv0qhuhf" path="res://Scripts/craft_slot.gd" id="25_dw4fd"]
+[ext_resource type="Material" uid="uid://bbp46obija5mm" path="res://Models/Materials/brown.tres" id="26_207an"]
+[ext_resource type="Material" uid="uid://csrhxel0yqgoh" path="res://Models/Materials/toy.tres" id="27_5k7ik"]
 [ext_resource type="Script" uid="uid://bbknbqgy68sj3" path="res://Scripts/craft_area.gd" id="27_18fmr"]
+[ext_resource type="Material" uid="uid://dipjdei3lpf2b" path="res://Models/Materials/toy_alpha.tres" id="27_207an"]
+[ext_resource type="Material" uid="uid://dt4esqntc8w33" path="res://Models/Materials/toy_brown_alpha.tres" id="27_rx7ou"]
 [ext_resource type="Script" uid="uid://2gghq54wt8o8" path="res://Scripts/serve_slots_container.gd" id="28_51qfo"]
 [ext_resource type="Script" uid="uid://osxdcpj22q38" path="res://Scripts/label.gd" id="28_64fwa"]
+[ext_resource type="Material" uid="uid://8dscyfl8qkvw" path="res://Models/Materials/green.tres" id="30_rx7ou"]
 [ext_resource type="Script" uid="uid://ktguoabj2es8" path="res://Scripts/client.gd" id="31_c7unf"]
 [ext_resource type="PackedScene" uid="uid://db0dypll5lwlc" path="res://Models/humanoid.glb" id="31_vdqvo"]
 
@@ -941,7 +945,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.06465, 5.13127, 1.02102)]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_20eh2"]
@@ -955,7 +959,7 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3.4, 7.83333, 12),
+"times": PackedFloat32Array(0, 3.46667, 7.9, 12.0667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(1.06465, 5.13127, 1.02102), Vector3(-1.47131, 6.28319, 1.02102), Vector3(3.93048, 1.26885, 1.02102), Vector3(1.06465, 5.13127, 1.02102)]
@@ -966,10 +970,6 @@ _data = {
 &"RESET": SubResource("Animation_imcog"),
 &"rotation": SubResource("Animation_20eh2")
 }
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4qac"]
-transparency = 1
-albedo_color = Color(0.823529, 0.145098, 0.423529, 0.615686)
 
 [sub_resource type="Animation" id="Animation_capts"]
 length = 0.001
@@ -1009,12 +1009,40 @@ _data = {
 &"rotation": SubResource("Animation_dw4fd")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_642p6"]
-transparency = 1
-albedo_color = Color(0.717647, 0.34902, 0.152941, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ph1hq"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pysyj"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAAADAAEAAwAEAAIABAAAAAIAAAAEAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 5,
+"vertex_data": PackedByteArray("/38AAAAAAAD//wAA/38AAP9/////fwAA/38AAP//AAAAAAAA/38AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ckxfk"]
+resource_name = "pyramid_Cone"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/z+OgnB9/7//P/+/cH3/v/8/b/3/P/+//7+Ogv+/b/1v/f+/joL/v/8/b/2PAv+//z//v48C/7//P46C/z//vw=="),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgABgAJAAcACgALAAwADQAOAA8A"),
+"material": SubResource("StandardMaterial3D_ph1hq"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/38AAAAAGOP//wAA/38Y4/9/////fxjj//8AAP9/i7f/fwAA//+Lt/9/////f4u3/38AAAAA/z//fwAA////P///AAD/f/8/AAAAAP9//z//fwAA//+LtwAAAAD/f4u3/3////9/i7cAAAAA/38Y4/9/AAAAABjj/3////9/GOOPwz1Wj8M9Vo/DPVapqqBlqaqgZamqoGUAAP9/AAD/fwAA/38AAP9/oOVV1aDlVdWg5VXVPNZuvDzWbrw81m68")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_pysyj")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_8fnbn"]
-viewport_path = NodePath("RedActive")
+viewport_path = NodePath("Cubes/RedActiveCube")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18fmr"]
 bg_color = Color(0, 0, 0, 0.74902)
@@ -1037,22 +1065,25 @@ gradient = SubResource("Gradient_s4qac")
 width = 1
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_dw4fd"]
-viewport_path = NodePath("RedInactive")
+viewport_path = NodePath("Cubes/BrownInactiveCube")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_642p6"]
-viewport_path = NodePath("RedActive")
+viewport_path = NodePath("Cylindres/RedCylinder")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_c7unf"]
-viewport_path = NodePath("RedInactive")
+[sub_resource type="ViewportTexture" id="ViewportTexture_mb0cg"]
+viewport_path = NodePath("Cubes/BrownInactiveCube")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_64fwa"]
-viewport_path = NodePath("BrownInactive")
+[sub_resource type="ViewportTexture" id="ViewportTexture_meti5"]
+viewport_path = NodePath("Cubes/RedInactiveCube")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_51qfo"]
-viewport_path = NodePath("BrownInactive")
+[sub_resource type="ViewportTexture" id="ViewportTexture_rx7ou"]
+viewport_path = NodePath("Cylindres/BrownCylinder")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5k7ik"]
-viewport_path = NodePath("BrownActive")
+[sub_resource type="ViewportTexture" id="ViewportTexture_x5sxw"]
+viewport_path = NodePath("Cubes/RedInactiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nmynh"]
+viewport_path = NodePath("Cylindres/GreenCylinder")
 
 [sub_resource type="Gradient" id="Gradient_hv1ua"]
 offsets = PackedFloat32Array(0)
@@ -1073,7 +1104,7 @@ fill_from = Vector2(0.513228, 0.469577)
 fill_to = Vector2(0.76, 0.15)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_207an"]
-viewport_path = NodePath("RedActive")
+viewport_path = NodePath("Cubes/RedActiveCube")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vdqvo"]
 size = Vector3(0.0622559, 0.121094, 0.236572)
@@ -1422,108 +1453,230 @@ stream = ExtResource("22_capts")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.078, 0.01, 0.082)
 fov = 50.1
 
-[node name="RedActive" type="SubViewport" parent="."]
+[node name="Cubes" type="Node" parent="."]
+
+[node name="BrownActiveCube" type="SubViewport" parent="Cubes"]
 own_world_3d = true
 transparent_bg = true
 size = Vector2i(42, 42)
 render_target_update_mode = 4
 
-[node name="SpotLight3D" type="SpotLight3D" parent="RedActive"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Cubes/BrownActiveCube"]
 transform = Transform3D(-0.624232, -0.699663, -0.347571, -0.486473, -4.47035e-08, 0.873696, -0.611293, 0.714473, -0.340367, 0.128288, 0.18576, 1.18838)
 spot_range = 0.878928
 spot_angle = 62.6258
 
-[node name="Toy" parent="RedActive" instance=ExtResource("10_8fnbn")]
-transform = Transform3D(-0.0130597, -0.0212936, -0.0123396, 0.0115169, 0.00705752, -0.0243679, 0.0217496, -0.016523, 0.00549397, -3.85885e-09, -0.0253477, 1.28006)
+[node name="Toy" parent="Cubes/BrownActiveCube" instance=ExtResource("10_8fnbn")]
+transform = Transform3D(0.0278611, 0, 0, 0, 0.027861, 0, 0, 0, 0.0278612, -3.85885e-09, -0.0253477, 1.28006)
+material = ExtResource("26_207an")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="RedActive/Toy"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cubes/BrownActiveCube/Toy"]
 libraries = {
 &"": SubResource("AnimationLibrary_imcog")
 }
 autoplay = "rotation"
 
-[node name="PreviewCamera" type="Camera3D" parent="RedActive"]
+[node name="PreviewCamera" type="Camera3D" parent="Cubes/BrownActiveCube"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.03, 1.192)
 projection = 1
 current = true
 size = 0.1
 
-[node name="RedInactive" type="SubViewport" parent="."]
+[node name="BrownInactiveCube" type="SubViewport" parent="Cubes"]
 own_world_3d = true
 transparent_bg = true
 size = Vector2i(42, 42)
 render_target_update_mode = 4
 
-[node name="SpotLight3D" type="SpotLight3D" parent="RedInactive"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Cubes/BrownInactiveCube"]
 transform = Transform3D(-0.624232, -0.699663, -0.347571, -0.486473, -4.47035e-08, 0.873696, -0.611293, 0.714473, -0.340367, 0.128288, 0.18576, 1.18838)
 spot_range = 0.878928
 spot_angle = 62.6258
 
-[node name="Toy" type="CSGBox3D" parent="RedInactive"]
+[node name="Toy" type="CSGBox3D" parent="Cubes/BrownInactiveCube"]
 transform = Transform3D(-0.0130597, -0.0212936, -0.0123396, 0.0115169, 0.00705752, -0.0243679, 0.0217496, -0.016523, 0.00549397, -3.85885e-09, -0.0253477, 1.28006)
 use_collision = true
-material = SubResource("StandardMaterial3D_s4qac")
+material = ExtResource("27_rx7ou")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="RedInactive/Toy"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cubes/BrownInactiveCube/Toy"]
 libraries = {
 &"": SubResource("AnimationLibrary_642p6")
 }
 
-[node name="PreviewCamera" type="Camera3D" parent="RedInactive"]
+[node name="PreviewCamera" type="Camera3D" parent="Cubes/BrownInactiveCube"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.03, 1.192)
 projection = 1
 current = true
 size = 0.1
 
-[node name="BrownActive" type="SubViewport" parent="."]
+[node name="RedActiveCube" type="SubViewport" parent="Cubes"]
 own_world_3d = true
 transparent_bg = true
 size = Vector2i(42, 42)
 render_target_update_mode = 4
 
-[node name="SpotLight3D" type="SpotLight3D" parent="BrownActive"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Cubes/RedActiveCube"]
 transform = Transform3D(-0.624232, -0.699663, -0.347571, -0.486473, -4.47035e-08, 0.873696, -0.611293, 0.714473, -0.340367, 0.128288, 0.18576, 1.18838)
 spot_range = 0.878928
 spot_angle = 62.6258
 
-[node name="Toy" parent="BrownActive" instance=ExtResource("10_8fnbn")]
-transform = Transform3D(-0.0130597, -0.0212936, -0.0123396, 0.0115169, 0.00705752, -0.0243679, 0.0217496, -0.016523, 0.00549397, -3.85885e-09, -0.0253477, 1.28006)
-material = SubResource("StandardMaterial3D_642p6")
+[node name="Toy" parent="Cubes/RedActiveCube" instance=ExtResource("10_8fnbn")]
+transform = Transform3D(0.0278611, 0, 0, 0, 0.027861, 0, 0, 0, 0.0278612, -3.85885e-09, -0.0253477, 1.28006)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BrownActive/Toy"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cubes/RedActiveCube/Toy"]
 libraries = {
 &"": SubResource("AnimationLibrary_imcog")
 }
 autoplay = "rotation"
 
-[node name="PreviewCamera" type="Camera3D" parent="BrownActive"]
+[node name="PreviewCamera" type="Camera3D" parent="Cubes/RedActiveCube"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.03, 1.192)
 projection = 1
 current = true
 size = 0.1
 
-[node name="BrownInactive" type="SubViewport" parent="."]
+[node name="RedInactiveCube" type="SubViewport" parent="Cubes"]
 own_world_3d = true
 transparent_bg = true
 size = Vector2i(42, 42)
 render_target_update_mode = 4
 
-[node name="SpotLight3D" type="SpotLight3D" parent="BrownInactive"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Cubes/RedInactiveCube"]
 transform = Transform3D(-0.624232, -0.699663, -0.347571, -0.486473, -4.47035e-08, 0.873696, -0.611293, 0.714473, -0.340367, 0.128288, 0.18576, 1.18838)
 spot_range = 0.878928
 spot_angle = 62.6258
 
-[node name="Toy" type="CSGBox3D" parent="BrownInactive"]
+[node name="Toy" type="CSGBox3D" parent="Cubes/RedInactiveCube"]
 transform = Transform3D(-0.0130597, -0.0212936, -0.0123396, 0.0115169, 0.00705752, -0.0243679, 0.0217496, -0.016523, 0.00549397, -3.85885e-09, -0.0253477, 1.28006)
 use_collision = true
-material = ExtResource("16_642p6")
+material = ExtResource("27_207an")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BrownInactive/Toy"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cubes/RedInactiveCube/Toy"]
 libraries = {
 &"": SubResource("AnimationLibrary_642p6")
 }
 
-[node name="PreviewCamera" type="Camera3D" parent="BrownInactive"]
+[node name="PreviewCamera" type="Camera3D" parent="Cubes/RedInactiveCube"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.03, 1.192)
+projection = 1
+current = true
+size = 0.1
+
+[node name="Cylindres" type="Node" parent="."]
+
+[node name="RedCylinder" type="SubViewport" parent="Cylindres"]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(42, 42)
+render_target_update_mode = 4
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Cylindres/RedCylinder"]
+transform = Transform3D(-0.624232, -0.699663, -0.347571, -0.486473, -4.47035e-08, 0.873696, -0.611293, 0.714473, -0.340367, 0.128288, 0.18576, 1.18838)
+spot_range = 0.878928
+spot_angle = 62.6258
+
+[node name="Cylinder" type="CSGCylinder3D" parent="Cylindres/RedCylinder"]
+transform = Transform3D(0.0277087, 0, 0, 0, 0.0277087, 0, 0, 0, 0.0277087, -3.85885e-09, -0.0253477, 1.28006)
+height = 1.29297
+material = ExtResource("27_5k7ik")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cylindres/RedCylinder/Cylinder"]
+libraries = {
+&"": SubResource("AnimationLibrary_imcog")
+}
+autoplay = "rotation"
+
+[node name="PreviewCamera" type="Camera3D" parent="Cylindres/RedCylinder"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.03, 1.192)
+projection = 1
+current = true
+size = 0.1
+
+[node name="BrownCylinder" type="SubViewport" parent="Cylindres"]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(42, 42)
+render_target_update_mode = 4
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Cylindres/BrownCylinder"]
+transform = Transform3D(-0.624232, -0.699663, -0.347571, -0.486473, -4.47035e-08, 0.873696, -0.611293, 0.714473, -0.340367, 0.128288, 0.18576, 1.18838)
+spot_range = 0.878928
+spot_angle = 62.6258
+
+[node name="Cylinder" type="CSGCylinder3D" parent="Cylindres/BrownCylinder"]
+transform = Transform3D(0.0277087, 0, 0, 0, 0.0277087, 0, 0, 0, 0.0277087, -3.85885e-09, -0.0253477, 1.28006)
+height = 1.29297
+material = ExtResource("26_207an")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cylindres/BrownCylinder/Cylinder"]
+libraries = {
+&"": SubResource("AnimationLibrary_imcog")
+}
+autoplay = "rotation"
+
+[node name="PreviewCamera" type="Camera3D" parent="Cylindres/BrownCylinder"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.03, 1.192)
+projection = 1
+current = true
+size = 0.1
+
+[node name="GreenCylinder" type="SubViewport" parent="Cylindres"]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(42, 42)
+render_target_update_mode = 4
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Cylindres/GreenCylinder"]
+transform = Transform3D(-0.624232, -0.699663, -0.347571, -0.486473, -4.47035e-08, 0.873696, -0.611293, 0.714473, -0.340367, 0.128288, 0.18576, 1.18838)
+spot_range = 0.878928
+spot_angle = 62.6258
+
+[node name="Cylinder" type="CSGCylinder3D" parent="Cylindres/GreenCylinder"]
+transform = Transform3D(0.0277087, 0, 0, 0, 0.0277087, 0, 0, 0, 0.0277087, -3.85885e-09, -0.0253477, 1.28006)
+height = 1.29297
+material = ExtResource("30_rx7ou")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cylindres/GreenCylinder/Cylinder"]
+libraries = {
+&"": SubResource("AnimationLibrary_imcog")
+}
+autoplay = "rotation"
+
+[node name="PreviewCamera" type="Camera3D" parent="Cylindres/GreenCylinder"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.03, 1.192)
+projection = 1
+current = true
+size = 0.1
+
+[node name="Pyramids" type="Node" parent="."]
+
+[node name="RedActivePyramid" type="SubViewport" parent="Pyramids"]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(42, 42)
+render_target_update_mode = 4
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Pyramids/RedActivePyramid"]
+transform = Transform3D(-0.624232, -0.699663, -0.347571, -0.486473, -4.47035e-08, 0.873696, -0.611293, 0.714473, -0.340367, 0.128288, 0.18576, 1.18838)
+spot_range = 0.878928
+spot_angle = 62.6258
+
+[node name="pyramid" type="Node3D" parent="Pyramids/RedActivePyramid"]
+transform = Transform3D(0.0247996, 0, 0, 0, 0.0247996, 0, 0, 0, 0.0247996, 0, -0.0337733, 1.28079)
+
+[node name="Cone" type="MeshInstance3D" parent="Pyramids/RedActivePyramid/pyramid"]
+transform = Transform3D(1, 0, 0, 0, 0.603448, 0, 0, 0, 1, 0, 0.647994, 0)
+mesh = SubResource("ArrayMesh_ckxfk")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("27_5k7ik")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pyramids/RedActivePyramid/pyramid"]
+libraries = {
+&"": SubResource("AnimationLibrary_imcog")
+}
+autoplay = "rotation"
+
+[node name="PreviewCamera" type="Camera3D" parent="Pyramids/RedActivePyramid"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.03, 1.192)
 projection = 1
 current = true
@@ -1583,10 +1736,10 @@ custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../RedActive")
-arr = Array[String](["Red Toy", "Red Toy"])
-arr_active = [NodePath("../../../RedActive"), NodePath("../../../RedActive")]
-arr_inactive = [NodePath("../../../RedInactive"), NodePath("../../../RedInactive")]
+craft_item = NodePath("../../../Cylindres/RedCylinder")
+arr = Array[String](["Brown Toy", "Brown Toy"])
+arr_active = [NodePath("../../../Cubes/BrownActiveCube"), NodePath("../../../Cubes/BrownActiveCube")]
+arr_inactive = [NodePath("../../../Cubes/BrownInactiveCube"), NodePath("../../../Cubes/BrownInactiveCube")]
 
 [node name="Background" type="Panel" parent="CanvasLayer/CraftSystem/CraftSlot1"]
 layout_mode = 2
@@ -1673,24 +1826,23 @@ custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../BrownActive")
-arr = Array[String](["Red Toy", "Brown Toy", "Brown Toy"])
-arr_active = [NodePath("../../../RedActive"), NodePath("../../../BrownActive"), NodePath("../../../BrownActive")]
-arr_inactive = [NodePath("../../../RedInactive"), NodePath("../../../BrownInactive"), NodePath("../../../BrownInactive")]
+craft_item = NodePath("../../../Cylindres/BrownCylinder")
+arr = Array[String](["Brown Toy", "Red Toy"])
+arr_active = [NodePath("../../../Cubes/BrownActiveCube"), NodePath("../../../Cubes/RedActiveCube")]
+arr_inactive = [NodePath("../../../Cubes/BrownInactiveCube"), NodePath("../../../Cubes/RedInactiveCube")]
 
 [node name="Background" type="Panel" parent="CanvasLayer/CraftSystem/CraftSlot2"]
 layout_mode = 2
 offset_left = 4.0
 offset_top = 6.0
-offset_right = 170.0
+offset_right = 123.0
 offset_bottom = 33.0
 scale = Vector2(0.62, 0.62)
 theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
 
 [node name="Equal" type="Control" parent="CanvasLayer/CraftSystem/CraftSlot2/Background"]
 anchors_preset = 0
-offset_left = 43.5484
-offset_right = 83.5484
+offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystem/CraftSlot2/Background/Equal"]
@@ -1733,31 +1885,6 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="Plus2" type="Control" parent="CanvasLayer/CraftSystem/CraftSlot2/Background"]
-anchors_preset = 0
-offset_left = 46.7742
-offset_right = 86.7742
-offset_bottom = 40.0
-
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystem/CraftSlot2/Background/Plus2"]
-layout_mode = 0
-offset_left = 29.0
-offset_top = 13.0
-offset_right = 46.0
-offset_bottom = 16.0
-scale = Vector2(0.840337, 0.653639)
-texture = SubResource("GradientTexture1D_dw4fd")
-
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystem/CraftSlot2/Background/Plus2"]
-layout_mode = 0
-offset_left = 35.0
-offset_top = 21.0
-offset_right = 52.0
-offset_bottom = 24.0
-rotation = -1.57079
-scale = Vector2(0.840337, 0.653639)
-texture = SubResource("GradientTexture1D_dw4fd")
-
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystem/CraftSlot2/Background"]
 layout_mode = 2
 offset_left = -8.06452
@@ -1767,25 +1894,110 @@ offset_bottom = 37.1613
 
 [node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystem/CraftSlot2/Background/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_c7unf")
-stretch_mode = 4
-
-[node name="PreviewTexture4" type="TextureRect" parent="CanvasLayer/CraftSystem/CraftSlot2/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_64fwa")
+texture = SubResource("ViewportTexture_mb0cg")
 stretch_mode = 4
 
 [node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystem/CraftSlot2/Background/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_51qfo")
+texture = SubResource("ViewportTexture_meti5")
 stretch_mode = 4
 
 [node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystem/CraftSlot2/Background/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_5k7ik")
+texture = SubResource("ViewportTexture_rx7ou")
 stretch_mode = 4
 
 [node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystem/CraftSlot2"]
+stream = ExtResource("13_hv1ua")
+volume_db = -12.829
+
+[node name="CraftSlot3" type="Control" parent="CanvasLayer/CraftSystem" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
+custom_minimum_size = Vector2(0, 18.9)
+layout_mode = 2
+size_flags_stretch_ratio = 0.05
+script = ExtResource("25_dw4fd")
+craft_item = NodePath("../../../Cylindres/GreenCylinder")
+arr = Array[String](["Red Toy", "Red Toy"])
+arr_active = [NodePath("../../../Cubes/RedActiveCube"), NodePath("../../../Cubes/RedActiveCube")]
+arr_inactive = [NodePath("../../../Cubes/RedInactiveCube"), NodePath("../../../Cubes/RedInactiveCube")]
+
+[node name="Background" type="Panel" parent="CanvasLayer/CraftSystem/CraftSlot3"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 123.0
+offset_bottom = 33.0
+scale = Vector2(0.62, 0.62)
+theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
+
+[node name="Equal" type="Control" parent="CanvasLayer/CraftSystem/CraftSlot3/Background"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystem/CraftSlot3/Background/Equal"]
+layout_mode = 0
+offset_left = 74.1935
+offset_top = 9.67742
+offset_right = 90.1935
+offset_bottom = 12.6774
+texture = SubResource("GradientTexture1D_dw4fd")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystem/CraftSlot3/Background/Equal"]
+layout_mode = 0
+offset_left = 74.1935
+offset_top = 15.6774
+offset_right = 90.1935
+offset_bottom = 18.6774
+texture = SubResource("GradientTexture1D_dw4fd")
+
+[node name="Plus" type="Control" parent="CanvasLayer/CraftSystem/CraftSlot3/Background"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystem/CraftSlot3/Background/Plus"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 13.0
+offset_right = 46.0
+offset_bottom = 16.0
+scale = Vector2(0.840337, 0.653639)
+texture = SubResource("GradientTexture1D_dw4fd")
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystem/CraftSlot3/Background/Plus"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 21.0
+offset_right = 52.0
+offset_bottom = 24.0
+rotation = -1.57079
+scale = Vector2(0.840337, 0.653639)
+texture = SubResource("GradientTexture1D_dw4fd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystem/CraftSlot3/Background"]
+layout_mode = 2
+offset_left = -8.06452
+offset_top = -4.83871
+offset_right = 125.935
+offset_bottom = 37.1613
+
+[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystem/CraftSlot3/Background/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("ViewportTexture_x5sxw")
+stretch_mode = 4
+
+[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystem/CraftSlot3/Background/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("ViewportTexture_meti5")
+stretch_mode = 4
+
+[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystem/CraftSlot3/Background/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("ViewportTexture_nmynh")
+stretch_mode = 4
+
+[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystem/CraftSlot3"]
 stream = ExtResource("13_hv1ua")
 volume_db = -12.829
 
@@ -1809,7 +2021,7 @@ shape = SubResource("BoxShape3D_642p6")
 [node name="Client" type="Node3D" parent="." node_paths=PackedStringArray("needs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0340544, 0, -0.405753)
 script = ExtResource("31_c7unf")
-needs = [NodePath("../RedActive")]
+needs = [NodePath("../Cubes/RedActiveCube")]
 
 [node name="humanoid2" parent="Client" instance=ExtResource("31_vdqvo")]
 transform = Transform3D(0.0155728, 0, 0, 0, 0.0155728, 0, 0, 0, 0.0155728, 0, 0, 0)

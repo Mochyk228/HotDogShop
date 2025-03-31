@@ -4,8 +4,8 @@ signal inventory_signal(is_craft : bool)
 signal clean_inventory_signal
 
 @onready var serve_item_container: HBoxContainer = get_node("/root/Root/CanvasLayer/ServeSlotsContainer")
-@onready var brown_active: SubViewport = get_node("/root/Root/BrownActive")
-@onready var red_active: SubViewport = get_node("/root/Root/RedActive")
+#@onready var brown_active: SubViewport = get_node("/root/Root/BrownActive")
+#@onready var red_active: SubViewport = get_node("/root/Root/RedActive")
 
 
 var item_count : int = 0
