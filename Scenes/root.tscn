@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=4 uid="uid://bx58jgpokgdta"]
+[gd_scene load_steps=130 format=4 uid="uid://bx58jgpokgdta"]
 
 [ext_resource type="Material" uid="uid://bpu20u6xyn8ne" path="res://Models/Materials/celling_mat.tres" id="1_4g5cr"]
 [ext_resource type="AudioStream" uid="uid://cjpigllaf26jf" path="res://Sounds/open_toilet.wav" id="1_hv1ua"]
@@ -42,6 +42,7 @@
 [ext_resource type="Material" uid="uid://goju67i3kao2" path="res://Models/Materials/blue_alpha.tres" id="32_x5sxw"]
 [ext_resource type="Material" uid="uid://o7tdjxmaegat" path="res://Models/Materials/prurple_alpha.tres" id="33_nmynh"]
 [ext_resource type="Material" uid="uid://cvb43ol8bvylc" path="res://Models/Materials/prurple.tres" id="35_b8i6p"]
+[ext_resource type="Script" uid="uid://ba05sh2b53vs5" path="res://Scripts/client_mangaer.gd" id="41_3lwf7"]
 
 [sub_resource type="Gradient" id="Gradient_ogk07"]
 offsets = PackedFloat32Array(0, 0.287425, 0.640719, 0.928144)
@@ -342,7 +343,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_a6f85"]
 resource_name = "turn_left"
-length = 0.2
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -350,7 +351,7 @@ tracks/0/path = NodePath(".:rotation_add")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, 90]
@@ -358,7 +359,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_lwnbm"]
 resource_name = "turn_right"
-length = 0.2
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -366,7 +367,7 @@ tracks/0/path = NodePath(".:rotation_add")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, -90.0]
@@ -1928,6 +1929,7 @@ transform = Transform3D(0.0247996, 0, 0, 0, 0.0247996, 0, 0, 0, 0.0247996, 0, -0
 
 [node name="Cone" type="MeshInstance3D" parent="Pyramids/BrownActivePyramid/pyramid"]
 transform = Transform3D(1, 0, 0, 0, 0.603448, 0, 0, 0, 1, 0, 0.647994, 0)
+material_override = ExtResource("26_207an")
 mesh = SubResource("ArrayMesh_ckxfk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("26_207an")
@@ -1960,6 +1962,7 @@ transform = Transform3D(0.0247996, 0, 0, 0, 0.0247996, 0, 0, 0, 0.0247996, 0, -0
 
 [node name="Cone" type="MeshInstance3D" parent="Pyramids/RedActivePyramid/pyramid"]
 transform = Transform3D(1, 0, 0, 0, 0.603448, 0, 0, 0, 1, 0, 0.647994, 0)
+material_override = ExtResource("27_5k7ik")
 mesh = SubResource("ArrayMesh_ckxfk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("27_5k7ik")
@@ -1992,6 +1995,7 @@ transform = Transform3D(0.0247996, 0, 0, 0, 0.0247996, 0, 0, 0, 0.0247996, 0, -0
 
 [node name="Cone" type="MeshInstance3D" parent="Pyramids/GreenActivePyramid/pyramid"]
 transform = Transform3D(1, 0, 0, 0, 0.603448, 0, 0, 0, 1, 0, 0.647994, 0)
+material_override = ExtResource("31_mb0cg")
 mesh = SubResource("ArrayMesh_ckxfk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("31_mb0cg")
@@ -2024,6 +2028,7 @@ transform = Transform3D(0.0247996, 0, 0, 0, 0.0247996, 0, 0, 0, 0.0247996, 0, -0
 
 [node name="Cone" type="MeshInstance3D" parent="Pyramids/BlueActivePyramid/pyramid"]
 transform = Transform3D(1, 0, 0, 0, 0.603448, 0, 0, 0, 1, 0, 0.647994, 0)
+material_override = ExtResource("31_meti5")
 mesh = SubResource("ArrayMesh_ckxfk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("31_meti5")
@@ -2056,6 +2061,7 @@ transform = Transform3D(0.0247996, 0, 0, 0, 0.0247996, 0, 0, 0, 0.0247996, 0, -0
 
 [node name="Cone" type="MeshInstance3D" parent="Pyramids/PurpleActivePyramid/pyramid"]
 transform = Transform3D(1, 0, 0, 0, 0.603448, 0, 0, 0, 1, 0, 0.647994, 0)
+material_override = ExtResource("35_b8i6p")
 mesh = SubResource("ArrayMesh_ckxfk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("35_b8i6p")
@@ -2115,38 +2121,44 @@ texture = SubResource("ViewportTexture_8fnbn")
 stretch_mode = 4
 script = ExtResource("28_64fwa")
 
-[node name="CraftSystemCylinders" type="VBoxContainer" parent="CanvasLayer"]
-custom_minimum_size = Vector2(0, 61.6)
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
 offset_left = 14.0
-offset_right = 116.0
-offset_bottom = 194.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 117.0
+pivot_offset = Vector2(0, 6.06)
+vertical_scroll_mode = 3
+
+[node name="CraftSystemCylinders" type="VBoxContainer" parent="CanvasLayer/ScrollContainer"]
+custom_minimum_size = Vector2(0, 61.6)
+layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="CraftSlot1" type="Control" parent="CanvasLayer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
+[node name="CraftSlot1" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
 custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/RedCylinder")
+craft_item = NodePath("../../../../Cylindres/RedCylinder")
 arr = Array[String](["Brown Toy", "Brown Toy"])
-arr_active = [NodePath("../../../Cubes/BrownActiveCube"), NodePath("../../../Cubes/BrownActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/BrownInactiveCube"), NodePath("../../../Cubes/BrownInactiveCube")]
+arr_active = [NodePath("../../../../Cubes/BrownActiveCube"), NodePath("../../../../Cubes/BrownActiveCube")]
+arr_inactive = [NodePath("../../../../Cubes/BrownInactiveCube"), NodePath("../../../../Cubes/BrownInactiveCube")]
 
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemCylinders/CraftSlot1"]
+[node name="Background" type="Panel" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot1"]
 layout_mode = 2
 offset_left = 4.0
-offset_top = 6.0
+offset_top = 3.0
 offset_right = 123.0
-offset_bottom = 33.0
+offset_bottom = 30.0
 scale = Vector2(0.62, 0.62)
 theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
 
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot1/Background"]
+[node name="Equal" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot1/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot1/Background/Equal"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot1/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 9.67742
@@ -2154,7 +2166,7 @@ offset_right = 90.1935
 offset_bottom = 12.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot1/Background/Equal"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot1/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 15.6774
@@ -2162,12 +2174,12 @@ offset_right = 90.1935
 offset_bottom = 18.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot1/Background"]
+[node name="Plus" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot1/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot1/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot1/Background/Plus"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -2176,7 +2188,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot1/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot1/Background/Plus"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -2186,57 +2198,57 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot1/Background"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot1/Background"]
 layout_mode = 2
 offset_left = -8.06452
 offset_top = -4.83871
 offset_right = 125.935
 offset_bottom = 37.1613
 
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot1/Background/HBoxContainer"]
+[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot1/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_dw4fd")
 stretch_mode = 4
 
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot1/Background/HBoxContainer"]
+[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot1/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_dw4fd")
 stretch_mode = 4
 
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot1/Background/HBoxContainer"]
+[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot1/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_642p6")
 stretch_mode = 4
 
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot1"]
+[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot1"]
 stream = ExtResource("13_hv1ua")
 volume_db = -12.829
 
-[node name="CraftSlot2" type="Control" parent="CanvasLayer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
+[node name="CraftSlot2" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
 custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/BrownCylinder")
+craft_item = NodePath("../../../../Cylindres/BrownCylinder")
 arr = Array[String](["Brown Toy", "Red Toy"])
-arr_active = [NodePath("../../../Cubes/BrownActiveCube"), NodePath("../../../Cubes/RedActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/BrownInactiveCube"), NodePath("../../../Cubes/RedInactiveCube")]
+arr_active = [NodePath("../../../../Cubes/BrownActiveCube"), NodePath("../../../../Cubes/RedActiveCube")]
+arr_inactive = [NodePath("../../../../Cubes/BrownInactiveCube"), NodePath("../../../../Cubes/RedInactiveCube")]
 
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemCylinders/CraftSlot2"]
+[node name="Background" type="Panel" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot2"]
 layout_mode = 2
 offset_left = 4.0
-offset_top = 6.0
+offset_top = 3.0
 offset_right = 123.0
-offset_bottom = 33.0
+offset_bottom = 30.0
 scale = Vector2(0.62, 0.62)
 theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
 
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot2/Background"]
+[node name="Equal" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot2/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot2/Background/Equal"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot2/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 9.67742
@@ -2244,7 +2256,7 @@ offset_right = 90.1935
 offset_bottom = 12.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot2/Background/Equal"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot2/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 15.6774
@@ -2252,12 +2264,12 @@ offset_right = 90.1935
 offset_bottom = 18.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot2/Background"]
+[node name="Plus" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot2/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot2/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot2/Background/Plus"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -2266,7 +2278,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot2/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot2/Background/Plus"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -2276,57 +2288,57 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot2/Background"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot2/Background"]
 layout_mode = 2
 offset_left = -8.06452
 offset_top = -4.83871
 offset_right = 125.935
 offset_bottom = 37.1613
 
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot2/Background/HBoxContainer"]
+[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot2/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_mb0cg")
 stretch_mode = 4
 
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot2/Background/HBoxContainer"]
+[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot2/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_meti5")
 stretch_mode = 4
 
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot2/Background/HBoxContainer"]
+[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot2/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_rx7ou")
 stretch_mode = 4
 
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot2"]
+[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot2"]
 stream = ExtResource("13_hv1ua")
 volume_db = -12.829
 
-[node name="CraftSlot3" type="Control" parent="CanvasLayer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
+[node name="CraftSlot3" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
 custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/GreenCylinder")
+craft_item = NodePath("../../../../Cylindres/GreenCylinder")
 arr = Array[String](["Red Toy", "Red Toy"])
-arr_active = [NodePath("../../../Cubes/RedActiveCube"), NodePath("../../../Cubes/RedActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/RedInactiveCube"), NodePath("../../../Cubes/RedInactiveCube")]
+arr_active = [NodePath("../../../../Cubes/RedActiveCube"), NodePath("../../../../Cubes/RedActiveCube")]
+arr_inactive = [NodePath("../../../../Cubes/RedInactiveCube"), NodePath("../../../../Cubes/RedInactiveCube")]
 
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemCylinders/CraftSlot3"]
+[node name="Background" type="Panel" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot3"]
 layout_mode = 2
 offset_left = 4.0
-offset_top = 6.0
+offset_top = 3.0
 offset_right = 123.0
-offset_bottom = 33.0
+offset_bottom = 30.0
 scale = Vector2(0.62, 0.62)
 theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
 
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot3/Background"]
+[node name="Equal" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot3/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot3/Background/Equal"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot3/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 9.67742
@@ -2334,7 +2346,7 @@ offset_right = 90.1935
 offset_bottom = 12.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot3/Background/Equal"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot3/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 15.6774
@@ -2342,12 +2354,12 @@ offset_right = 90.1935
 offset_bottom = 18.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot3/Background"]
+[node name="Plus" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot3/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot3/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot3/Background/Plus"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -2356,7 +2368,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot3/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot3/Background/Plus"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -2366,57 +2378,57 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot3/Background"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot3/Background"]
 layout_mode = 2
 offset_left = -8.06452
 offset_top = -4.83871
 offset_right = 125.935
 offset_bottom = 37.1613
 
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot3/Background/HBoxContainer"]
+[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot3/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_x5sxw")
 stretch_mode = 4
 
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot3/Background/HBoxContainer"]
+[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot3/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_meti5")
 stretch_mode = 4
 
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot3/Background/HBoxContainer"]
+[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot3/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_nmynh")
 stretch_mode = 4
 
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot3"]
+[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot3"]
 stream = ExtResource("13_hv1ua")
 volume_db = -12.829
 
-[node name="CraftSlot4" type="Control" parent="CanvasLayer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
+[node name="CraftSlot4" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
 custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/RedCylinder")
+craft_item = NodePath("../../../../Cylindres/RedCylinder")
 arr = Array[String](["Red Toy", "Green Toy"])
-arr_active = [NodePath("../../../Cubes/RedActiveCube"), NodePath("../../../Cubes/GreenActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/RedInactiveCube"), NodePath("../../../Cubes/GreenInactiveCube")]
+arr_active = [NodePath("../../../../Cubes/RedActiveCube"), NodePath("../../../../Cubes/GreenActiveCube")]
+arr_inactive = [NodePath("../../../../Cubes/RedInactiveCube"), NodePath("../../../../Cubes/GreenInactiveCube")]
 
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemCylinders/CraftSlot4"]
+[node name="Background" type="Panel" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot4"]
 layout_mode = 2
 offset_left = 4.0
-offset_top = 6.0
+offset_top = 3.0
 offset_right = 123.0
-offset_bottom = 33.0
+offset_bottom = 30.0
 scale = Vector2(0.62, 0.62)
 theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
 
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot4/Background"]
+[node name="Equal" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot4/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot4/Background/Equal"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot4/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 9.67742
@@ -2424,7 +2436,7 @@ offset_right = 90.1935
 offset_bottom = 12.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot4/Background/Equal"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot4/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 15.6774
@@ -2432,12 +2444,12 @@ offset_right = 90.1935
 offset_bottom = 18.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot4/Background"]
+[node name="Plus" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot4/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot4/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot4/Background/Plus"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -2446,7 +2458,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot4/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot4/Background/Plus"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -2456,57 +2468,57 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot4/Background"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot4/Background"]
 layout_mode = 2
 offset_left = -8.06452
 offset_top = -4.83871
 offset_right = 125.935
 offset_bottom = 37.1613
 
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot4/Background/HBoxContainer"]
+[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot4/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_b8i6p")
 stretch_mode = 4
 
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot4/Background/HBoxContainer"]
+[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot4/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_3lwf7")
 stretch_mode = 4
 
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot4/Background/HBoxContainer"]
+[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot4/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_vha2l")
 stretch_mode = 4
 
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot4"]
+[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot4"]
 stream = ExtResource("13_hv1ua")
 volume_db = -12.829
 
-[node name="CraftSlot5" type="Control" parent="CanvasLayer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
+[node name="CraftSlot5" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
 custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/BlueCylinder")
+craft_item = NodePath("../../../../Cylindres/BlueCylinder")
 arr = Array[String](["Green Toy", "Green Toy"])
-arr_active = [NodePath("../../../Cubes/GreenActiveCube"), NodePath("../../../Cubes/GreenActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/GreenInactiveCube"), NodePath("../../../Cubes/GreenInactiveCube")]
+arr_active = [NodePath("../../../../Cubes/GreenActiveCube"), NodePath("../../../../Cubes/GreenActiveCube")]
+arr_inactive = [NodePath("../../../../Cubes/GreenInactiveCube"), NodePath("../../../../Cubes/GreenInactiveCube")]
 
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemCylinders/CraftSlot5"]
+[node name="Background" type="Panel" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot5"]
 layout_mode = 2
 offset_left = 4.0
-offset_top = 6.0
+offset_top = 3.0
 offset_right = 123.0
-offset_bottom = 33.0
+offset_bottom = 30.0
 scale = Vector2(0.62, 0.62)
 theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
 
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot5/Background"]
+[node name="Equal" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot5/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot5/Background/Equal"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot5/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 9.67742
@@ -2514,7 +2526,7 @@ offset_right = 90.1935
 offset_bottom = 12.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot5/Background/Equal"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot5/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 15.6774
@@ -2522,12 +2534,12 @@ offset_right = 90.1935
 offset_bottom = 18.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot5/Background"]
+[node name="Plus" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot5/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot5/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot5/Background/Plus"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -2536,7 +2548,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot5/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot5/Background/Plus"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -2546,57 +2558,57 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot5/Background"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot5/Background"]
 layout_mode = 2
 offset_left = -8.06452
 offset_top = -4.83871
 offset_right = 125.935
 offset_bottom = 37.1613
 
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot5/Background/HBoxContainer"]
+[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot5/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_r321b")
 stretch_mode = 4
 
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot5/Background/HBoxContainer"]
+[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot5/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_r321b")
 stretch_mode = 4
 
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot5/Background/HBoxContainer"]
+[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot5/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_1x7dr")
 stretch_mode = 4
 
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot5"]
+[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot5"]
 stream = ExtResource("13_hv1ua")
 volume_db = -12.829
 
-[node name="CraftSlot6" type="Control" parent="CanvasLayer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
+[node name="CraftSlot6" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
 custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/GreenCylinder")
+craft_item = NodePath("../../../../Cylindres/GreenCylinder")
 arr = Array[String](["Green Toy", "Blue Toy"])
-arr_active = [NodePath("../../../Cubes/GreenActiveCube"), NodePath("../../../Cubes/BlueActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/GreenInactiveCube"), NodePath("../../../Cubes/BlueInactiveCube")]
+arr_active = [NodePath("../../../../Cubes/GreenActiveCube"), NodePath("../../../../Cubes/BlueActiveCube")]
+arr_inactive = [NodePath("../../../../Cubes/GreenInactiveCube"), NodePath("../../../../Cubes/BlueInactiveCube")]
 
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemCylinders/CraftSlot6"]
+[node name="Background" type="Panel" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot6"]
 layout_mode = 2
 offset_left = 4.0
-offset_top = 6.0
+offset_top = 3.0
 offset_right = 123.0
-offset_bottom = 33.0
+offset_bottom = 30.0
 scale = Vector2(0.62, 0.62)
 theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
 
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot6/Background"]
+[node name="Equal" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot6/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot6/Background/Equal"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot6/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 9.67742
@@ -2604,7 +2616,7 @@ offset_right = 90.1935
 offset_bottom = 12.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot6/Background/Equal"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot6/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 15.6774
@@ -2612,12 +2624,12 @@ offset_right = 90.1935
 offset_bottom = 18.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot6/Background"]
+[node name="Plus" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot6/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot6/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot6/Background/Plus"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -2626,7 +2638,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot6/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot6/Background/Plus"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -2636,57 +2648,57 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot6/Background"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot6/Background"]
 layout_mode = 2
 offset_left = -8.06452
 offset_top = -4.83871
 offset_right = 125.935
 offset_bottom = 37.1613
 
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot6/Background/HBoxContainer"]
+[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot6/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_r321b")
 stretch_mode = 4
 
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot6/Background/HBoxContainer"]
+[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot6/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_s0y6o")
 stretch_mode = 4
 
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot6/Background/HBoxContainer"]
+[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot6/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_ltirf")
 stretch_mode = 4
 
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot6"]
+[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot6"]
 stream = ExtResource("13_hv1ua")
 volume_db = -12.829
 
-[node name="CraftSlot7" type="Control" parent="CanvasLayer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
+[node name="CraftSlot7" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
 custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/PurpleCylinder")
+craft_item = NodePath("../../../../Cylindres/PurpleCylinder")
 arr = Array[String](["Blue Toy", "Blue Toy"])
-arr_active = [NodePath("../../../Cubes/BlueActiveCube"), NodePath("../../../Cubes/BlueActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/BlueInactiveCube"), NodePath("../../../Cubes/BlueInactiveCube")]
+arr_active = [NodePath("../../../../Cubes/BlueActiveCube"), NodePath("../../../../Cubes/BlueActiveCube")]
+arr_inactive = [NodePath("../../../../Cubes/BlueInactiveCube"), NodePath("../../../../Cubes/BlueInactiveCube")]
 
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemCylinders/CraftSlot7"]
+[node name="Background" type="Panel" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot7"]
 layout_mode = 2
 offset_left = 4.0
-offset_top = 6.0
+offset_top = 3.0
 offset_right = 123.0
-offset_bottom = 33.0
+offset_bottom = 30.0
 scale = Vector2(0.62, 0.62)
 theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
 
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot7/Background"]
+[node name="Equal" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot7/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot7/Background/Equal"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot7/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 9.67742
@@ -2694,7 +2706,7 @@ offset_right = 90.1935
 offset_bottom = 12.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot7/Background/Equal"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot7/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 15.6774
@@ -2702,12 +2714,12 @@ offset_right = 90.1935
 offset_bottom = 18.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot7/Background"]
+[node name="Plus" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot7/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot7/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot7/Background/Plus"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -2716,7 +2728,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot7/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot7/Background/Plus"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -2726,57 +2738,57 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot7/Background"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot7/Background"]
 layout_mode = 2
 offset_left = -8.06452
 offset_top = -4.83871
 offset_right = 125.935
 offset_bottom = 37.1613
 
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot7/Background/HBoxContainer"]
+[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot7/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_ku1o8")
 stretch_mode = 4
 
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot7/Background/HBoxContainer"]
+[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot7/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_s0y6o")
 stretch_mode = 4
 
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot7/Background/HBoxContainer"]
+[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot7/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_vxp2n")
 stretch_mode = 4
 
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot7"]
+[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot7"]
 stream = ExtResource("13_hv1ua")
 volume_db = -12.829
 
-[node name="CraftSlot8" type="Control" parent="CanvasLayer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
+[node name="CraftSlot8" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
 custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/BlueCylinder")
+craft_item = NodePath("../../../../Cylindres/BlueCylinder")
 arr = Array[String](["Blue Toy", "Purple Toy"])
-arr_active = [NodePath("../../../Cubes/BlueActiveCube"), NodePath("../../../Cubes/PurpleActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/BlueInactiveCube"), NodePath("../../../Cubes/PurpleInactiveCube")]
+arr_active = [NodePath("../../../../Cubes/BlueActiveCube"), NodePath("../../../../Cubes/PurpleActiveCube")]
+arr_inactive = [NodePath("../../../../Cubes/BlueInactiveCube"), NodePath("../../../../Cubes/PurpleInactiveCube")]
 
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemCylinders/CraftSlot8"]
+[node name="Background" type="Panel" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot8"]
 layout_mode = 2
 offset_left = 4.0
-offset_top = 6.0
+offset_top = 3.0
 offset_right = 123.0
-offset_bottom = 33.0
+offset_bottom = 30.0
 scale = Vector2(0.62, 0.62)
 theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
 
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot8/Background"]
+[node name="Equal" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot8/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot8/Background/Equal"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot8/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 9.67742
@@ -2784,7 +2796,7 @@ offset_right = 90.1935
 offset_bottom = 12.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot8/Background/Equal"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot8/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 15.6774
@@ -2792,12 +2804,12 @@ offset_right = 90.1935
 offset_bottom = 18.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot8/Background"]
+[node name="Plus" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot8/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot8/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot8/Background/Plus"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -2806,7 +2818,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot8/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot8/Background/Plus"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -2816,57 +2828,57 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot8/Background"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot8/Background"]
 layout_mode = 2
 offset_left = -8.06452
 offset_top = -4.83871
 offset_right = 125.935
 offset_bottom = 37.1613
 
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot8/Background/HBoxContainer"]
+[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot8/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_ku1o8")
 stretch_mode = 4
 
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot8/Background/HBoxContainer"]
+[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot8/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_rh52r")
 stretch_mode = 4
 
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot8/Background/HBoxContainer"]
+[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot8/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_4reuu")
 stretch_mode = 4
 
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot8"]
+[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot8"]
 stream = ExtResource("13_hv1ua")
 volume_db = -12.829
 
-[node name="CraftSlot9" type="Control" parent="CanvasLayer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
+[node name="CraftSlot9" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
 custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/PurpleCylinder")
+craft_item = NodePath("../../../../Cylindres/PurpleCylinder")
 arr = Array[String](["Purple Toy", "Purple Toy"])
-arr_active = [NodePath("../../../Cubes/PurpleActiveCube"), NodePath("../../../Cubes/PurpleActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/PurpleInactiveCube"), NodePath("../../../Cubes/PurpleInactiveCube")]
+arr_active = [NodePath("../../../../Cubes/PurpleActiveCube"), NodePath("../../../../Cubes/PurpleActiveCube")]
+arr_inactive = [NodePath("../../../../Cubes/PurpleInactiveCube"), NodePath("../../../../Cubes/PurpleInactiveCube")]
 
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemCylinders/CraftSlot9"]
+[node name="Background" type="Panel" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot9"]
 layout_mode = 2
 offset_left = 4.0
-offset_top = 6.0
+offset_top = 3.0
 offset_right = 123.0
-offset_bottom = 33.0
+offset_bottom = 30.0
 scale = Vector2(0.62, 0.62)
 theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
 
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot9/Background"]
+[node name="Equal" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot9/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot9/Background/Equal"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot9/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 9.67742
@@ -2874,7 +2886,7 @@ offset_right = 90.1935
 offset_bottom = 12.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot9/Background/Equal"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot9/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 15.6774
@@ -2882,12 +2894,12 @@ offset_right = 90.1935
 offset_bottom = 18.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemCylinders/CraftSlot9/Background"]
+[node name="Plus" type="Control" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot9/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot9/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot9/Background/Plus"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -2896,7 +2908,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot9/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot9/Background/Plus"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -2906,64 +2918,70 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot9/Background"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot9/Background"]
 layout_mode = 2
 offset_left = -8.06452
 offset_top = -4.83871
 offset_right = 125.935
 offset_bottom = 37.1613
 
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot9/Background/HBoxContainer"]
+[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot9/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_m7bbt")
 stretch_mode = 4
 
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot9/Background/HBoxContainer"]
+[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot9/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_rh52r")
 stretch_mode = 4
 
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemCylinders/CraftSlot9/Background/HBoxContainer"]
+[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot9/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_5tgal")
 stretch_mode = 4
 
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemCylinders/CraftSlot9"]
+[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot9"]
 stream = ExtResource("13_hv1ua")
 volume_db = -12.829
 
-[node name="CraftSystemPyramides" type="VBoxContainer" parent="CanvasLayer"]
-custom_minimum_size = Vector2(0, 61.6)
+[node name="ScrollContainer3" type="ScrollContainer" parent="CanvasLayer"]
+visible = false
 offset_left = 14.0
-offset_right = 116.0
-offset_bottom = 194.0
+offset_right = 124.0
+offset_bottom = 246.0
+vertical_scroll_mode = 3
+
+[node name="CraftSystemPyramides" type="VBoxContainer" parent="CanvasLayer/ScrollContainer3"]
+custom_minimum_size = Vector2(0, 61.6)
+layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="CraftSlot1" type="Control" parent="CanvasLayer/CraftSystemPyramides" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
+[node name="CraftSlot1" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
 custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/RedCylinder")
-arr = Array[String](["Brown Toy", "Brown Toy"])
-arr_active = [NodePath("../../../Cubes/BrownActiveCube"), NodePath("../../../Cubes/BrownActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/BrownInactiveCube"), NodePath("../../../Cubes/BrownInactiveCube")]
+craft_item = NodePath("../../../../Pyramids/RedActivePyramid")
+arr = Array[String](["Brown Toy", "Brown Toy", "Brown Toy"])
+arr_active = [NodePath("../../../../Cubes/BrownActiveCube"), NodePath("../../../../Cubes/BrownActiveCube"), NodePath("../../../../Cubes/BrownActiveCube")]
+arr_inactive = [NodePath("../../../../Cubes/BrownInactiveCube"), NodePath("../../../../Cubes/BrownInactiveCube"), NodePath("../../../../Cubes/BrownInactiveCube")]
 
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemPyramides/CraftSlot1"]
+[node name="Background" type="Panel" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1"]
 layout_mode = 2
 offset_left = 4.0
 offset_top = 6.0
-offset_right = 123.0
+offset_right = 165.0
 offset_bottom = 33.0
 scale = Vector2(0.62, 0.62)
 theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
 
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot1/Background"]
+[node name="Equal" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background"]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 45.1613
+offset_right = 85.1613
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot1/Background/Equal"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 9.67742
@@ -2971,7 +2989,7 @@ offset_right = 90.1935
 offset_bottom = 12.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot1/Background/Equal"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 15.6774
@@ -2979,12 +2997,12 @@ offset_right = 90.1935
 offset_bottom = 18.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot1/Background"]
+[node name="Plus" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot1/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background/Plus"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -2993,7 +3011,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot1/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background/Plus"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -3003,57 +3021,88 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot1/Background"]
+[node name="Plus2" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background"]
+anchors_preset = 0
+offset_left = 46.7742
+offset_right = 86.7742
+offset_bottom = 40.0
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background/Plus2"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 13.0
+offset_right = 46.0
+offset_bottom = 16.0
+scale = Vector2(0.840337, 0.653639)
+texture = SubResource("GradientTexture1D_dw4fd")
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background/Plus2"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 21.0
+offset_right = 52.0
+offset_bottom = 24.0
+rotation = -1.57079
+scale = Vector2(0.840337, 0.653639)
+texture = SubResource("GradientTexture1D_dw4fd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background"]
 layout_mode = 2
 offset_left = -8.06452
 offset_top = -4.83871
 offset_right = 125.935
 offset_bottom = 37.1613
 
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot1/Background/HBoxContainer"]
+[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_dw4fd")
 stretch_mode = 4
 
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot1/Background/HBoxContainer"]
+[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_dw4fd")
 stretch_mode = 4
 
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot1/Background/HBoxContainer"]
+[node name="PreviewTexture4" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("ViewportTexture_dw4fd")
+stretch_mode = 4
+
+[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_642p6")
 stretch_mode = 4
 
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot1"]
+[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1"]
 stream = ExtResource("13_hv1ua")
 volume_db = -12.829
 
-[node name="CraftSlot2" type="Control" parent="CanvasLayer/CraftSystemPyramides" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
+[node name="CraftSlot2" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
 custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/BrownCylinder")
-arr = Array[String](["Brown Toy", "Red Toy"])
-arr_active = [NodePath("../../../Cubes/BrownActiveCube"), NodePath("../../../Cubes/RedActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/BrownInactiveCube"), NodePath("../../../Cubes/RedInactiveCube")]
+craft_item = NodePath("../../../../Pyramids/GreenActivePyramid")
+arr = Array[String](["Red Toy", "Red Toy", "Red Toy"])
+arr_active = [NodePath("../../../../Cubes/RedActiveCube"), NodePath("../../../../Cubes/RedActiveCube"), NodePath("../../../../Cubes/RedActiveCube")]
+arr_inactive = [NodePath("../../../../Cubes/RedInactiveCube"), NodePath("../../../../Cubes/RedInactiveCube"), NodePath("../../../../Cubes/RedInactiveCube")]
 
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemPyramides/CraftSlot2"]
+[node name="Background" type="Panel" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2"]
 layout_mode = 2
 offset_left = 4.0
 offset_top = 6.0
-offset_right = 123.0
+offset_right = 165.0
 offset_bottom = 33.0
 scale = Vector2(0.62, 0.62)
 theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
 
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot2/Background"]
+[node name="Equal" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background"]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 45.1613
+offset_right = 85.1613
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot2/Background/Equal"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 9.67742
@@ -3061,7 +3110,7 @@ offset_right = 90.1935
 offset_bottom = 12.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot2/Background/Equal"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 15.6774
@@ -3069,12 +3118,12 @@ offset_right = 90.1935
 offset_bottom = 18.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot2/Background"]
+[node name="Plus" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot2/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background/Plus"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -3083,7 +3132,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot2/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background/Plus"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -3093,78 +3142,13 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot2/Background"]
-layout_mode = 2
-offset_left = -8.06452
-offset_top = -4.83871
-offset_right = 125.935
-offset_bottom = 37.1613
-
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot2/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_mb0cg")
-stretch_mode = 4
-
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot2/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_meti5")
-stretch_mode = 4
-
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot2/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_rx7ou")
-stretch_mode = 4
-
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot2"]
-stream = ExtResource("13_hv1ua")
-volume_db = -12.829
-
-[node name="CraftSlot3" type="Control" parent="CanvasLayer/CraftSystemPyramides" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
-custom_minimum_size = Vector2(0, 18.9)
-layout_mode = 2
-size_flags_stretch_ratio = 0.05
-script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/GreenCylinder")
-arr = Array[String](["Red Toy", "Red Toy"])
-arr_active = [NodePath("../../../Cubes/RedActiveCube"), NodePath("../../../Cubes/RedActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/RedInactiveCube"), NodePath("../../../Cubes/RedInactiveCube")]
-
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemPyramides/CraftSlot3"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = 6.0
-offset_right = 123.0
-offset_bottom = 33.0
-scale = Vector2(0.62, 0.62)
-theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
-
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot3/Background"]
+[node name="Plus2" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background"]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 46.7742
+offset_right = 86.7742
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot3/Background/Equal"]
-layout_mode = 0
-offset_left = 74.1935
-offset_top = 9.67742
-offset_right = 90.1935
-offset_bottom = 12.6774
-texture = SubResource("GradientTexture1D_dw4fd")
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot3/Background/Equal"]
-layout_mode = 0
-offset_left = 74.1935
-offset_top = 15.6774
-offset_right = 90.1935
-offset_bottom = 18.6774
-texture = SubResource("GradientTexture1D_dw4fd")
-
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot3/Background"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot3/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background/Plus2"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -3173,7 +3157,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot3/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background/Plus2"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -3183,57 +3167,63 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot3/Background"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background"]
 layout_mode = 2
 offset_left = -8.06452
 offset_top = -4.83871
 offset_right = 125.935
 offset_bottom = 37.1613
 
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot3/Background/HBoxContainer"]
+[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_x5sxw")
+texture = SubResource("ViewportTexture_dw4fd")
 stretch_mode = 4
 
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot3/Background/HBoxContainer"]
+[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_meti5")
+texture = SubResource("ViewportTexture_dw4fd")
 stretch_mode = 4
 
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot3/Background/HBoxContainer"]
+[node name="PreviewTexture4" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_nmynh")
+texture = SubResource("ViewportTexture_dw4fd")
 stretch_mode = 4
 
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot3"]
+[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("ViewportTexture_642p6")
+stretch_mode = 4
+
+[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2"]
 stream = ExtResource("13_hv1ua")
 volume_db = -12.829
 
-[node name="CraftSlot4" type="Control" parent="CanvasLayer/CraftSystemPyramides" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
+[node name="CraftSlot3" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
 custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/RedCylinder")
-arr = Array[String](["Red Toy", "Green Toy"])
-arr_active = [NodePath("../../../Cubes/RedActiveCube"), NodePath("../../../Cubes/GreenActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/RedInactiveCube"), NodePath("../../../Cubes/GreenInactiveCube")]
+craft_item = NodePath("../../../../Pyramids/BlueActivePyramid")
+arr = Array[String](["Green Toy", "Green Toy", "Green Toy"])
+arr_active = [NodePath("../../../../Cubes/GreenActiveCube"), NodePath("../../../../Cubes/GreenActiveCube"), NodePath("../../../../Cubes/GreenActiveCube")]
+arr_inactive = [NodePath("../../../../Cubes/GreenInactiveCube"), NodePath("../../../../Cubes/GreenInactiveCube"), NodePath("../../../../Cubes/GreenInactiveCube")]
 
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemPyramides/CraftSlot4"]
+[node name="Background" type="Panel" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3"]
 layout_mode = 2
 offset_left = 4.0
 offset_top = 6.0
-offset_right = 123.0
+offset_right = 165.0
 offset_bottom = 33.0
 scale = Vector2(0.62, 0.62)
 theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
 
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot4/Background"]
+[node name="Equal" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background"]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 45.1613
+offset_right = 85.1613
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot4/Background/Equal"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 9.67742
@@ -3241,7 +3231,7 @@ offset_right = 90.1935
 offset_bottom = 12.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot4/Background/Equal"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 15.6774
@@ -3249,12 +3239,12 @@ offset_right = 90.1935
 offset_bottom = 18.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot4/Background"]
+[node name="Plus" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot4/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background/Plus"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -3263,7 +3253,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot4/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background/Plus"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -3273,78 +3263,13 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot4/Background"]
-layout_mode = 2
-offset_left = -8.06452
-offset_top = -4.83871
-offset_right = 125.935
-offset_bottom = 37.1613
-
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot4/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_b8i6p")
-stretch_mode = 4
-
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot4/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_3lwf7")
-stretch_mode = 4
-
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot4/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_vha2l")
-stretch_mode = 4
-
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot4"]
-stream = ExtResource("13_hv1ua")
-volume_db = -12.829
-
-[node name="CraftSlot5" type="Control" parent="CanvasLayer/CraftSystemPyramides" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
-custom_minimum_size = Vector2(0, 18.9)
-layout_mode = 2
-size_flags_stretch_ratio = 0.05
-script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/BlueCylinder")
-arr = Array[String](["Green Toy", "Green Toy"])
-arr_active = [NodePath("../../../Cubes/GreenActiveCube"), NodePath("../../../Cubes/GreenActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/GreenInactiveCube"), NodePath("../../../Cubes/GreenInactiveCube")]
-
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemPyramides/CraftSlot5"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = 6.0
-offset_right = 123.0
-offset_bottom = 33.0
-scale = Vector2(0.62, 0.62)
-theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
-
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot5/Background"]
+[node name="Plus2" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background"]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 46.7742
+offset_right = 86.7742
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot5/Background/Equal"]
-layout_mode = 0
-offset_left = 74.1935
-offset_top = 9.67742
-offset_right = 90.1935
-offset_bottom = 12.6774
-texture = SubResource("GradientTexture1D_dw4fd")
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot5/Background/Equal"]
-layout_mode = 0
-offset_left = 74.1935
-offset_top = 15.6774
-offset_right = 90.1935
-offset_bottom = 18.6774
-texture = SubResource("GradientTexture1D_dw4fd")
-
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot5/Background"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot5/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background/Plus2"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -3353,7 +3278,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot5/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background/Plus2"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -3363,57 +3288,63 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot5/Background"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background"]
 layout_mode = 2
 offset_left = -8.06452
 offset_top = -4.83871
 offset_right = 125.935
 offset_bottom = 37.1613
 
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot5/Background/HBoxContainer"]
+[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_r321b")
+texture = SubResource("ViewportTexture_dw4fd")
 stretch_mode = 4
 
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot5/Background/HBoxContainer"]
+[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_r321b")
+texture = SubResource("ViewportTexture_dw4fd")
 stretch_mode = 4
 
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot5/Background/HBoxContainer"]
+[node name="PreviewTexture4" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_1x7dr")
+texture = SubResource("ViewportTexture_dw4fd")
 stretch_mode = 4
 
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot5"]
+[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("ViewportTexture_642p6")
+stretch_mode = 4
+
+[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3"]
 stream = ExtResource("13_hv1ua")
 volume_db = -12.829
 
-[node name="CraftSlot6" type="Control" parent="CanvasLayer/CraftSystemPyramides" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
+[node name="CraftSlot4" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
 custom_minimum_size = Vector2(0, 18.9)
 layout_mode = 2
 size_flags_stretch_ratio = 0.05
 script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/GreenCylinder")
-arr = Array[String](["Green Toy", "Blue Toy"])
-arr_active = [NodePath("../../../Cubes/GreenActiveCube"), NodePath("../../../Cubes/BlueActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/GreenInactiveCube"), NodePath("../../../Cubes/BlueInactiveCube")]
+craft_item = NodePath("../../../../Pyramids/PurpleActivePyramid")
+arr = Array[String](["Blue Toy", "Blue Toy", "Blue Toy"])
+arr_active = [NodePath("../../../../Cubes/BlueActiveCube"), NodePath("../../../../Cubes/BlueActiveCube"), NodePath("../../../../Cubes/BlueActiveCube")]
+arr_inactive = [NodePath("../../../../Cubes/BlueInactiveCube"), NodePath("../../../../Cubes/BlueInactiveCube"), NodePath("../../../../Cubes/BlueInactiveCube")]
 
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemPyramides/CraftSlot6"]
+[node name="Background" type="Panel" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4"]
 layout_mode = 2
 offset_left = 4.0
 offset_top = 6.0
-offset_right = 123.0
+offset_right = 165.0
 offset_bottom = 33.0
 scale = Vector2(0.62, 0.62)
 theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
 
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot6/Background"]
+[node name="Equal" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background"]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 45.1613
+offset_right = 85.1613
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot6/Background/Equal"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 9.67742
@@ -3421,7 +3352,7 @@ offset_right = 90.1935
 offset_bottom = 12.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot6/Background/Equal"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/Equal"]
 layout_mode = 0
 offset_left = 74.1935
 offset_top = 15.6774
@@ -3429,12 +3360,12 @@ offset_right = 90.1935
 offset_bottom = 18.6774
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot6/Background"]
+[node name="Plus" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot6/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/Plus"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -3443,7 +3374,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot6/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/Plus"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -3453,78 +3384,13 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot6/Background"]
-layout_mode = 2
-offset_left = -8.06452
-offset_top = -4.83871
-offset_right = 125.935
-offset_bottom = 37.1613
-
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot6/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_r321b")
-stretch_mode = 4
-
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot6/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_s0y6o")
-stretch_mode = 4
-
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot6/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_ltirf")
-stretch_mode = 4
-
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot6"]
-stream = ExtResource("13_hv1ua")
-volume_db = -12.829
-
-[node name="CraftSlot7" type="Control" parent="CanvasLayer/CraftSystemPyramides" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
-custom_minimum_size = Vector2(0, 18.9)
-layout_mode = 2
-size_flags_stretch_ratio = 0.05
-script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/PurpleCylinder")
-arr = Array[String](["Blue Toy", "Blue Toy"])
-arr_active = [NodePath("../../../Cubes/BlueActiveCube"), NodePath("../../../Cubes/BlueActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/BlueInactiveCube"), NodePath("../../../Cubes/BlueInactiveCube")]
-
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemPyramides/CraftSlot7"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = 6.0
-offset_right = 123.0
-offset_bottom = 33.0
-scale = Vector2(0.62, 0.62)
-theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
-
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot7/Background"]
+[node name="Plus2" type="Control" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background"]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 46.7742
+offset_right = 86.7742
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot7/Background/Equal"]
-layout_mode = 0
-offset_left = 74.1935
-offset_top = 9.67742
-offset_right = 90.1935
-offset_bottom = 12.6774
-texture = SubResource("GradientTexture1D_dw4fd")
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot7/Background/Equal"]
-layout_mode = 0
-offset_left = 74.1935
-offset_top = 15.6774
-offset_right = 90.1935
-offset_bottom = 18.6774
-texture = SubResource("GradientTexture1D_dw4fd")
-
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot7/Background"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot7/Background/Plus"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/Plus2"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 13.0
@@ -3533,7 +3399,7 @@ offset_bottom = 16.0
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot7/Background/Plus"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/Plus2"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 21.0
@@ -3543,209 +3409,34 @@ rotation = -1.57079
 scale = Vector2(0.840337, 0.653639)
 texture = SubResource("GradientTexture1D_dw4fd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot7/Background"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background"]
 layout_mode = 2
 offset_left = -8.06452
 offset_top = -4.83871
 offset_right = 125.935
 offset_bottom = 37.1613
 
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot7/Background/HBoxContainer"]
+[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_ku1o8")
+texture = SubResource("ViewportTexture_dw4fd")
 stretch_mode = 4
 
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot7/Background/HBoxContainer"]
+[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_s0y6o")
+texture = SubResource("ViewportTexture_dw4fd")
 stretch_mode = 4
 
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot7/Background/HBoxContainer"]
+[node name="PreviewTexture4" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_vxp2n")
+texture = SubResource("ViewportTexture_dw4fd")
 stretch_mode = 4
 
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot7"]
-stream = ExtResource("13_hv1ua")
-volume_db = -12.829
-
-[node name="CraftSlot8" type="Control" parent="CanvasLayer/CraftSystemPyramides" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
-custom_minimum_size = Vector2(0, 18.9)
+[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/HBoxContainer"]
 layout_mode = 2
-size_flags_stretch_ratio = 0.05
-script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/BlueCylinder")
-arr = Array[String](["Blue Toy", "Purple Toy"])
-arr_active = [NodePath("../../../Cubes/BlueActiveCube"), NodePath("../../../Cubes/PurpleActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/BlueInactiveCube"), NodePath("../../../Cubes/PurpleInactiveCube")]
-
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemPyramides/CraftSlot8"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = 6.0
-offset_right = 123.0
-offset_bottom = 33.0
-scale = Vector2(0.62, 0.62)
-theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
-
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot8/Background"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot8/Background/Equal"]
-layout_mode = 0
-offset_left = 74.1935
-offset_top = 9.67742
-offset_right = 90.1935
-offset_bottom = 12.6774
-texture = SubResource("GradientTexture1D_dw4fd")
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot8/Background/Equal"]
-layout_mode = 0
-offset_left = 74.1935
-offset_top = 15.6774
-offset_right = 90.1935
-offset_bottom = 18.6774
-texture = SubResource("GradientTexture1D_dw4fd")
-
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot8/Background"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot8/Background/Plus"]
-layout_mode = 0
-offset_left = 29.0
-offset_top = 13.0
-offset_right = 46.0
-offset_bottom = 16.0
-scale = Vector2(0.840337, 0.653639)
-texture = SubResource("GradientTexture1D_dw4fd")
-
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot8/Background/Plus"]
-layout_mode = 0
-offset_left = 35.0
-offset_top = 21.0
-offset_right = 52.0
-offset_bottom = 24.0
-rotation = -1.57079
-scale = Vector2(0.840337, 0.653639)
-texture = SubResource("GradientTexture1D_dw4fd")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot8/Background"]
-layout_mode = 2
-offset_left = -8.06452
-offset_top = -4.83871
-offset_right = 125.935
-offset_bottom = 37.1613
-
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot8/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_ku1o8")
+texture = SubResource("ViewportTexture_642p6")
 stretch_mode = 4
 
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot8/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_rh52r")
-stretch_mode = 4
-
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot8/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_4reuu")
-stretch_mode = 4
-
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot8"]
-stream = ExtResource("13_hv1ua")
-volume_db = -12.829
-
-[node name="CraftSlot9" type="Control" parent="CanvasLayer/CraftSystemPyramides" node_paths=PackedStringArray("craft_item", "arr_active", "arr_inactive")]
-custom_minimum_size = Vector2(0, 18.9)
-layout_mode = 2
-size_flags_stretch_ratio = 0.05
-script = ExtResource("25_dw4fd")
-craft_item = NodePath("../../../Cylindres/PurpleCylinder")
-arr = Array[String](["Purple Toy", "Purple Toy"])
-arr_active = [NodePath("../../../Cubes/PurpleActiveCube"), NodePath("../../../Cubes/PurpleActiveCube")]
-arr_inactive = [NodePath("../../../Cubes/PurpleInactiveCube"), NodePath("../../../Cubes/PurpleInactiveCube")]
-
-[node name="Background" type="Panel" parent="CanvasLayer/CraftSystemPyramides/CraftSlot9"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = 6.0
-offset_right = 123.0
-offset_bottom = 33.0
-scale = Vector2(0.62, 0.62)
-theme_override_styles/panel = SubResource("StyleBoxFlat_18fmr")
-
-[node name="Equal" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot9/Background"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot9/Background/Equal"]
-layout_mode = 0
-offset_left = 74.1935
-offset_top = 9.67742
-offset_right = 90.1935
-offset_bottom = 12.6774
-texture = SubResource("GradientTexture1D_dw4fd")
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot9/Background/Equal"]
-layout_mode = 0
-offset_left = 74.1935
-offset_top = 15.6774
-offset_right = 90.1935
-offset_bottom = 18.6774
-texture = SubResource("GradientTexture1D_dw4fd")
-
-[node name="Plus" type="Control" parent="CanvasLayer/CraftSystemPyramides/CraftSlot9/Background"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot9/Background/Plus"]
-layout_mode = 0
-offset_left = 29.0
-offset_top = 13.0
-offset_right = 46.0
-offset_bottom = 16.0
-scale = Vector2(0.840337, 0.653639)
-texture = SubResource("GradientTexture1D_dw4fd")
-
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot9/Background/Plus"]
-layout_mode = 0
-offset_left = 35.0
-offset_top = 21.0
-offset_right = 52.0
-offset_bottom = 24.0
-rotation = -1.57079
-scale = Vector2(0.840337, 0.653639)
-texture = SubResource("GradientTexture1D_dw4fd")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot9/Background"]
-layout_mode = 2
-offset_left = -8.06452
-offset_top = -4.83871
-offset_right = 125.935
-offset_bottom = 37.1613
-
-[node name="PreviewTexture" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot9/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_m7bbt")
-stretch_mode = 4
-
-[node name="PreviewTexture2" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot9/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_rh52r")
-stretch_mode = 4
-
-[node name="PreviewTexture3" type="TextureRect" parent="CanvasLayer/CraftSystemPyramides/CraftSlot9/Background/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_5tgal")
-stretch_mode = 4
-
-[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/CraftSystemPyramides/CraftSlot9"]
+[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4"]
 stream = ExtResource("13_hv1ua")
 volume_db = -12.829
 
@@ -3758,23 +3449,27 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_epnj5")
 
-[node name="CraftArea" type="Area3D" parent="." node_paths=PackedStringArray("craft_system")]
+[node name="CraftArea" type="Area3D" parent="." node_paths=PackedStringArray("craft_system", "craft_system2")]
 script = ExtResource("27_18fmr")
-craft_system = NodePath("../CanvasLayer/CraftSystemCylinders")
+craft_system = NodePath("../CanvasLayer/ScrollContainer/CraftSystemCylinders")
+craft_system2 = NodePath("../CanvasLayer/ScrollContainer3/CraftSystemPyramides")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CraftArea"]
 transform = Transform3D(0.229321, 0, 0, 0, 0.229321, 0, 0, 0, 0.229321, 0, 0, 0)
 shape = SubResource("BoxShape3D_642p6")
 
-[node name="Client" type="Node3D" parent="." node_paths=PackedStringArray("needs")]
+[node name="ClientMangaer" type="Node" parent="."]
+script = ExtResource("41_3lwf7")
+
+[node name="Client" type="Node3D" parent="ClientMangaer" node_paths=PackedStringArray("needs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0340544, 0, -0.405753)
 script = ExtResource("31_c7unf")
-needs = [NodePath("../Cubes/RedActiveCube")]
+needs = [NodePath("../../Cylindres/RedCylinder")]
 
-[node name="humanoid2" parent="Client" instance=ExtResource("31_vdqvo")]
+[node name="humanoid2" parent="ClientMangaer/Client" instance=ExtResource("31_vdqvo")]
 transform = Transform3D(0.0155728, 0, 0, 0, 0.0155728, 0, 0, 0, 0.0155728, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Client/humanoid2/Armature" index="0"]
+[node name="Skeleton3D" parent="ClientMangaer/Client/humanoid2/Armature" index="0"]
 bones/0/position = Vector3(0, -2.97937, 0)
 bones/0/rotation = Quaternion(-4.37047e-08, 0.494795, 9.41012e-09, 0.86901)
 bones/0/scale = Vector3(0.755516, 0.755516, 0.755516)
@@ -3798,45 +3493,177 @@ bones/17/rotation = Quaternion(-0.118204, 0.23495, 0.272608, 0.925479)
 bones/18/rotation = Quaternion(-0.0229381, 0.263614, 0.0835964, 0.960725)
 bones/19/rotation = Quaternion(0.489051, 0.22806, -0.134191, 0.83115)
 
-[node name="AnimationPlayer" parent="Client/humanoid2" index="1"]
+[node name="AnimationPlayer" parent="ClientMangaer/Client/humanoid2" index="1"]
 autoplay = "Talking"
 
-[node name="Cloud" type="Node3D" parent="Client"]
+[node name="Cloud" type="Node3D" parent="ClientMangaer/Client"]
 transform = Transform3D(0.00384564, -1.9673e-05, 0.000367755, -1.64158e-05, 0.00498183, 0.000556609, 0.000282817, 0.000556671, -0.00496829, 0.000737995, 0.113894, 0.0206295)
 
-[node name="Sprite3D4" type="Sprite3D" parent="Client/Cloud"]
+[node name="Sprite3D4" type="Sprite3D" parent="ClientMangaer/Client/Cloud"]
 transform = Transform3D(-2.98023e-07, -3.72529e-09, 5.64081, -6.51926e-08, 5.64081, 0, -5.64081, 6.75209e-09, -2.68221e-07, -0.0499115, 3.15766, 0.22807)
 texture = SubResource("GradientTexture2D_c7unf")
 
-[node name="Sprite3D2" type="Sprite3D" parent="Client/Cloud"]
+[node name="Sprite3D2" type="Sprite3D" parent="ClientMangaer/Client/Cloud"]
 transform = Transform3D(-7.15256e-07, -7.45058e-09, 13.2755, -6.61239e-08, 13.2755, -7.45058e-09, -13.2755, 6.89179e-08, -5.96046e-07, 0, 6.8666, -3.1618)
 texture = SubResource("GradientTexture2D_c7unf")
 
-[node name="Recepies" type="Node3D" parent="Client"]
+[node name="Recepies" type="Node3D" parent="ClientMangaer/Client"]
 
-[node name="Recepie" type="Sprite3D" parent="Client/Recepies"]
+[node name="Recepie" type="Sprite3D" parent="ClientMangaer/Client/Recepies"]
 transform = Transform3D(-6.014e-09, 0, 0.137584, 0, 0.137584, 0, -0.137584, 0, -6.014e-09, 0.0036746, 0.145605, 0.0408401)
 sorting_offset = 1.0
 texture = SubResource("ViewportTexture_207an")
 
-[node name="CustomerService" type="Area3D" parent="Client"]
+[node name="CustomerService" type="Area3D" parent="ClientMangaer/Client"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Client/CustomerService"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClientMangaer/Client/CustomerService"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114919, -0.000533953, -0.00986079)
 shape = SubResource("BoxShape3D_vdqvo")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Client"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ClientMangaer/Client"]
+libraries = {
+&"": SubResource("AnimationLibrary_51qfo")
+}
+
+[node name="Client2" type="Node3D" parent="ClientMangaer" node_paths=PackedStringArray("needs")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0340544, 0, -0.405753)
+script = ExtResource("31_c7unf")
+needs = [NodePath("../../Cylindres/BrownCylinder")]
+
+[node name="humanoid2" parent="ClientMangaer/Client2" instance=ExtResource("31_vdqvo")]
+transform = Transform3D(0.0155728, 0, 0, 0, 0.0155728, 0, 0, 0, 0.0155728, 0, 0, 0)
+
+[node name="Skeleton3D" parent="ClientMangaer/Client2/humanoid2/Armature" index="0"]
+bones/0/position = Vector3(0, -2.97937, 0)
+bones/0/rotation = Quaternion(-4.37047e-08, 0.494795, 9.41012e-09, 0.86901)
+bones/0/scale = Vector3(0.755516, 0.755516, 0.755516)
+bones/1/rotation = Quaternion(-9.68711e-09, -0.864235, 2.48817e-08, 0.503089)
+bones/2/rotation = Quaternion(-3.65203e-08, -0.26461, 1.6542e-08, 0.964355)
+bones/3/rotation = Quaternion(1.93387e-09, -0.26461, 1.94724e-08, 0.964355)
+bones/4/rotation = Quaternion(0.143209, -0.222508, -0.521917, 0.810916)
+bones/5/rotation = Quaternion(0.259331, -0.0525926, -0.216999, 0.939624)
+bones/6/rotation = Quaternion(0.264474, 0.00848262, -0.00500232, 0.964343)
+bones/7/rotation = Quaternion(0.264564, 0.00492821, 0.0179601, 0.964188)
+bones/8/rotation = Quaternion(-0.145121, -0.220065, 0.523623, 0.810142)
+bones/9/rotation = Quaternion(-0.274387, -0.0614071, 0.266692, 0.921855)
+bones/10/rotation = Quaternion(-0.264474, 0.00848262, 0.00500234, 0.964342)
+bones/11/rotation = Quaternion(-0.199775, -0.678299, 0.174376, 0.685269)
+bones/12/rotation = Quaternion(0.461082, -0.179513, 0.809801, -0.315281)
+bones/13/rotation = Quaternion(0.113868, 0.239558, -0.270083, 0.925582)
+bones/14/rotation = Quaternion(0.022682, 0.263629, -0.0815843, 0.9609)
+bones/15/rotation = Quaternion(0.48883, 0.229077, -0.132446, 0.83128)
+bones/16/rotation = Quaternion(0.458812, 0.181339, 0.810085, 0.316813)
+bones/17/rotation = Quaternion(-0.118204, 0.23495, 0.272608, 0.925479)
+bones/18/rotation = Quaternion(-0.0229381, 0.263614, 0.0835964, 0.960725)
+bones/19/rotation = Quaternion(0.489051, 0.22806, -0.134191, 0.83115)
+
+[node name="AnimationPlayer" parent="ClientMangaer/Client2/humanoid2" index="1"]
+autoplay = "Talking"
+
+[node name="Cloud" type="Node3D" parent="ClientMangaer/Client2"]
+transform = Transform3D(0.00384564, -1.9673e-05, 0.000367755, -1.64158e-05, 0.00498183, 0.000556609, 0.000282817, 0.000556671, -0.00496829, 0.000737995, 0.113894, 0.0206295)
+
+[node name="Sprite3D4" type="Sprite3D" parent="ClientMangaer/Client2/Cloud"]
+transform = Transform3D(-2.98023e-07, -3.72529e-09, 5.64081, -6.51926e-08, 5.64081, 0, -5.64081, 6.75209e-09, -2.68221e-07, -0.0499115, 3.15766, 0.22807)
+texture = SubResource("GradientTexture2D_c7unf")
+
+[node name="Sprite3D2" type="Sprite3D" parent="ClientMangaer/Client2/Cloud"]
+transform = Transform3D(-7.15256e-07, -7.45058e-09, 13.2755, -6.61239e-08, 13.2755, -7.45058e-09, -13.2755, 6.89179e-08, -5.96046e-07, 0, 6.8666, -3.1618)
+texture = SubResource("GradientTexture2D_c7unf")
+
+[node name="Recepies" type="Node3D" parent="ClientMangaer/Client2"]
+
+[node name="Recepie" type="Sprite3D" parent="ClientMangaer/Client2/Recepies"]
+transform = Transform3D(-6.014e-09, 0, 0.137584, 0, 0.137584, 0, -0.137584, 0, -6.014e-09, 0.0036746, 0.145605, 0.0408401)
+sorting_offset = 1.0
+texture = SubResource("ViewportTexture_207an")
+
+[node name="CustomerService" type="Area3D" parent="ClientMangaer/Client2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClientMangaer/Client2/CustomerService"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114919, -0.000533953, -0.00986079)
+shape = SubResource("BoxShape3D_vdqvo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ClientMangaer/Client2"]
+libraries = {
+&"": SubResource("AnimationLibrary_51qfo")
+}
+
+[node name="Client3" type="Node3D" parent="ClientMangaer" node_paths=PackedStringArray("needs")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0340544, 0, -0.405753)
+script = ExtResource("31_c7unf")
+needs = [NodePath("../../Pyramids/BrownActivePyramid")]
+
+[node name="humanoid2" parent="ClientMangaer/Client3" instance=ExtResource("31_vdqvo")]
+transform = Transform3D(0.0155728, 0, 0, 0, 0.0155728, 0, 0, 0, 0.0155728, 0, 0, 0)
+
+[node name="Skeleton3D" parent="ClientMangaer/Client3/humanoid2/Armature" index="0"]
+bones/0/position = Vector3(0, -2.97937, 0)
+bones/0/rotation = Quaternion(-4.37047e-08, 0.494795, 9.41012e-09, 0.86901)
+bones/0/scale = Vector3(0.755516, 0.755516, 0.755516)
+bones/1/rotation = Quaternion(-9.68711e-09, -0.864235, 2.48817e-08, 0.503089)
+bones/2/rotation = Quaternion(-3.65203e-08, -0.26461, 1.6542e-08, 0.964355)
+bones/3/rotation = Quaternion(1.93387e-09, -0.26461, 1.94724e-08, 0.964355)
+bones/4/rotation = Quaternion(0.143209, -0.222508, -0.521917, 0.810916)
+bones/5/rotation = Quaternion(0.259331, -0.0525926, -0.216999, 0.939624)
+bones/6/rotation = Quaternion(0.264474, 0.00848262, -0.00500232, 0.964343)
+bones/7/rotation = Quaternion(0.264564, 0.00492821, 0.0179601, 0.964188)
+bones/8/rotation = Quaternion(-0.145121, -0.220065, 0.523623, 0.810142)
+bones/9/rotation = Quaternion(-0.274387, -0.0614071, 0.266692, 0.921855)
+bones/10/rotation = Quaternion(-0.264474, 0.00848262, 0.00500234, 0.964342)
+bones/11/rotation = Quaternion(-0.199775, -0.678299, 0.174376, 0.685269)
+bones/12/rotation = Quaternion(0.461082, -0.179513, 0.809801, -0.315281)
+bones/13/rotation = Quaternion(0.113868, 0.239558, -0.270083, 0.925582)
+bones/14/rotation = Quaternion(0.022682, 0.263629, -0.0815843, 0.9609)
+bones/15/rotation = Quaternion(0.48883, 0.229077, -0.132446, 0.83128)
+bones/16/rotation = Quaternion(0.458812, 0.181339, 0.810085, 0.316813)
+bones/17/rotation = Quaternion(-0.118204, 0.23495, 0.272608, 0.925479)
+bones/18/rotation = Quaternion(-0.0229381, 0.263614, 0.0835964, 0.960725)
+bones/19/rotation = Quaternion(0.489051, 0.22806, -0.134191, 0.83115)
+
+[node name="AnimationPlayer" parent="ClientMangaer/Client3/humanoid2" index="1"]
+autoplay = "Talking"
+
+[node name="Cloud" type="Node3D" parent="ClientMangaer/Client3"]
+transform = Transform3D(0.00384564, -1.9673e-05, 0.000367755, -1.64158e-05, 0.00498183, 0.000556609, 0.000282817, 0.000556671, -0.00496829, 0.000737995, 0.113894, 0.0206295)
+
+[node name="Sprite3D4" type="Sprite3D" parent="ClientMangaer/Client3/Cloud"]
+transform = Transform3D(-2.98023e-07, -3.72529e-09, 5.64081, -6.51926e-08, 5.64081, 0, -5.64081, 6.75209e-09, -2.68221e-07, -0.0499115, 3.15766, 0.22807)
+texture = SubResource("GradientTexture2D_c7unf")
+
+[node name="Sprite3D2" type="Sprite3D" parent="ClientMangaer/Client3/Cloud"]
+transform = Transform3D(-7.15256e-07, -7.45058e-09, 13.2755, -6.61239e-08, 13.2755, -7.45058e-09, -13.2755, 6.89179e-08, -5.96046e-07, 0, 6.8666, -3.1618)
+texture = SubResource("GradientTexture2D_c7unf")
+
+[node name="Recepies" type="Node3D" parent="ClientMangaer/Client3"]
+
+[node name="Recepie" type="Sprite3D" parent="ClientMangaer/Client3/Recepies"]
+transform = Transform3D(-6.014e-09, 0, 0.137584, 0, 0.137584, 0, -0.137584, 0, -6.014e-09, 0.0036746, 0.145605, 0.0408401)
+sorting_offset = 1.0
+texture = SubResource("ViewportTexture_207an")
+
+[node name="CustomerService" type="Area3D" parent="ClientMangaer/Client3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClientMangaer/Client3/CustomerService"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114919, -0.000533953, -0.00986079)
+shape = SubResource("BoxShape3D_vdqvo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ClientMangaer/Client3"]
 libraries = {
 &"": SubResource("AnimationLibrary_51qfo")
 }
 
 [connection signal="body_entered" from="CraftArea" to="CraftArea" method="_on_body_entered"]
 [connection signal="body_exited" from="CraftArea" to="CraftArea" method="_on_body_exited"]
-[connection signal="body_entered" from="Client/CustomerService" to="Client" method="_on_customer_service_body_entered"]
+[connection signal="body_entered" from="ClientMangaer/Client/CustomerService" to="ClientMangaer/Client" method="_on_customer_service_body_entered"]
+[connection signal="body_entered" from="ClientMangaer/Client2/CustomerService" to="ClientMangaer/Client2" method="_on_customer_service_body_entered"]
+[connection signal="body_entered" from="ClientMangaer/Client3/CustomerService" to="ClientMangaer/Client3" method="_on_customer_service_body_entered"]
 
 [editable path="Floor"]
 [editable path="Walls"]
 [editable path="WallSupport"]
 [editable path="Bar"]
 [editable path="Fridge"]
-[editable path="Client/humanoid2"]
+[editable path="ClientMangaer/Client/humanoid2"]
+[editable path="ClientMangaer/Client2/humanoid2"]
+[editable path="ClientMangaer/Client3/humanoid2"]

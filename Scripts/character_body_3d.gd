@@ -75,12 +75,8 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 	
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(sign(input_dir.x), 0, sign(input_dir.y)))
 	if direction.length() > 1:
 		if abs(direction.x) > 0:
@@ -89,7 +85,7 @@ func _physics_process(delta: float) -> void:
 			direction = Vector3(0, 0, direction.z)
 	
 	if not $AnimationPlayer.is_playing():
-		if Input.is_action_just_pressed("ui_right"):
+		if Input.is_action_just_pressed("right"):
 			is_rot_left = false
 			old_rot = rotation_degrees.y
 			rotation_add = 0
@@ -98,7 +94,7 @@ func _physics_process(delta: float) -> void:
 			ray.visible = false
 			await get_tree().create_timer(0.2)
 			ray.visible = true
-		if Input.is_action_just_pressed("ui_left"):
+		if Input.is_action_just_pressed("left"):
 			is_rot_left = true
 			old_rot = rotation_degrees.y
 			rotation_add = 0

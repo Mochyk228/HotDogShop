@@ -8,7 +8,7 @@ signal craft_signal(is_craft : bool)
 @export var arr_inactive : Array[SubViewport]
 @onready var background: Panel = $Background
 @onready var recepie_container: HBoxContainer = $Background/HBoxContainer
-@onready var black: TextureRect = $"../../Black"
+@onready var black: TextureRect = get_node("/root/Root/CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/Black")
 
 var slot : Array[Node]
 var border : StyleBoxFlat
@@ -20,6 +20,8 @@ var is_craft_able : bool
 var is_mouse : bool
 
 func _ready() -> void:
+	# make loop that refresh all slots and insert the craft slot
+	
 	for i : TextureRect in recepie_container.get_children():
 		i = i.duplicate(true)
 	
@@ -32,6 +34,9 @@ func _ready() -> void:
 	craft_signal.connect(inventory_craft)
 	background.mouse_entered.connect(mouse_enter)
 	background.mouse_exited.connect(mouse_exited)
+	
+	slot[-1].texture = craft_item.get_texture()
+	clean_inventory()
 
 func mouse_enter():
 	is_mouse = true 
@@ -73,7 +78,8 @@ func inventory_craft(is_craft : bool):
 			slot[i].texture = arr_active[i].get_texture()
 			recepie_item_count += 1
 			list.erase(arr[i])
-		
+	
+	visible = (recepie_item_count > 0)
 	is_craft_able = (recepie_item_count == arr.size())
 	if is_craft and is_craft_able:
 		for x in arr: # here I did the same stuff but i didn't understand that it is work with double list

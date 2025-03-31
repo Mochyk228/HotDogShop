@@ -1,7 +1,112 @@
-[gd_scene load_steps=3 format=3 uid="uid://bosf5nh2stp68"]
+[gd_scene load_steps=34 format=3 uid="uid://bosf5nh2stp68"]
 
 [ext_resource type="PackedScene" uid="uid://bx58jgpokgdta" path="res://Scenes/root.tscn" id="1_ol0b0"]
+[ext_resource type="Script" uid="uid://bjxedhiu3x3bn" path="res://Scripts/craft_titles.gd" id="2_5t57s"]
+[ext_resource type="Texture2D" uid="uid://dtjsetkgwnb5f" path="res://Art/pyramid_icon.png" id="3_mwiq1"]
 [ext_resource type="Texture2D" uid="uid://bahg1yg61sta0" path="res://Art/cylinder_icon.png" id="6_8j1ge"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5t57s"]
+viewport_path = NodePath("Cubes/RedActiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gcke5"]
+viewport_path = NodePath("Cubes/BrownInactiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vb83u"]
+viewport_path = NodePath("Cylindres/RedCylinder")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7o5pb"]
+viewport_path = NodePath("Cubes/BrownInactiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o8lj7"]
+viewport_path = NodePath("Cubes/RedInactiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_33afw"]
+viewport_path = NodePath("Cylindres/BrownCylinder")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8j1ge"]
+viewport_path = NodePath("Cubes/RedInactiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_36n1y"]
+viewport_path = NodePath("Cylindres/GreenCylinder")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hok3m"]
+viewport_path = NodePath("Cubes/RedInactiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bj4yu"]
+viewport_path = NodePath("Cubes/GreenInactiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yo2jm"]
+viewport_path = NodePath("Cylindres/RedCylinder")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8as5h"]
+viewport_path = NodePath("Cubes/GreenInactiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_r8tyo"]
+viewport_path = NodePath("Cylindres/BlueCylinder")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jpxwy"]
+viewport_path = NodePath("Cubes/BlueInactiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1fj3l"]
+viewport_path = NodePath("Cylindres/GreenCylinder")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_822yy"]
+viewport_path = NodePath("Cubes/BlueInactiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_uih7p"]
+viewport_path = NodePath("Cylindres/PurpleCylinder")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qujsf"]
+viewport_path = NodePath("Cubes/PurpleInactiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gabxa"]
+viewport_path = NodePath("Cylindres/BlueCylinder")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tn8t8"]
+viewport_path = NodePath("Cubes/PurpleInactiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_05b3t"]
+viewport_path = NodePath("Cylindres/PurpleCylinder")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_f6s6f"]
+viewport_path = NodePath("Cubes/BrownInactiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3lm7x"]
+viewport_path = NodePath("Cubes/BrownInactiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qewwq"]
+viewport_path = NodePath("Cylindres/RedCylinder")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pg7qd"]
+viewport_path = NodePath("Cubes/BrownInactiveCube")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_35q4o"]
+viewport_path = NodePath("Cylindres/RedCylinder")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_de6d7"]
+viewport_path = NodePath("Cubes/RedActiveCube")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcke5"]
+bg_color = Color(0, 0, 0, 1)
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5t57s"]
+bg_color = Color(0, 0, 0, 1)
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+anti_aliasing = false
 
 [node name="Root" type="Node3D"]
 
@@ -24,18 +129,235 @@ render_target_update_mode = 4
 
 [node name="Root" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_ol0b0")]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_left = 4.0
-offset_top = 39.0
-offset_right = 20.0
-offset_bottom = 55.0
-scale = Vector2(6, 6)
+[node name="Toy" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/Cubes/BrownInactiveCube" index="1"]
+transform = Transform3D(-0.0130597, -0.0212936, -0.0123396, 0.0115169, 0.00705752, -0.0243679, 0.0217496, -0.016523, 0.00549397, -3.85885e-09, -0.0253477, 1.28006)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel"]
-layout_mode = 0
+[node name="Toy" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/Cubes/RedInactiveCube" index="1"]
+transform = Transform3D(-0.0130597, -0.0212936, -0.0123396, 0.0115169, 0.00705752, -0.0243679, 0.0217496, -0.016523, 0.00549397, -3.85885e-09, -0.0253477, 1.28006)
+
+[node name="Toy" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/Cubes/GreenInactiveCube" index="1"]
+transform = Transform3D(-0.0130597, -0.0212936, -0.0123396, 0.0115169, 0.00705752, -0.0243679, 0.0217496, -0.016523, 0.00549397, -3.85885e-09, -0.0253477, 1.28006)
+
+[node name="Toy" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/Cubes/BlueInactiveCube" index="1"]
+transform = Transform3D(-0.0130597, -0.0212936, -0.0123396, 0.0115169, 0.00705752, -0.0243679, 0.0217496, -0.016523, 0.00549397, -3.85885e-09, -0.0253477, 1.28006)
+
+[node name="Toy" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/Cubes/PurpleInactiveCube" index="1"]
+transform = Transform3D(-0.0130597, -0.0212936, -0.0123396, 0.0115169, 0.00705752, -0.0243679, 0.0217496, -0.016523, 0.00549397, -3.85885e-09, -0.0253477, 1.28006)
+
+[node name="Cone" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/Pyramids/BrownActivePyramid/pyramid" index="0"]
+surface_material_override/0 = null
+
+[node name="Cone" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/Pyramids/RedActivePyramid/pyramid" index="0"]
+surface_material_override/0 = null
+
+[node name="Cone" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/Pyramids/GreenActivePyramid/pyramid" index="0"]
+surface_material_override/0 = null
+
+[node name="Cone" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/Pyramids/BlueActivePyramid/pyramid" index="0"]
+surface_material_override/0 = null
+
+[node name="Cone" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/Pyramids/PurpleActivePyramid/pyramid" index="0"]
+surface_material_override/0 = null
+
+[node name="PreviewTexture" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ServeSlotsContainer" index="0"]
+texture = SubResource("ViewportTexture_5t57s")
+
+[node name="PreviewTexture2" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ServeSlotsContainer" index="1"]
+texture = SubResource("ViewportTexture_5t57s")
+
+[node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ServeSlotsContainer" index="2"]
+texture = SubResource("ViewportTexture_5t57s")
+
+[node name="PreviewTexture4" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ServeSlotsContainer" index="3"]
+texture = SubResource("ViewportTexture_5t57s")
+
+[node name="PreviewTexture" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot1/Background/HBoxContainer" index="0"]
+texture = SubResource("ViewportTexture_gcke5")
+
+[node name="PreviewTexture2" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot1/Background/HBoxContainer" index="1"]
+texture = SubResource("ViewportTexture_gcke5")
+
+[node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot1/Background/HBoxContainer" index="2"]
+texture = SubResource("ViewportTexture_vb83u")
+
+[node name="PreviewTexture" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot2/Background/HBoxContainer" index="0"]
+texture = SubResource("ViewportTexture_7o5pb")
+
+[node name="PreviewTexture2" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot2/Background/HBoxContainer" index="1"]
+texture = SubResource("ViewportTexture_o8lj7")
+
+[node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot2/Background/HBoxContainer" index="2"]
+texture = SubResource("ViewportTexture_33afw")
+
+[node name="PreviewTexture" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot3/Background/HBoxContainer" index="0"]
+texture = SubResource("ViewportTexture_8j1ge")
+
+[node name="PreviewTexture2" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot3/Background/HBoxContainer" index="1"]
+texture = SubResource("ViewportTexture_o8lj7")
+
+[node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot3/Background/HBoxContainer" index="2"]
+texture = SubResource("ViewportTexture_36n1y")
+
+[node name="PreviewTexture" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot4/Background/HBoxContainer" index="0"]
+texture = SubResource("ViewportTexture_hok3m")
+
+[node name="PreviewTexture2" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot4/Background/HBoxContainer" index="1"]
+texture = SubResource("ViewportTexture_bj4yu")
+
+[node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot4/Background/HBoxContainer" index="2"]
+texture = SubResource("ViewportTexture_yo2jm")
+
+[node name="PreviewTexture" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot5/Background/HBoxContainer" index="0"]
+texture = SubResource("ViewportTexture_8as5h")
+
+[node name="PreviewTexture2" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot5/Background/HBoxContainer" index="1"]
+texture = SubResource("ViewportTexture_8as5h")
+
+[node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot5/Background/HBoxContainer" index="2"]
+texture = SubResource("ViewportTexture_r8tyo")
+
+[node name="PreviewTexture" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot6/Background/HBoxContainer" index="0"]
+texture = SubResource("ViewportTexture_8as5h")
+
+[node name="PreviewTexture2" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot6/Background/HBoxContainer" index="1"]
+texture = SubResource("ViewportTexture_jpxwy")
+
+[node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot6/Background/HBoxContainer" index="2"]
+texture = SubResource("ViewportTexture_1fj3l")
+
+[node name="PreviewTexture" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot7/Background/HBoxContainer" index="0"]
+texture = SubResource("ViewportTexture_822yy")
+
+[node name="PreviewTexture2" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot7/Background/HBoxContainer" index="1"]
+texture = SubResource("ViewportTexture_jpxwy")
+
+[node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot7/Background/HBoxContainer" index="2"]
+texture = SubResource("ViewportTexture_uih7p")
+
+[node name="PreviewTexture" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot8/Background/HBoxContainer" index="0"]
+texture = SubResource("ViewportTexture_822yy")
+
+[node name="PreviewTexture2" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot8/Background/HBoxContainer" index="1"]
+texture = SubResource("ViewportTexture_qujsf")
+
+[node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot8/Background/HBoxContainer" index="2"]
+texture = SubResource("ViewportTexture_gabxa")
+
+[node name="PreviewTexture" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot9/Background/HBoxContainer" index="0"]
+texture = SubResource("ViewportTexture_tn8t8")
+
+[node name="PreviewTexture2" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot9/Background/HBoxContainer" index="1"]
+texture = SubResource("ViewportTexture_qujsf")
+
+[node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer/CraftSystemCylinders/CraftSlot9/Background/HBoxContainer" index="2"]
+texture = SubResource("ViewportTexture_05b3t")
+
+[node name="ScrollContainer3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer" index="2"]
+offset_right = 131.0
+offset_bottom = 114.0
+
+[node name="PreviewTexture" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background/HBoxContainer" index="0"]
+texture = SubResource("ViewportTexture_f6s6f")
+
+[node name="PreviewTexture2" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background/HBoxContainer" index="1"]
+texture = SubResource("ViewportTexture_f6s6f")
+
+[node name="PreviewTexture4" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background/HBoxContainer" index="2"]
+texture = SubResource("ViewportTexture_3lm7x")
+
+[node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot1/Background/HBoxContainer" index="3"]
+texture = SubResource("ViewportTexture_qewwq")
+
+[node name="PreviewTexture" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background/HBoxContainer" index="0"]
+texture = SubResource("ViewportTexture_pg7qd")
+
+[node name="PreviewTexture2" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background/HBoxContainer" index="1"]
+texture = SubResource("ViewportTexture_pg7qd")
+
+[node name="PreviewTexture4" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background/HBoxContainer" index="2"]
+texture = SubResource("ViewportTexture_pg7qd")
+
+[node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot2/Background/HBoxContainer" index="3"]
+texture = SubResource("ViewportTexture_35q4o")
+
+[node name="PreviewTexture" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background/HBoxContainer" index="0"]
+texture = SubResource("ViewportTexture_pg7qd")
+
+[node name="PreviewTexture2" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background/HBoxContainer" index="1"]
+texture = SubResource("ViewportTexture_pg7qd")
+
+[node name="PreviewTexture4" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background/HBoxContainer" index="2"]
+texture = SubResource("ViewportTexture_pg7qd")
+
+[node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot3/Background/HBoxContainer" index="3"]
+texture = SubResource("ViewportTexture_35q4o")
+
+[node name="PreviewTexture" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/HBoxContainer" index="0"]
+texture = SubResource("ViewportTexture_pg7qd")
+
+[node name="PreviewTexture2" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/HBoxContainer" index="1"]
+texture = SubResource("ViewportTexture_pg7qd")
+
+[node name="PreviewTexture4" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/HBoxContainer" index="2"]
+texture = SubResource("ViewportTexture_pg7qd")
+
+[node name="PreviewTexture3" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3/CraftSystemPyramides/CraftSlot4/Background/HBoxContainer" index="3"]
+texture = SubResource("ViewportTexture_35q4o")
+
+[node name="CraftArea" parent="CanvasLayer/SubViewportContainer/SubViewport/Root" index="34" node_paths=PackedStringArray("cilnders", "pyramides")]
+cilnders = NodePath("../../../../CraftTitles/Cilnders")
+pyramides = NodePath("../../../../CraftTitles/Pyramides")
+
+[node name="Recepie" parent="CanvasLayer/SubViewportContainer/SubViewport/Root/Client/Recepies" index="0"]
+texture = SubResource("ViewportTexture_de6d7")
+
+[node name="CraftTitles" type="VBoxContainer" parent="CanvasLayer" node_paths=PackedStringArray("craft_system_cylinders", "craft_system_pyramides")]
 offset_left = 1.0
-offset_top = 3.0
-offset_right = 55.0
-offset_bottom = 43.0
+offset_top = 33.0
+offset_right = 15.0
+offset_bottom = 73.0
+scale = Vector2(7.68823, 7.68823)
+script = ExtResource("2_5t57s")
+craft_system_cylinders = NodePath("../SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer")
+craft_system_pyramides = NodePath("../SubViewportContainer/SubViewport/Root/CanvasLayer/ScrollContainer3")
+
+[node name="Cilnders" type="Panel" parent="CanvasLayer/CraftTitles"]
+custom_minimum_size = Vector2(0, 13.19)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gcke5")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftTitles/Cilnders"]
+layout_mode = 0
+offset_left = 0.260138
+offset_top = 1.82097
+offset_right = 54.2601
+offset_bottom = 41.821
 scale = Vector2(0.232183, 0.243992)
 texture = ExtResource("6_8j1ge")
+
+[node name="Pyramides" type="Panel" parent="CanvasLayer/CraftTitles"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 13.19)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5t57s")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CraftTitles/Pyramides"]
+layout_mode = 0
+offset_top = 2.25021
+offset_right = 56.0
+offset_bottom = 44.2502
+scale = Vector2(0.232183, 0.243992)
+texture = ExtResource("3_mwiq1")
+
+[connection signal="mouse_entered" from="CanvasLayer/CraftTitles/Cilnders" to="CanvasLayer/CraftTitles" method="_on_cilnders_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/CraftTitles/Cilnders" to="CanvasLayer/CraftTitles" method="_on_cilnders_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/CraftTitles/Pyramides" to="CanvasLayer/CraftTitles" method="_on_pyramides_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/CraftTitles/Pyramides" to="CanvasLayer/CraftTitles" method="_on_pyramides_mouse_exited"]
+
+[editable path="CanvasLayer/SubViewportContainer/SubViewport/Root"]
+[editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/Floor"]
+[editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/Walls"]
+[editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/WallSupport"]
+[editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/Bar"]
+[editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/Fridge"]
+[editable path="CanvasLayer/SubViewportContainer/SubViewport/Root/Client/humanoid2"]

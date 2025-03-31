@@ -26,7 +26,7 @@ func finish():
 	$AnimationPlayer.play("walk_2")
 	$humanoid2/AnimationPlayer.play("Walking")
 	await $humanoid2/AnimationPlayer.animation_finished
-	#spawn new one
+	get_parent().next.emit()
 	queue_free()
 
 func _on_customer_service_body_entered(body: Node3D) -> void:
